@@ -1,0 +1,100 @@
+.rrc-contact-page { overflow: clip; background: var(--rrc-bg); }
+.rrc-contact-hero { padding-block: clamp(3rem, 6vw, 6rem); background: linear-gradient(115deg, var(--rrc-surface-light), var(--rrc-bg) 68%); }
+.rrc-contact-hero__grid,
+.rrc-contact-guidance { display: grid; align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+.rrc-contact-hero__grid { grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr); }
+.rrc-contact-hero__copy { max-width: 40rem; }
+.rrc-contact-hero__title { max-width: 14ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
+.rrc-contact-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
+.rrc-contact-hero__visual { min-width: 0; }
+.rrc-contact-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+
+.rrc-contact-intro { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+.rrc-contact-intro__copy { max-width: 34rem; }
+.rrc-contact-intro__copy .rrc-section-head { margin-bottom: 0.75rem; }
+.rrc-contact-intro__copy > p { margin: 0; color: var(--rrc-text-secondary); font-size: var(--rrc-body-lg); line-height: 1.75; }
+.rrc-contact-action-grid,
+.rrc-contact-next-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.rrc-contact-action-grid--intro { grid-template-columns: minmax(0, 1fr); }
+.rrc-contact-action-card { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+.rrc-contact-action-card .rrc-card__text { flex: 1; }
+.rrc-contact-action-card .rrc-icon-badge { flex: 0 0 auto; }
+.rrc-contact-card-link { display: inline-flex; align-items: center; align-self: flex-start; gap: 0.5rem; min-height: 44px; margin-top: 0.75rem; color: var(--rrc-gold); font-weight: 700; text-underline-offset: 4px; }
+.rrc-contact-card-link:hover { color: var(--rrc-navy); }
+.rrc-contact-card-link:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 3px; border-radius: 4px; }
+
+.rrc-contact-info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.rrc-contact-info-card { min-width: 0; height: 100%; }
+.rrc-contact-info-card .rrc-icon-badge { display: flex; }
+.rrc-contact-info-card .rrc-card__title { margin-bottom: 0.5rem; }
+.rrc-contact-info-card .rrc-card__text { overflow-wrap: anywhere; font-weight: 600; color: var(--rrc-navy); }
+.rrc-contact-info-link { margin-top: 1rem; }
+
+.rrc-contact-course-grid,
+.rrc-contact-program-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.rrc-contact-path-card { display: flex; flex-direction: column; min-width: 0; height: 100%; color: inherit; text-decoration: none; }
+.rrc-contact-path-card:hover { border-color: var(--rrc-gold); }
+.rrc-contact-path-card:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 3px; }
+.rrc-contact-path-card .rrc-icon-badge { flex: 0 0 auto; }
+.rrc-contact-path-card .rrc-card__title { overflow-wrap: anywhere; }
+.rrc-contact-path-card .rrc-card__text { flex: 1; }
+.rrc-contact-path-card .rrc-contact-card-link { margin-top: 0.75rem; }
+
+.rrc-contact-guidance { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr); }
+.rrc-contact-guidance__copy { max-width: 42rem; }
+.rrc-contact-guidance__copy .rrc-section-head { margin-bottom: 1rem; }
+.rrc-contact-guidance__copy > p { margin: 0 0 1.25rem; color: var(--rrc-text-secondary); }
+.rrc-contact-guidance__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1rem; margin: 0; padding: 1.5rem; list-style: none; }
+.rrc-contact-guidance__list li { display: flex; align-items: flex-start; gap: 0.65rem; min-width: 0; color: var(--rrc-text); }
+.rrc-contact-guidance__list svg { flex: 0 0 auto; margin-top: 0.2rem; color: var(--rrc-gold); }
+
+.rrc-contact-location { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 1.5rem; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.rrc-contact-location .rrc-section-head { margin: 0 0 0.5rem; }
+.rrc-contact-location .rrc-section-head__title { color: var(--rrc-navy); }
+.rrc-contact-location p { margin: 0 0 0.5rem; color: var(--rrc-text-secondary); }
+.rrc-contact-location__placeholder { color: var(--rrc-gold); font-weight: 700; }
+
+.rrc-contact-faq { max-width: 900px; }
+.rrc-contact-faq .rrc-section-head { margin-bottom: 2rem; }
+.rrc-contact-faq__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin-top: 1.25rem; }
+.rrc-contact-faq__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--rrc-gold); font-size: var(--rrc-body-sm); font-weight: 700; text-underline-offset: 4px; }
+.rrc-contact-faq__links a:hover { color: var(--rrc-navy); }
+.rrc-contact-faq__links a:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 2px; border-radius: 4px; }
+
+@media (max-width: 1100px) {
+  .rrc-contact-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(260px, 0.85fr); }
+  .rrc-contact-info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rrc-contact-course-grid,
+  .rrc-contact-program-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .rrc-contact-hero { padding-block: 3rem; }
+  .rrc-contact-hero__grid,
+  .rrc-contact-intro,
+  .rrc-contact-guidance { grid-template-columns: minmax(0, 1fr); }
+  .rrc-contact-hero__title { max-width: 17ch; font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
+  .rrc-contact-hero__visual { width: min(100%, 35rem); margin-inline: auto; }
+  .rrc-contact-guidance__list { max-width: 42rem; }
+}
+
+@media (max-width: 480px) {
+  .rrc-contact-page .rrc-container { padding-inline: 1.125rem; }
+  .rrc-contact-hero__grid { gap: 1.75rem; }
+  .rrc-contact-hero__title { font-size: clamp(2rem, 9.6vw, 2.65rem); }
+  .rrc-contact-hero__actions { align-items: stretch; }
+  .rrc-contact-hero__actions .rrc-btn { width: 100%; white-space: normal; text-align: center; }
+  .rrc-contact-action-grid,
+  .rrc-contact-next-grid,
+  .rrc-contact-info-grid,
+  .rrc-contact-course-grid,
+  .rrc-contact-program-grid,
+  .rrc-contact-guidance__list { grid-template-columns: minmax(0, 1fr); }
+  .rrc-contact-location { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrc-contact-page *,
+  .rrc-contact-page *::before,
+  .rrc-contact-page *::after { scroll-behavior: auto; }
+}

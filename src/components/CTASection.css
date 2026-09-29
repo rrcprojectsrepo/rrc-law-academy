@@ -1,0 +1,34 @@
+/* CTASection — navy banner with gold icon; light variant for inline CTAs. */
+.rrc-cta { padding-block: var(--rrc-section-y); }
+.rrc-cta--navy {
+  background: var(--rrc-navy);
+  color: var(--rrc-white);
+  border-top: 2px solid var(--rrc-gold);
+}
+.rrc-cta--navy .rrc-section-head__eyebrow { color: var(--rrc-gold-bright); }
+.rrc-cta--navy .rrc-section-head__title { color: var(--rrc-white); }
+.rrc-cta--navy .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
+.rrc-cta__inner {
+  max-width: 56rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rrc-cta__inner .rrc-section-head { margin-bottom: 2rem; }
+.rrc-cta__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(254, 212, 136, 0.15);
+  color: var(--rrc-gold-bright);
+  margin-bottom: 1.25rem;
+}
+.rrc-cta__actions { justify-content: center; }
+.rrc-cta--light {
+  background: var(--rrc-surface-light);
+  border-block: 1px solid var(--rrc-border);
+}

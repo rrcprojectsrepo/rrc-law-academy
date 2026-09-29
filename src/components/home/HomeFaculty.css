@@ -1,0 +1,7 @@
+/* Faculty section — note about pending photo assets. */
+.rrc-faculty__asset-note {
+  text-align: center;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+  margin: -2rem 0 2rem;
+}

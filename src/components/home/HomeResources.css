@@ -1,0 +1,43 @@
+/* Resources — wrapper adds Stitch footer link row; card itself stays reusable. */
+.rrc-resource-wrap {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-resource-wrap:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-resource-wrap .rrc-resource-card {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding-bottom: 0;
+}
+.rrc-resource-wrap .rrc-resource-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+.rrc-resource-wrap__foot {
+  margin-top: auto;
+  padding: 1rem var(--rrc-space-6) var(--rrc-space-6);
+  border-top: 1px solid var(--rrc-border);
+  margin-inline: var(--rrc-space-6);
+  padding-inline: 0;
+  margin-top: 1rem;
+}
+.rrc-resource-wrap__link {
+  font-size: var(--rrc-body-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rrc-gold);
+  text-decoration: none;
+}
+.rrc-resource-wrap__link:hover { text-decoration: underline; text-underline-offset: 4px; }

@@ -1,0 +1,62 @@
+/* CourseCard — Stitch Section 4 hierarchy: badges, Playfair title, gold checklist. */
+.rrc-course-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  overflow: hidden;
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-course-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-course-card__media {
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  background: var(--rrc-surface-light);
+}
+.rrc-course-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rrc-course-card__body { padding: var(--rrc-space-6); }
+.rrc-course-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: var(--rrc-space-4);
+}
+.rrc-course-card__tag {
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  color: var(--rrc-gold);
+}
+.rrc-course-card__title {
+  font-size: 1.375rem;
+  margin-bottom: var(--rrc-space-2);
+}
+.rrc-course-card__points {
+  list-style: none;
+  margin: var(--rrc-space-5) 0 0;
+  padding: var(--rrc-space-4) 0 0;
+  border-top: 1px solid var(--rrc-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.rrc-course-card__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text);
+}
+.rrc-course-card__points svg { color: var(--rrc-gold); flex: none; margin-top: 2px; }
+.rrc-course-card__foot { padding: 0 var(--rrc-space-6) var(--rrc-space-6); margin-top: auto; }

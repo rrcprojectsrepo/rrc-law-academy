@@ -1,0 +1,49 @@
+/* CourseStudentJourney (15) — 4 phase cards: 1 col mobile, 2 tablet, 4 desktop. */
+.rrc-course-journey__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--rrc-space-6);
+  grid-template-columns: 1fr;
+}
+.rrc-course-journey__item {
+  position: relative;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-2);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-course-journey__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-course-journey__step {
+  align-self: flex-start;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--rrc-radius-pill);
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rrc-course-journey__mark {
+  position: absolute;
+  right: var(--rrc-space-5);
+  bottom: var(--rrc-space-5);
+  color: var(--rrc-gold);
+  opacity: 0.5;
+}
+@media (min-width: 640px) {
+  .rrc-course-journey__list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .rrc-course-journey__list { grid-template-columns: repeat(4, 1fr); }
+}

@@ -1,0 +1,47 @@
+/* Batches — white cohort cards with definition-list rows + gold CTA. */
+.rrc-batch-card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-batch-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-batch-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: var(--rrc-space-4);
+}
+.rrc-batch-card__session {
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-gold);
+}
+.rrc-batch-card__rows {
+  margin: var(--rrc-space-4) 0 0;
+  padding: var(--rrc-space-4) 0 0;
+  border-top: 1px solid var(--rrc-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.rrc-batch-card__rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: var(--rrc-body-sm);
+  padding-block: 0.25rem;
+}
+.rrc-batch-card__rows dt { color: var(--rrc-text-secondary); }
+.rrc-batch-card__rows dd { margin: 0; font-weight: 600; color: var(--rrc-navy); }
+.rrc-batch-card__foot { margin-top: 1.5rem; }
+.rrc-batch-card__foot .rrc-btn { width: 100%; }

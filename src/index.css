@@ -1,0 +1,53 @@
+/* RRC Law Academy — app entry glue (no design tokens here). */
+@import './styles/design-system.css';
+
+/* Vite default styles replaced: keep only structural glue.
+   All colours / fonts / buttons / cards come from design-system.css. */
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rrc-layout {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rrc-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Placeholder pages (temporary) — simple readable spacing */
+.rrc-placeholder {
+  padding-block: var(--rrc-section-y);
+}
+
+.rrc-placeholder h1 {
+  font-family: var(--rrc-font-display);
+  color: var(--rrc-navy);
+}
+
+/* Skip link for keyboard users */
+.rrc-skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--rrc-navy);
+  color: var(--rrc-white);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-skip-link:focus {
+  top: 0;
+}
+

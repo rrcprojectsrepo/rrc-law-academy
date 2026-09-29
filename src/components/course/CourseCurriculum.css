@@ -1,0 +1,41 @@
+/* CourseCurriculum (08) — module cards, 1 col mobile, 2 col desktop. */
+.rrc-course-curriculum__list {
+  display: grid;
+  gap: var(--rrc-space-6);
+  grid-template-columns: 1fr;
+}
+.rrc-course-curriculum__module {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rrc-space-3);
+}
+.rrc-course-curriculum__title { margin: 0; }
+.rrc-course-curriculum__topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.rrc-course-curriculum__topics li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text);
+}
+.rrc-course-curriculum__topics svg { color: var(--rrc-gold); flex: none; margin-top: 3px; }
+.rrc-course-curriculum__note {
+  margin: var(--rrc-space-6) 0 0;
+  padding: var(--rrc-space-4) var(--rrc-space-5);
+  border-left: 4px solid var(--rrc-gold-bright);
+  background: var(--rrc-card-bg);
+  border-radius: var(--rrc-radius-md);
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+}
+@media (min-width: 1024px) {
+  .rrc-course-curriculum__list { grid-template-columns: repeat(2, 1fr); }
+}

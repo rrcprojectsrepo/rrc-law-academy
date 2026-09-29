@@ -1,0 +1,77 @@
+.rrc-whatsapp-float {
+  position: fixed;
+  z-index: 46;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 3.75rem);
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(14, 28, 47, 0.22);
+  cursor: pointer;
+  animation: rrc-whatsapp-enter 420ms var(--rrc-ease) both;
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), background-color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-whatsapp-float svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+}
+
+.rrc-whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(14, 28, 47, 0.26);
+}
+
+.rrc-whatsapp-float:active { transform: scale(0.97); }
+.rrc-whatsapp-float:focus-visible { outline: 3px solid var(--rrc-gold-bright); outline-offset: 4px; }
+
+@keyframes rrc-whatsapp-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .rrc-whatsapp-float::after {
+    position: absolute;
+    right: calc(100% + 0.75rem);
+    width: max-content;
+    max-width: calc(100vw - 7rem);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--rrc-radius-md);
+    background: var(--rrc-navy);
+    color: var(--rrc-white);
+    content: attr(data-tooltip);
+    font: 600 0.8rem/1.4 var(--rrc-font-body);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(4px);
+    transition: opacity var(--rrc-duration) var(--rrc-ease), transform var(--rrc-duration) var(--rrc-ease);
+  }
+
+  .rrc-whatsapp-float:hover::after,
+  .rrc-whatsapp-float:focus-visible::after { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 560px) {
+  .rrc-whatsapp-float {
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: calc(max(0.75rem, env(safe-area-inset-bottom)) + 3.75rem);
+    width: 3.375rem;
+    height: 3.375rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrc-whatsapp-float { animation: none; }
+  .rrc-whatsapp-float:hover,
+  .rrc-whatsapp-float:active { transform: none; }
+  .rrc-whatsapp-float::after { transition: none; }
+}

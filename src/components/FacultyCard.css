@@ -1,0 +1,43 @@
+/* FacultyCard — centered placeholder-safe mentor card. */
+.rrc-faculty-card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-faculty-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-faculty-card__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--rrc-card-bg);
+  color: var(--rrc-navy);
+  margin-bottom: var(--rrc-space-4);
+}
+.rrc-faculty-card__name { font-size: 1.1rem; }
+.rrc-faculty-card__role {
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-gold);
+  margin: 0.25rem 0 0.75rem;
+}
+.rrc-faculty-card__link {
+  margin-top: var(--rrc-space-4);
+  font-weight: 700;
+  color: var(--rrc-gold);
+  text-decoration: none;
+}
+.rrc-faculty-card__link:hover { text-decoration: underline; text-underline-offset: 4px; }

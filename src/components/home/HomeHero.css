@@ -1,0 +1,88 @@
+/* HomeHero — Section 1. Light surface, 2-col desktop, stacked mobile. */
+.rrc-hero {
+  background: var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  overflow: hidden;
+}
+.rrc-hero__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding-block: 3.5rem;
+}
+.rrc-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--rrc-radius-pill);
+  background: var(--rrc-card-bg);
+  border: 1px solid var(--rrc-border);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rrc-gold);
+  margin: 0 0 1.25rem;
+}
+.rrc-hero__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--rrc-gold);
+  flex: none;
+}
+.rrc-hero__title { color: var(--rrc-navy); margin-bottom: 1rem; }
+.rrc-hero__ctas { margin-top: 1.5rem; }
+.rrc-hero__trust {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--rrc-border);
+}
+.rrc-hero__trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-text);
+}
+.rrc-hero__trust svg { color: var(--rrc-gold); }
+.rrc-hero__visual { position: relative; }
+.rrc-hero__copy > * { animation: rrc-fade-up 480ms var(--rrc-ease) both; }
+.rrc-hero__copy > :nth-child(2) { animation-delay: 60ms; }
+.rrc-hero__copy > :nth-child(3) { animation-delay: 120ms; }
+.rrc-hero__copy > :nth-child(4) { animation-delay: 180ms; }
+.rrc-hero__copy > :nth-child(5) { animation-delay: 240ms; }
+.rrc-hero__visual { animation: rrc-hero-image-in 620ms var(--rrc-ease) both; animation-delay: 180ms; }
+.rrc-hero__watermark {
+  position: absolute;
+  right: -1rem;
+  top: -3rem;
+  color: var(--rrc-navy);
+  opacity: 0.05;
+  pointer-events: none;
+}
+.rrc-hero__frame {
+  position: relative;
+  border: 2px solid var(--rrc-navy);
+  border-radius: var(--rrc-radius-lg);
+  background: var(--rrc-white);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.rrc-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 1024px) {
+  .rrc-hero__grid { grid-template-columns: 7fr 5fr; gap: 2rem; padding-block: 5.25rem; }
+}

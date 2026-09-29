@@ -1,0 +1,49 @@
+/* Controlled Button variants — reuses .rrc-btn base from design-system.css. */
+/* primary + secondary come from the system; navy/gold/card/text are Stitch section treatments. */
+.rrc-btn--navy {
+  background-color: var(--rrc-navy);
+  color: var(--rrc-white);
+  border-color: var(--rrc-navy);
+}
+.rrc-btn--navy:hover {
+  transform: translateY(-1px);
+  background-color: #1a2c44;
+  box-shadow: var(--rrc-shadow-card);
+}
+.rrc-btn--gold {
+  background-color: var(--rrc-gold);
+  color: var(--rrc-white);
+  border-color: var(--rrc-gold);
+}
+.rrc-btn--gold:hover {
+  transform: translateY(-1px);
+  background-color: #5f4a15;
+  box-shadow: var(--rrc-shadow-card);
+}
+.rrc-btn--card {
+  background-color: var(--rrc-card-bg);
+  color: var(--rrc-navy);
+  border-color: transparent;
+  width: 100%;
+}
+.rrc-btn--card:hover {
+  background-color: var(--rrc-gold);
+  color: var(--rrc-white);
+}
+.rrc-btn--text {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--rrc-gold);
+  font-weight: 700;
+  white-space: normal;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+}
+.rrc-btn--text:hover {
+  transform: none;
+  box-shadow: none;
+  text-decoration-color: var(--rrc-gold);
+}

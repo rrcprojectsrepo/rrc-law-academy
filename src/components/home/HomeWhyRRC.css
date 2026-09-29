@@ -1,0 +1,4 @@
+/* Why RRC — full-span highlight card below the 6-card grid. */
+.rrc-why .rrc-section-head__title { color: var(--rrc-white); }
+.rrc-why .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
+.rrc-why__highlight { margin-top: 1.5rem; }

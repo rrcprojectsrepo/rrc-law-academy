@@ -1,0 +1,9 @@
+/* LearningAreas (06) — auto-fit card grid so 4 or 5 areas both balance. */
+.rrc-course-areas__list {
+  display: grid;
+  gap: var(--rrc-space-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .rrc-course-areas__list { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+}

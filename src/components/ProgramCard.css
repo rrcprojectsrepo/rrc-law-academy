@@ -1,0 +1,41 @@
+/* ProgramCard — white card + gold Explore link; strip variant is a full-area Link. */
+.rrc-program-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), background-color var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-program-card--strip {
+  background: var(--rrc-white);
+  border: 1px solid transparent;
+  border-radius: var(--rrc-radius-lg);
+  padding: var(--rrc-space-5);
+}
+.rrc-program-card--strip:hover {
+  transform: translateY(-4px);
+  background: var(--rrc-surface-light);
+  border-color: var(--rrc-border);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-program-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.rrc-program-card__icon { margin-bottom: var(--rrc-space-4); }
+.rrc-program-card__label {
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rrc-gold);
+}
+.rrc-program-card__link {
+  display: inline-flex;
+  margin-top: var(--rrc-space-4);
+  font-weight: 700;
+  color: var(--rrc-gold);
+}
+.rrc-program-card:hover .rrc-program-card__link { text-decoration: underline; text-underline-offset: 4px; }

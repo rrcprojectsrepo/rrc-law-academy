@@ -1,0 +1,44 @@
+/* JourneyCard — white card with badge + gold checklist. */
+.rrc-journey-card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-journey-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-journey-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: var(--rrc-space-4);
+}
+.rrc-journey-card__icon { margin: 0; }
+.rrc-journey-card__points {
+  list-style: none;
+  margin: var(--rrc-space-4) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.rrc-journey-card__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+}
+.rrc-journey-card__points svg { color: var(--rrc-gold); flex: none; margin-top: 2px; }
+.rrc-journey-card__link { font-weight: 700; color: var(--rrc-gold); text-decoration: none; }
+.rrc-journey-card__link:hover { text-decoration: underline; text-underline-offset: 4px; }

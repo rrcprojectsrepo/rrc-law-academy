@@ -1,0 +1,3 @@
+/* CourseFaculty (12) — only the trailing CTA row needs styling here; the
+   card grid itself reuses .rrc-grid-3 + FacultyCard. */
+.rrc-course-faculty__cta { margin-top: var(--rrc-space-8); }

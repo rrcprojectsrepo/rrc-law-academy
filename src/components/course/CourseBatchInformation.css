@@ -1,0 +1,51 @@
+/* CourseBatchInformation (13) — definition grid + enquiry aside. */
+.rrc-course-batch {
+  display: grid;
+  gap: var(--rrc-space-6);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+.rrc-course-batch__rows {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  overflow: hidden;
+}
+.rrc-course-batch__rows > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--rrc-border);
+}
+.rrc-course-batch__rows > div:last-child { border-bottom: 0; }
+.rrc-course-batch__rows dt {
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rrc-text-secondary);
+}
+.rrc-course-batch__rows dd {
+  margin: 0;
+  font-size: var(--rrc-body-sm);
+  font-weight: 700;
+  color: var(--rrc-navy);
+  text-align: right;
+}
+.rrc-course-batch__aside {
+  background: var(--rrc-card-bg);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  padding: var(--rrc-space-6);
+}
+.rrc-course-batch__aside .rrc-btn { margin-top: var(--rrc-space-4); }
+@media (min-width: 1024px) {
+  .rrc-course-batch { grid-template-columns: 7fr 5fr; align-items: center; }
+}

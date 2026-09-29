@@ -1,0 +1,66 @@
+/* Timeline — vertical rail with icon markers; single column on mobile, no overflow. */
+.rrc-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  position: relative;
+}
+.rrc-timeline__item {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  position: relative;
+}
+.rrc-timeline__marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+.rrc-timeline__item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 1.375rem;
+  top: 3rem;
+  bottom: -1.25rem;
+  width: 2px;
+  background: var(--rrc-border);
+}
+.rrc-timeline__card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-5) var(--rrc-space-6);
+}
+.rrc-timeline__step {
+  margin: 0 0 0.25rem;
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rrc-gold);
+}
+@media (min-width: 1024px) {
+  .rrc-timeline { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .rrc-timeline__item { grid-template-columns: 1fr; }
+  .rrc-timeline__item:not(:last-child)::before {
+    left: 1.375rem;
+    right: -1.5rem;
+    top: 1.375rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+}

@@ -1,0 +1,26 @@
+/* CourseFAQ (16) — narrow column (matches HomeFAQ) + explicit empty state. */
+.rrc-course-faq { max-width: 56rem; }
+.rrc-course-faq__empty {
+  background: var(--rrc-white);
+  border: 1px dashed var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  padding: var(--rrc-space-8) var(--rrc-space-6);
+  text-align: center;
+}
+.rrc-course-faq__empty-title {
+  margin: 0 0 var(--rrc-space-2);
+  font-family: var(--rrc-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+.rrc-course-faq__empty-text {
+  margin: 0 auto;
+  max-width: 46ch;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+}
+.rrc-course-faq__empty-cta {
+  justify-content: center;
+  margin-top: var(--rrc-space-6);
+}

@@ -1,0 +1,16 @@
+/* CourseMethodology (07) — 5-step sequence: 1 col mobile, 2 tablet, 5 desktop. */
+.rrc-course-method__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .rrc-course-method__list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .rrc-course-method__list { grid-template-columns: repeat(5, 1fr); }
+  .rrc-course-method__list--six-step { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

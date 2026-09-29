@@ -1,0 +1,15 @@
+/* Methodology — 5-step sequence: 1 col mobile, 3 col tablet, 5 col desktop. */
+.rrc-method__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .rrc-method__list { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .rrc-method__list { grid-template-columns: repeat(5, 1fr); }
+}

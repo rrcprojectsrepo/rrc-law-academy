@@ -1,0 +1,93 @@
+/* CourseHero (01) — light surface, 2-col desktop, stacked mobile.
+   Scoped to .rrc-course-hero so it never collides with the home .rrc-hero. */
+.rrc-course-hero {
+  background: var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  overflow: hidden;
+}
+.rrc-course-hero__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding-block: 3.5rem;
+}
+.rrc-course-hero__title {
+  color: var(--rrc-navy);
+  margin-bottom: 1rem;
+}
+.rrc-course-hero__ctas { margin-top: 1.5rem; }
+.rrc-course-hero__meta {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--rrc-border);
+}
+.rrc-course-hero__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-text);
+}
+.rrc-course-hero__meta svg { color: var(--rrc-gold); }
+
+/* Placeholder remains for courses without a supplied hero image. */
+.rrc-course-hero__frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20rem;
+  padding: 2rem;
+  background: var(--rrc-white);
+  border: 2px solid var(--rrc-navy);
+  border-radius: var(--rrc-radius-lg);
+}
+.rrc-course-hero__copy > * { animation: rrc-fade-up 480ms var(--rrc-ease) both; }
+.rrc-course-hero__copy > :nth-child(2) { animation-delay: 60ms; }
+.rrc-course-hero__copy > :nth-child(3) { animation-delay: 120ms; }
+.rrc-course-hero__copy > :nth-child(4) { animation-delay: 180ms; }
+.rrc-course-hero__copy > :nth-child(5) { animation-delay: 240ms; }
+.rrc-course-hero__visual { animation: rrc-hero-image-in 620ms var(--rrc-ease) both; animation-delay: 180ms; }
+.rrc-course-hero__frame--image {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 8 / 5;
+}
+.rrc-course-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.rrc-course-hero__tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--rrc-radius-pill);
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+}
+.rrc-course-hero__placeholder {
+  color: var(--rrc-text-secondary);
+  font-weight: 600;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .rrc-course-hero__grid {
+    grid-template-columns: 7fr 5fr;
+    gap: 2rem;
+    padding-block: 5rem;
+  }
+}

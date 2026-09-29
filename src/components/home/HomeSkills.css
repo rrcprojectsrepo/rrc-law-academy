@@ -1,0 +1,34 @@
+/* Skills — media placeholder preserves Stitch image-top layout until real assets land. */
+.rrc-skill-card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  overflow: hidden;
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+.rrc-skill-card__media {
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+}
+.rrc-skill-card__body .rrc-feature-card {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.rrc-skill-card__body .rrc-feature-card:hover {
+  transform: none;
+  box-shadow: none;
+}

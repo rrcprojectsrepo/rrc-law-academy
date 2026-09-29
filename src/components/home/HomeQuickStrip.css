@@ -1,0 +1,18 @@
+/* QuickStrip — white overlapping panel, 1/2/4 columns. */
+.rrc-quick { margin-top: -1.75rem; position: relative; z-index: 5; }
+.rrc-quick__panel {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: 0.5rem;
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .rrc-quick__panel { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .rrc-quick__panel { grid-template-columns: repeat(4, 1fr); padding: 0.75rem; }
+}

@@ -1,0 +1,56 @@
+/* CourseNavigation (03) — sticky in-page anchor bar, sits under the site header.
+   --rrc-course-header-h is published by CourseTemplate from the measured header
+   height (the header is content-driven); 4.5rem is the design-system baseline. */
+.rrc-course-nav {
+  position: sticky;
+  top: var(--rrc-course-header-h, 4.5rem);
+  z-index: 40;
+  background: var(--rrc-navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.rrc-course-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.25rem;
+}
+.rrc-course-nav__label {
+  display: none;
+  font-family: var(--rrc-font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--rrc-gold-bright);
+  white-space: nowrap;
+  padding-right: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+.rrc-course-nav__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0.35rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.rrc-course-nav__link {
+  display: inline-block;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color var(--rrc-duration) var(--rrc-ease), background-color var(--rrc-duration) var(--rrc-ease);
+}
+.rrc-course-nav__link:hover,
+.rrc-course-nav__link:focus-visible {
+  color: var(--rrc-navy);
+  background: var(--rrc-gold-bright);
+}
+@media (min-width: 1024px) {
+  .rrc-course-nav__label { display: inline-block; }
+}

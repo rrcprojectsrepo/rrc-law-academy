@@ -1,0 +1,59 @@
+/* CourseTemplate — shared shell styles for every course page.
+   Owns: anchor offsets, the shared info panel, and the not-found state.
+   Scoped with .rrc-course-* so nothing leaks into the home page blocks. */
+
+/* Sticky site header (4.5rem baseline) + sticky course nav (3.25rem) + breathing
+   room. --rrc-course-header-h carries the *measured* header height, because the
+   header is content-driven (its nav labels can wrap). Applied to every section
+   that the in-page nav links to. */
+.rrc-course-anchor {
+  scroll-margin-top: calc(var(--rrc-course-header-h, 4.5rem) + 4.25rem);
+}
+
+/* Shared white panel used by Practice, Current Affairs, Study Material
+   and Learning Environment — avoids duplicating identical CSS per component. */
+.rrc-course-panel {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+}
+.rrc-course-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--rrc-space-4);
+  grid-template-columns: 1fr;
+}
+.rrc-course-panel__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-text);
+}
+.rrc-course-panel__list svg { color: var(--rrc-gold); flex: none; margin-top: 3px; }
+.rrc-course-panel__empty {
+  margin: 0;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+  max-width: 62ch;
+}
+@media (min-width: 640px) {
+  .rrc-course-panel { padding: var(--rrc-space-8); }
+  .rrc-course-panel__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Fallback when a slug has no matching course record. */
+.rrc-course-missing {
+  max-width: 56rem;
+  text-align: center;
+}
+.rrc-course-missing .rrc-lead { margin: 1rem auto 1.5rem; }
+.rrc-course-missing .rrc-btn-row { justify-content: center; }
+@media (max-width: 639px) {
+  .rrc-course-anchor { scroll-margin-top: calc(var(--rrc-course-header-h, 4.5rem) + 3.75rem); }
+}
