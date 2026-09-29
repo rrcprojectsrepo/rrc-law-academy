@@ -41,9 +41,9 @@ export default function CourseHero({ course }) {
               <img
                 className="rrc-course-hero__image"
                 src={course.heroImage}
-                alt={course.slug === 'clat-ug'
+                alt={course.heroImageAlt || (course.slug === 'clat-ug'
                   ? 'Indian students preparing for CLAT and law entrance examinations'
-                  : `${course.title} students preparing for law entrance examinations`}
+                  : `${course.title} students preparing for law entrance examinations`)}
               />
             ) : (
               <span

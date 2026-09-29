@@ -1,4 +1,4 @@
-/* Skills — media placeholder preserves Stitch image-top layout until real assets land. */
+/* Skills — image-top layout for the practical legal skills cards. */
 .rrc-skill-card {
   background: var(--rrc-white);
   border: 1px solid var(--rrc-border);
@@ -13,15 +13,18 @@
   box-shadow: var(--rrc-shadow-card-hover);
 }
 .rrc-skill-card__media {
-  min-height: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   background: var(--rrc-surface-light);
   border-bottom: 1px solid var(--rrc-border);
-  color: var(--rrc-text-secondary);
-  font-size: var(--rrc-body-sm);
-  font-weight: 600;
+}
+.rrc-skill-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .rrc-skill-card__body .rrc-feature-card {
   border: 0;
@@ -31,4 +34,10 @@
 .rrc-skill-card__body .rrc-feature-card:hover {
   transform: none;
   box-shadow: none;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .rrc-skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

@@ -1,3 +1,10 @@
+import legalDraftingImage from '../assets/beyond-theory-legal-drafting.png';
+import mootCourtImage from '../assets/beyond-theory-moot-court.png';
+import researchImage from '../assets/beyond-theory-research.png';
+import clientCounsellingImage from '../assets/beyond-theory-client-counselling.png';
+import legalAidImage from '../assets/beyond-theory-legal-aid.png';
+import professionalEthicsImage from '../assets/beyond-theory-professional-ethics.png';
+
 // Homepage part 1: hero + journey + pillars + methodology + skills.
 export const hero = {
   eyebrow: 'Law Entrance Preparation • Legal Education • Professional Training',
@@ -49,12 +56,12 @@ export const skills = {
   title: 'Build Skills Beyond the Exam',
   text: 'Develop courtroom confidence and drafting precision.',
   items: [
-    { id: 'drafting', icon: 'edit_document', title: 'Legal Drafting', text: 'Precise drafting of petitions, contracts, notices, and opinions.' },
-    { id: 'moot', icon: 'gavel', title: 'Moot Court', text: 'Simulated advocacy, oral submissions, memorial preparation.' },
-    { id: 'research', icon: 'manage_search', title: 'Research & Interpretation', text: 'Statute reading, precedent analysis, legal reasoning.' },
-    { id: 'counselling', icon: 'forum', title: 'Client Counselling', text: 'Interviewing, advising, and ethical representation.' },
-    { id: 'aid', icon: 'volunteer_activism', title: 'Legal Aid Clinics', text: 'Community service, access to justice, field exposure.' },
-    { id: 'ethics', icon: 'balance', title: 'Professional Ethics', text: 'Integrity, confidentiality, duties to court and client.' },
+    { id: 'drafting', icon: 'edit_document', title: 'Legal Drafting', text: 'Precise drafting of petitions, contracts, notices, and opinions.', image: legalDraftingImage, alt: 'Law student preparing legal documents' },
+    { id: 'moot', icon: 'gavel', title: 'Moot Court', text: 'Simulated advocacy, oral submissions, memorial preparation.', image: mootCourtImage, alt: 'Law students participating in a moot court session' },
+    { id: 'research', icon: 'manage_search', title: 'Research & Interpretation', text: 'Statute reading, precedent analysis, legal reasoning.', image: researchImage, alt: 'Law student researching legal materials' },
+    { id: 'counselling', icon: 'forum', title: 'Client Counselling', text: 'Interviewing, advising, and ethical representation.', image: clientCounsellingImage, alt: 'Legal consultation between a law student and client' },
+    { id: 'aid', icon: 'volunteer_activism', title: 'Legal Aid Clinics', text: 'Community service, access to justice, field exposure.', image: legalAidImage, alt: 'Legal student providing community legal assistance' },
+    { id: 'ethics', icon: 'balance', title: 'Professional Ethics', text: 'Integrity, confidentiality, duties to court and client.', image: professionalEthicsImage, alt: 'Law students discussing professional ethics' },
   ],
 };
 export const whyRRC = {

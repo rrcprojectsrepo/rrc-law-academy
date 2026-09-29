@@ -3,6 +3,9 @@
 // Unverified values use [TO CONFIRM]; images use [ASSET TO CONFIRM].
 
 import clatUgHeroImage from '../assets/rrc-law-academy-clat-ug-hero.png';
+import clatPgHeroImage from '../assets/clat-pg-hero.png';
+import ailetUgHeroImage from '../assets/ailet-ug-hero.png';
+import ailetPgHeroImage from '../assets/ailet-pg-hero.png';
 
 const SHARED_STUDY = {
   title: 'Study Material',
@@ -150,7 +153,8 @@ export const clatPG = {
   description: 'CLAT PG preparation for LL.B. students and law graduates preparing for postgraduate law admission. For CLAT PG preparation in Thanjavur, current local availability and delivery mode [TO CONFIRM].',
   level: 'Postgraduate', courseType: 'Entrance Preparation',
   mode: '[TO CONFIRM]', session: '2026–27 Session', duration: '[TO CONFIRM]', batch: '[TO CONFIRM]',
-  heroImage: '[ASSET TO CONFIRM]',
+  heroImage: clatPgHeroImage,
+  heroImageAlt: 'CLAT PG law graduates preparing for postgraduate law entrance',
   overview: [
     'CLAT PG is an entrance examination for postgraduate law programmes. For 2027, the Consortium describes an objective paper built around comprehension and the application of knowledge from undergraduate law subjects, using extracts from primary legal materials such as judgments, statutes and regulations.',
     'Preparation can connect doctrinal revision with close legal reading, identifying issues and arguments, applying law to passage-based questions, timed practice, review and revision. The official CLAT PG 2027 format and subject areas are linked below; RRC class schedule, delivery, materials and course coverage [TO CONFIRM].',
@@ -279,7 +283,8 @@ export const ailetUG = {
   description: 'AILET UG preparation for students pursuing admission to NLU Delhi B.A. LL.B. (Hons.). For AILET preparation in Thanjavur, current batch availability, location and delivery mode [TO CONFIRM].',
   level: 'Undergraduate', courseType: 'Entrance Preparation',
   mode: '[TO CONFIRM]', session: '2026–27 Session', duration: '[TO CONFIRM]', batch: '[TO CONFIRM]',
-  heroImage: '[ASSET TO CONFIRM]',
+  heroImage: ailetUgHeroImage,
+  heroImageAlt: 'AILET UG law entrance aspirants preparing for the examination',
   overview: [
     'AILET is NLU Delhi’s entrance test for its B.A. LL.B. (Hons.) programme. NLU Delhi’s published AILET 2027 scheme lists English Language, Current Affairs & General Knowledge, and Logical Reasoning. Legal principles may appear within Logical Reasoning, but the test does not require prior legal knowledge or technical understanding.',
     'AILET UG preparation can build reading comprehension, logical and analytical thinking, general awareness, timed question practice, review and revision. These are preparation priorities; RRC’s specific class plan, materials, test schedule and delivery format [TO CONFIRM].',
@@ -415,7 +420,8 @@ export const ailetPG = {
   description: 'AILET PG preparation for LL.B. graduates and eligible final-year candidates pursuing NLU Delhi’s one-year LL.M. programme. For AILET PG preparation in Thanjavur, current local availability and delivery mode [TO CONFIRM].',
   level: 'Postgraduate', courseType: 'Entrance Preparation',
   mode: '[TO CONFIRM]', session: '2026–27 Session', duration: '[TO CONFIRM]', batch: '[TO CONFIRM]',
-  heroImage: '[ASSET TO CONFIRM]',
+  heroImage: ailetPgHeroImage,
+  heroImageAlt: 'AILET PG law graduates preparing for postgraduate law entrance',
   overview: [
     'AILET PG is the entrance test route for NLU Delhi’s one-year LL.M. programme. NLU Delhi’s AILET 2027 scheme says the test is MCQ-based, with 100 questions from different branches of Law. The official exam scheme does not enumerate a detailed subject-wise syllabus.',
     'Preparation for a postgraduate law entrance test can involve revisiting legal concepts, reading and interpreting legal material, timed objective practice, review and revision. These are preparation activities, not an official subject list. RRC’s specific course coverage, study plan, tests and materials [TO CONFIRM].',

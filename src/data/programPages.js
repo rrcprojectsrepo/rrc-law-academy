@@ -2,6 +2,11 @@
 // Source: approved RRC Law Academy ecosystem definitions + program descriptions.
 // Unverified values use [TO CONFIRM]; images use [ASSET TO CONFIRM].
 
+import foundationHeroImage from '../assets/program-foundation-hero.png';
+import intensiveRevisionHeroImage from '../assets/program-intensive-revision-hero.png';
+import mockTestHeroImage from '../assets/program-mock-test-hero.png';
+import currentAffairsHeroImage from '../assets/program-current-affairs-hero.png';
+
 // Approved shared preparation philosophy (Understand → Practise → Test → Analyse → Improve)
 const SHARED_METHODOLOGY = [
   { id: 'understand', step: '01', title: 'Understand', text: 'Conceptual lectures, statutory principles and foundational clarity.' },
@@ -30,6 +35,7 @@ export const foundation = {
   shortTitle: 'Foundation',
   eyebrow: 'Early Preparation • Foundational Clarity',
   description: 'Build strong fundamentals and disciplined study habits from an early academic stage for law entrance preparation.',
+  heroImage: foundationHeroImage,
   targetAudience: [
     { id: 'school', title: 'School Students (Class XI & XII)', text: 'Students seeking an early, structured start alongside school studies.' },
     { id: 'beginners', title: 'Law Entrance Beginners', text: 'Aspirants starting their legal reasoning and reading preparation from the ground up.' },
@@ -125,6 +131,7 @@ export const intensiveRevision = {
   shortTitle: 'Intensive Revision',
   eyebrow: 'High-Yield Preparation • Rapid Consolidation',
   description: 'Focused revision and high-yield examination preparation for upcoming entrance dates.',
+  heroImage: intensiveRevisionHeroImage,
   targetAudience: [
     { id: 'upcoming-aspirants', title: 'Immediate Exam Aspirants', text: 'Candidates appearing for upcoming law entrance examinations in the current cycle.' },
     { id: 'crash-revisers', title: 'Syllabus Consolidators', text: 'Students who have covered the syllabus once and require structured, high-yield revision.' },
@@ -219,6 +226,7 @@ export const mockTest = {
   shortTitle: 'Mock Test Series',
   eyebrow: 'Exam Simulation • Performance Diagnostics',
   description: 'Timed practice and rigorous performance review to master sectional speed and pacing.',
+  heroImage: mockTestHeroImage,
   targetAudience: [
     { id: 'clat-ailet', title: 'CLAT & AILET Aspirants', text: 'Candidates seeking rigorous exam-grade simulation and realistic test conditions.' },
     { id: 'time-managers', title: 'Speed & Pacing Seekers', text: 'Students needing to improve sectional time management and question-selection accuracy.' },
@@ -313,6 +321,7 @@ export const currentAffairs = {
   shortTitle: 'Current Affairs & GK',
   eyebrow: 'General Knowledge • Legal Awareness',
   description: 'Regular awareness and comprehensive knowledge development tailored to legal examinations.',
+  heroImage: currentAffairsHeroImage,
   targetAudience: [
     { id: 'all-aspirants', title: 'All Law Entrance Aspirants', text: 'Candidates preparing for CLAT, AILET, and other entrance tests where general and legal awareness is evaluated.' },
     { id: 'systematic-learners', title: 'Structured Knowledge Seekers', text: 'Students overwhelmed by uncurated daily news who need a disciplined, exam-focused briefing format.' },

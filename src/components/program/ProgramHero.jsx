@@ -1,8 +1,16 @@
 import Button from '../Button';
 import './ProgramTemplate.css';
 
+const PROGRAM_HERO_ALT = {
+  foundation: 'Students building foundations for law entrance preparation',
+  'intensive-revision': 'Students focused on intensive law entrance revision',
+  'mock-test': 'Law entrance aspirants taking a mock test',
+  'current-affairs': 'Law entrance aspirant studying current affairs and general knowledge',
+};
+
 export default function ProgramHero({ program }) {
   const [primary, secondary] = [program.cta?.primaryCta, program.cta?.secondaryCta];
+  const hasHeroImage = program.heroImage && !String(program.heroImage).includes('ASSET TO CONFIRM');
 
   return (
     <section className="rrc-program-hero rrc-section--navy" aria-labelledby="rrc-program-title">
@@ -17,9 +25,19 @@ export default function ProgramHero({ program }) {
           </div>
         </div>
         <div className="rrc-program-hero__visual">
-          <div className="rrc-program-hero__frame" role="img" aria-label={`${program.title} visual: [ASSET TO CONFIRM]`}>
-            <span className="rrc-program-hero__mark" aria-hidden="true">RRC</span>
-            <span className="rrc-program-hero__placeholder">[ASSET TO CONFIRM]</span>
+          <div className={`rrc-program-hero__frame${hasHeroImage ? ' rrc-program-hero__frame--image' : ''}`}>
+            {hasHeroImage ? (
+              <img
+                className="rrc-program-hero__image"
+                src={program.heroImage}
+                alt={PROGRAM_HERO_ALT[program.slug] || `${program.title} students preparing for law entrance examinations`}
+              />
+            ) : (
+              <div role="img" aria-label={`${program.title} visual: [ASSET TO CONFIRM]`}>
+                <span className="rrc-program-hero__mark" aria-hidden="true">RRC</span>
+                <span className="rrc-program-hero__placeholder">[ASSET TO CONFIRM]</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

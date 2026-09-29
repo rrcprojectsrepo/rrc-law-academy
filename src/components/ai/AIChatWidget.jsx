@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { assistantSuggestions } from '../../data/ai/rrcKnowledge';
 import { getAssistantResponse } from '../../services/aiAssistantService';
@@ -32,11 +32,40 @@ export default function AIChatWidget({ initiallyOpen = false }) {
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
   const launcherRef = useRef(null);
+  const messagesRef = useRef(null);
   const welcomeOnly = messages.length === 1 && messages[0].role === 'assistant';
+
+  useLayoutEffect(() => {
+    const header = document.querySelector('.rrc-header');
+    if (!header) return undefined;
+
+    const updateHeaderHeight = () => {
+      const height = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--rrc-header-height', `${height}px`);
+    };
+
+    updateHeaderHeight();
+    const resizeObserver = typeof ResizeObserver === 'function'
+      ? new ResizeObserver(updateHeaderHeight)
+      : null;
+    resizeObserver?.observe(header);
+    window.addEventListener('resize', updateHeaderHeight);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', updateHeaderHeight);
+      document.documentElement.style.removeProperty('--rrc-header-height');
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
+
+  useEffect(() => {
+    const messageArea = messagesRef.current;
+    if (messageArea) messageArea.scrollTop = messageArea.scrollHeight;
+  }, [messages, isLoading]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -90,11 +119,11 @@ export default function AIChatWidget({ initiallyOpen = false }) {
       <section className={`rrc-ai-chat${isOpen ? ' is-open' : ''}`} role="dialog" aria-labelledby="rrc-ai-chat-title" aria-describedby="rrc-ai-chat-subtitle" id="rrc-ai-chat-panel" aria-hidden={!isOpen} inert={!isOpen}>
         <AIChatHeader onClose={closePanel} onClear={clearChat} />
         <div className="rrc-ai-chat__body">
-          <div className="rrc-ai-chat__messages" aria-live="polite" aria-relevant="additions" aria-label="Chat messages">
+          <div ref={messagesRef} className="rrc-ai-chat__messages" aria-live="polite" aria-relevant="additions" aria-label="Chat messages">
             {messages.map((message) => <AIChatMessage key={message.id} message={message} />)}
+            {welcomeOnly && <AIChatSuggestions items={assistantSuggestions} onSelect={submitMessage} />}
             {isLoading && <p className="rrc-ai-chat__thinking" role="status">Thinking<span aria-hidden="true">…</span></p>}
           </div>
-          {welcomeOnly && <AIChatSuggestions items={assistantSuggestions} onSelect={submitMessage} />}
         </div>
         <AIChatInput inputRef={inputRef} value={input} onChange={setInput} onSubmit={submitMessage} disabled={isLoading} />
       </section>
