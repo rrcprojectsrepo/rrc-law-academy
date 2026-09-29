@@ -5,6 +5,8 @@ import RrcIcon from '../components/RrcIcon';
 import SectionHeader from '../components/SectionHeader';
 import { courses } from '../data/courses';
 import { programPageList } from '../data/programPages';
+import aboutHeroImage from '../assets/rrc-law-academy-about-hero.png';
+import aboutLearningImage from '../assets/rrc-law-academy-about-learning.png';
 import './About.css';
 
 const APPROACH = programPageList[0]?.methodology ?? [];
@@ -58,56 +60,25 @@ const STRUCTURE_PILLARS = [
 
 function LegalStudyArtwork() {
   return (
-    <svg className="rrc-about-artwork" viewBox="0 0 640 560" role="img" aria-labelledby="rrc-about-artwork-title">
-      <title id="rrc-about-artwork-title">Editorial illustration of legal study materials and a balance scale</title>
-      <defs>
-        <linearGradient id="about-art-bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#172b46" />
-          <stop offset="1" stopColor="#0e1c2f" />
-        </linearGradient>
-        <linearGradient id="about-book-cover" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#d8e3fb" />
-          <stop offset="1" stopColor="#aabbd8" />
-        </linearGradient>
-      </defs>
-      <rect x="10" y="10" width="620" height="540" rx="28" fill="url(#about-art-bg)" />
-      <path d="M56 70h528M56 88h528" stroke="#fed488" strokeOpacity=".18" />
-      <path d="M88 92v200M120 92v200M88 112h32M88 270h32M520 92v200M552 92v200M520 112h32M520 270h32" stroke="#d8e3fb" strokeOpacity=".38" strokeWidth="4" />
-      <path d="M76 294h492" stroke="#fed488" strokeOpacity=".6" strokeWidth="3" />
-      <circle cx="320" cy="171" r="16" fill="#fed488" />
-      <path d="M320 187v156M264 218h112M320 202l-64 16M320 202l56 16" stroke="#fed488" strokeWidth="5" strokeLinecap="round" />
-      <path d="M256 219l-28 65h56l-28-65ZM376 219l-28 65h56l-28-65Z" fill="#fed488" fillOpacity=".12" stroke="#fed488" strokeWidth="3" />
-      <path d="M285 285c6 20 40 20 46 0M347 285c6 20 40 20 46 0" fill="none" stroke="#fed488" strokeWidth="3" />
-      <path d="M294 345h52l18 20h-88l18-20Z" fill="#fed488" />
-      <path d="M102 412h236v48H102z" fill="#775a19" />
-      <path d="M116 400h236v48H116z" fill="url(#about-book-cover)" />
-      <path d="M116 400h18v48h-18M134 410h202" stroke="#0e1c2f" strokeOpacity=".42" strokeWidth="3" />
-      <path d="M156 422h132" stroke="#775a19" strokeOpacity=".72" strokeWidth="3" />
-      <path d="M126 460h246v48H126z" fill="#775a19" />
-      <path d="M140 448h246v48H140z" fill="#f9f9ff" />
-      <path d="M140 448h18v48h-18M164 460h150M164 471h172" stroke="#0e1c2f" strokeOpacity=".35" strokeWidth="3" />
-      <path d="M198 382h224v44H198z" fill="#0b1728" stroke="#fed488" strokeOpacity=".5" strokeWidth="2" />
-      <path d="M212 393h192" stroke="#d8e3fb" strokeOpacity=".42" strokeWidth="3" />
-      <circle cx="494" cy="404" r="38" fill="#fed488" fillOpacity=".1" stroke="#fed488" strokeOpacity=".5" strokeWidth="2" />
-      <path d="M476 404h36M494 386v36" stroke="#fed488" strokeOpacity=".78" strokeWidth="2" />
-      <path d="M62 512h516" stroke="#d8e3fb" strokeOpacity=".2" />
-    </svg>
+    <img
+      className="rrc-about-artwork"
+      src={aboutHeroImage}
+      alt="Law students studying together in a library"
+      width="1536"
+      height="1024"
+    />
   );
 }
 
 function OpenBookArtwork() {
   return (
-    <svg className="rrc-about-book-art" viewBox="0 0 520 360" role="img" aria-labelledby="rrc-about-book-title">
-      <title id="rrc-about-book-title">Open book representing guided legal education</title>
-      <rect x="10" y="10" width="500" height="340" rx="24" fill="#e7eeff" />
-      <path d="M78 92c62-18 112-8 182 22v162c-64-28-122-37-182-18V92Z" fill="#fff" stroke="#0e1c2f" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M442 92c-62-18-112-8-182 22v162c64-28 122-37 182-18V92Z" fill="#f9f9ff" stroke="#0e1c2f" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M260 114v162" stroke="#775a19" strokeWidth="4" />
-      <path d="M104 124c44-10 86-5 128 12M104 152c40-8 82-3 128 12M104 180c38-6 78 0 128 14M416 124c-44-10-86-5-128 12M416 152c-40-8-82-3-128 12M416 180c-38-6-78 0-128 14" fill="none" stroke="#9aa9c0" strokeWidth="5" strokeLinecap="round" />
-      <path d="M58 286c74-22 140-14 202 15 62-29 128-37 202-15" fill="none" stroke="#fed488" strokeWidth="8" strokeLinecap="round" />
-      <circle cx="260" cy="62" r="22" fill="#0e1c2f" />
-      <path d="M260 84v34M246 67h28" stroke="#fed488" strokeWidth="4" strokeLinecap="round" />
-    </svg>
+    <img
+      className="rrc-about-book-art"
+      src={aboutLearningImage}
+      alt="Law students learning with an instructor in a library"
+      width="1536"
+      height="1024"
+    />
   );
 }
 
