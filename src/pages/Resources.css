@@ -8,7 +8,7 @@
 .rrc-resources-hero__title { max-width: 16ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
 .rrc-resources-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
 .rrc-resources-hero__visual { min-width: 0; }
-.rrc-resources-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+.rrc-resources-visual { display: block; width: 100%; height: auto; object-fit: contain; object-position: right center; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
 
 .rrc-resources-intro { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
 .rrc-resources-intro__copy { max-width: 40rem; }

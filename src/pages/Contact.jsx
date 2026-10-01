@@ -7,6 +7,7 @@ import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
 import { contact as contactData } from '../data/homepage';
+import contactHeroImage from '../assets/contact_hero.jpg';
 import './Contact.css';
 
 const CONTACT_ACTIONS = [
@@ -51,19 +52,11 @@ const CONTACT_INFORMATION = [
 
 function ContactHeroVisual() {
   return (
-    <svg className="rrc-contact-visual" viewBox="0 0 640 500" role="img" aria-labelledby="rrc-contact-visual-title">
-      <title id="rrc-contact-visual-title">An enquiry note and connected course and program pathways</title>
-      <rect x="12" y="12" width="616" height="476" rx="28" fill="#0e1c2f" />
-      <path d="M170 88h240l80 80v222H170z" fill="#f9f9ff" stroke="#fed488" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M410 88v82h80" fill="#d8e3fb" stroke="#775a19" strokeWidth="4" strokeLinejoin="round" />
-      <circle cx="224" cy="221" r="22" fill="#775a19" />
-      <path d="M215 221h18M224 212v18" stroke="#fed488" strokeWidth="4" strokeLinecap="round" />
-      <path d="M266 208h160M266 238h130M208 284h220M208 314h190M208 344h150" stroke="#aebbd0" strokeWidth="7" strokeLinecap="round" />
-      <path d="M128 161H94v42M512 281h34v-42" fill="none" stroke="#fed488" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="94" cy="220" r="17" fill="#fed488" />
-      <circle cx="546" cy="222" r="17" fill="#775a19" stroke="#fed488" strokeWidth="3" />
-      <path d="M72 430h496" stroke="#d8e3fb" strokeOpacity=".45" strokeWidth="3" />
-    </svg>
+    <img
+      className="rrc-contact-visual"
+      src={contactHeroImage}
+      alt="A prospective law student speaking with a receptionist at the RRC Law Academy reception desk."
+    />
   );
 }
 

@@ -19,7 +19,7 @@ export default function CourseHero({ course }) {
             <Button to={course.heroPrimaryCta?.link || '/registration'} variant="navy">
               {course.heroPrimaryCta?.label || 'Enquire Now →'}
             </Button>
-            <Button to={course.heroSecondaryCta?.link || '/contact'} variant="secondary">
+            <Button to={course.heroSecondaryCta?.link || '/registration'} variant="secondary">
               {course.heroSecondaryCta?.label || 'Talk to a Counsellor'}
             </Button>
           </div>

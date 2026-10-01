@@ -5,6 +5,7 @@ import FAQAccordion from '../components/FAQAccordion';
 import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
+import faqHeroImage from '../assets/faq_hero.jpg';
 import './FAQ.css';
 
 const FAQ_CATEGORIES = ['Courses', 'Programs', 'Preparation', 'Resources', 'Enquiry'];
@@ -59,17 +60,11 @@ const ENQUIRY_FAQS = [
 
 function FAQHeroVisual() {
   return (
-    <svg className="rrc-faq-visual" viewBox="0 0 640 500" role="img" aria-labelledby="rrc-faq-visual-title">
-      <title id="rrc-faq-visual-title">Organised questions and answers represented as an academic reference</title>
-      <rect x="12" y="12" width="616" height="476" rx="28" fill="#0e1c2f" />
-      <path d="M106 94h428v316H106z" fill="#f9f9ff" stroke="#fed488" strokeWidth="4" />
-      <path d="M142 138h122M142 164h212M142 190h178M142 216h244" stroke="#d8e3fb" strokeWidth="7" strokeLinecap="round" />
-      <circle cx="453" cy="161" r="44" fill="#e7eeff" stroke="#775a19" strokeWidth="4" />
-      <path d="M442 148c1-11 22-13 25 0 2 10-12 14-13 25M454 189v2" fill="none" stroke="#0e1c2f" strokeWidth="5" strokeLinecap="round" />
-      <path d="M142 267h356M142 298h324M142 329h356M142 360h284" stroke="#aebbd0" strokeWidth="6" strokeLinecap="round" />
-      <path d="M88 438h464" stroke="#fed488" strokeOpacity=".75" strokeWidth="3" />
-      <circle cx="492" cy="390" r="15" fill="#fed488" />
-    </svg>
+    <img
+      className="rrc-faq-visual"
+      src={faqHeroImage}
+      alt="A legal mentor guiding a law student through documents at a desk."
+    />
   );
 }
 

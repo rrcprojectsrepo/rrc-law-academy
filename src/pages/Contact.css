@@ -7,7 +7,7 @@
 .rrc-contact-hero__title { max-width: 14ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
 .rrc-contact-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
 .rrc-contact-hero__visual { min-width: 0; }
-.rrc-contact-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+.rrc-contact-visual { display: block; width: 100%; height: auto; object-fit: contain; object-position: right center; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
 
 .rrc-contact-intro { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
 .rrc-contact-intro__copy { max-width: 34rem; }
