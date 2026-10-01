@@ -1,5 +1,5 @@
 /* Header — sticky, white/light, Navy text, Gold active state. */
-:root { --rrc-header-height: 5.25rem; }
+:root { --rrc-header-height: 4.75rem; }
 
 .rrc-header {
   position: sticky;
@@ -16,7 +16,7 @@
   align-items: center;
   gap: clamp(0.5rem, 1vw, 1rem);
   max-width: 1280px;
-  min-height: 5.25rem;
+  min-height: 4.75rem;
   padding: 0.25rem clamp(1rem, 2vw, 2rem);
 }
 
@@ -30,8 +30,8 @@
 .rrc-header__logo {
   display: block;
   width: auto;
-  height: 4.75rem;
-  max-width: 4.75rem;
+  height: 4.25rem;
+  max-width: 4.25rem;
   flex: none;
   object-fit: contain;
 }
@@ -176,7 +176,10 @@
 
 .rrc-mobile-menu {
   display: grid;
-  grid-template-rows: 0fr;
+  /* minmax(0, 0fr) - NOT plain 0fr: the inner <nav> owns the panel padding, which
+     would otherwise raise the collapsed track's auto minimum to ~40px and leave a
+     hidden 40px strip beneath the desktop header. */
+  grid-template-rows: minmax(0, 0fr);
   border-top: 1px solid var(--rrc-border);
   background: var(--rrc-white);
   overflow: hidden;

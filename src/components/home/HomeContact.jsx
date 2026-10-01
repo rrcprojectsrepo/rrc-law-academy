@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom';
 import SectionHeader from '../SectionHeader';
 import Button from '../Button';
-import RrcIcon from '../RrcIcon';
 import { contact } from '../../data/homepage';
 import './HomeContact.css';
 
 // Section 16 — Contact / Visit. Counsellor details stay [TO CONFIRM];
-// enquiry is a CTA pair to /contact + /registration (no fake form submit,
-// no fake map embed — map block is a labelled placeholder).
+// enquiry is a CTA pair to /contact + /registration (no fake form submit).
+// The location block is a real keyless Google Maps embed of the confirmed address.
+const ACADEMY_ADDRESS =
+  "No 82/6B, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001";
+const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(ACADEMY_ADDRESS)}&output=embed`;
+const MAP_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(ACADEMY_ADDRESS)}`;
+
 export default function HomeContact() {
   return (
     <section id="contact" className="rrc-section rrc-section--light" aria-labelledby="rrc-contact-title">
@@ -46,9 +50,28 @@ export default function HomeContact() {
                 </Button>
               </div>
             </article>
-            <div className="rrc-contact__map" role="img" aria-label="Academy location map [ASSET TO CONFIRM]">
-              <RrcIcon name="public" size={24} />
-              <span>Map [ASSET TO CONFIRM — verified address required]</span>
+            <div className="rrc-contact__map">
+              <div className="rrc-contact__map-frame">
+                <iframe
+                  title={`RRC Law Academy location map - ${ACADEMY_ADDRESS}`}
+                  src={MAP_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="rrc-contact__map-footer">
+                <p className="rrc-contact__map-address">{ACADEMY_ADDRESS}</p>
+                <Button
+                  href={MAP_DIRECTIONS_URL}
+                  external
+                  variant="secondary"
+                  size="sm"
+                  className="rrc-contact__map-directions"
+                >
+                  Get Directions
+                </Button>
+              </div>
             </div>
           </div>
 

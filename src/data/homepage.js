@@ -7,16 +7,46 @@ import professionalEthicsImage from '../assets/beyond-theory-professional-ethics
 
 // Homepage part 1: hero + journey + pillars + methodology + skills.
 export const hero = {
-  eyebrow: 'Law Entrance Preparation • Legal Education • Professional Training',
-  title: 'Prepare for Law. Build Your Future.',
-  text: 'Structured preparation for CLAT, AILET and law entrance pathways, helping students build strong foundations, practise effectively, and approach examinations with confidence.',
-  primaryCta: { label: 'Explore Courses', link: '/courses' },
-  secondaryCta: { label: 'Enquire Now', link: '/registration' },
-  trustItems: [
-    { icon: 'verified', text: 'Structured Preparation' },
-    { icon: 'groups', text: 'Focused Practice' },
-    { icon: 'support_agent', text: 'Exam Readiness' },
-  ],
+  persistent: {
+    title: "RRC LAW ACADEMY",
+    subtitle1: "FROM ASPIRANT TO LAW SCHOOL.",
+    subtitle2: "FROM LAW SCHOOL TO LEGAL CAREER.",
+    text: "Structured preparation, practical legal learning and mentorship for the next generation of legal professionals.",
+    primaryCta: { label: "Explore Your Journey", link: "/courses" },
+    secondaryCta: { label: "Enquire Now", link: "/registration" },
+  },
+  scenes: [
+    {
+      id: "aspirant",
+      number: "01",
+      title: "LAW ASPIRANT",
+      headline: "BUILD YOUR FOUNDATION",
+      tags: "CLAT • AILET • ENTRANCE PREPARATION",
+      text: "Build strong reasoning, reading and examination skills through structured preparation.",
+      video: "/hero/hero-aspirant.mp4",
+      poster: "/hero/hero-aspirant-poster.jpg"
+    },
+    {
+      id: "student",
+      number: "02",
+      title: "LAW STUDENT",
+      headline: "LEARN BEYOND THE CLASSROOM",
+      tags: "MOOT COURT • CASE ANALYSIS • LEGAL RESEARCH",
+      text: "Develop practical legal skills through research, advocacy, analysis and application.",
+      video: "/hero/hero-law-student.mp4",
+      poster: "/hero/hero-law-student-poster.jpg"
+    },
+    {
+      id: "professional",
+      number: "03",
+      title: "LEGAL PROFESSIONAL",
+      headline: "BUILD YOUR LEGAL CAREER",
+      tags: "ADVOCACY • SPECIALIZATION • PROFESSIONAL SKILLS",
+      text: "Continue developing the knowledge and practical skills required for the next stage of your legal career.",
+      video: "/hero/hero-professional.mp4",
+      poster: "/hero/hero-professional-poster.jpg"
+    }
+  ]
 };
 export const journey = {
   eyebrow: 'Begin With Clarity',

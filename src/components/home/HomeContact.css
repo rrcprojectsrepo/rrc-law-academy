@@ -27,20 +27,53 @@
 }
 .rrc-contact__rows dt { color: var(--rrc-text-secondary); }
 .rrc-contact__rows dd { margin: 0; font-weight: 600; color: var(--rrc-navy); }
+/* Location map - real keyless Google Maps embed of the confirmed academy address. */
 .rrc-contact__map {
-  min-height: 12rem;
-  border: 1px dashed var(--rrc-gold);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
   background: var(--rrc-white);
-  color: var(--rrc-text-secondary);
+  box-shadow: var(--rrc-shadow-card);
+}
+.rrc-contact__map-frame {
+  position: relative;
+  width: 100%;
+  height: 14rem;
+  background: var(--rrc-surface-light);
+}
+.rrc-contact__map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.rrc-contact__map-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: var(--rrc-body-sm);
+  justify-content: space-between;
+  gap: 0.75rem var(--rrc-space-4);
+  padding: var(--rrc-space-4) var(--rrc-space-5);
+  border-top: 1px solid var(--rrc-border);
+  background: var(--rrc-white);
+}
+.rrc-contact__map-address {
+  flex: 1 1 15rem;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--rrc-caption);
   font-weight: 600;
+  line-height: 1.5;
+  color: var(--rrc-navy);
+  overflow-wrap: anywhere;
+}
+.rrc-contact__map-directions {
+  flex: 0 0 auto;
+  min-height: var(--rrc-btn-height-sm);
+  padding: 0 var(--rrc-space-5);
+  font-size: var(--rrc-body-sm);
 }
 .rrc-contact__exams {
   list-style: none;
@@ -63,4 +96,5 @@
 .rrc-contact__note a { color: var(--rrc-gold); font-weight: 700; }
 @media (min-width: 1024px) {
   .rrc-contact__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .rrc-contact__map-frame { height: 18rem; }
 }
