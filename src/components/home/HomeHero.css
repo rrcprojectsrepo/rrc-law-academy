@@ -1,586 +1,297 @@
-/* ==========================================================================
-   HomeHero — Cinematic Legal Education Journey Hero
-   Classes consumed by HomeHero.jsx (v2 cinematic).
-   Design system tokens come from design-system.css.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. ROOT SECTION
-   Full-viewport cinematic container. Position:relative anchors the absolute
-   media layer. min-height ensures something is always visible even before
-   video/poster loads.
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  /* Keeps the hero from interfering with the sticky header above it */
   isolation: isolate;
+  background: var(--rrc-navy, #0e1c2f);
 }
 
-/* --------------------------------------------------------------------------
-   2. MEDIA LAYER — video / poster fill
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* Each video wrapper stacks on top of each other; only .is-active is shown */
+.rrc-cinematic-hero__media,
 .rrc-cinematic-hero__video-wrapper {
   position: absolute;
   inset: 0;
+}
+
+.rrc-cinematic-hero__media {
+  z-index: 0;
+}
+
+.rrc-cinematic-hero__video-wrapper {
   opacity: 0;
   transition: opacity 900ms cubic-bezier(0.22, 0.61, 0.21, 1);
-  will-change: opacity;
 }
 
 .rrc-cinematic-hero__video-wrapper.is-active {
   opacity: 1;
 }
 
-/* The <video> element — fills its wrapper fully */
 .rrc-cinematic-hero__video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  /* When the poster shows instead of a video, this still applies */
 }
 
-/* --------------------------------------------------------------------------
-   3. GRADIENT OVERLAY
-   Multi-stop navy overlay:
-   - Strong at the bottom-left where text lives
-   - Lighter at the top-right to keep the visual breathing
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    /* Bottom-to-top base darkening */
-    linear-gradient(
-      to top,
-      rgba(14, 28, 47, 0.92) 0%,
-      rgba(14, 28, 47, 0.72) 40%,
-      rgba(14, 28, 47, 0.38) 70%,
-      rgba(14, 28, 47, 0.18) 100%
-    ),
-    /* Left column deepening so left-side text is always legible */
-    linear-gradient(
-      to right,
-      rgba(14, 28, 47, 0.65) 0%,
-      rgba(14, 28, 47, 0.0)  55%
-    );
   pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(14, 28, 47, 0.95), rgba(14, 28, 47, 0.65) 30%, rgba(14, 28, 47, 0.25) 70%, rgba(14, 28, 47, 0.1)),
+    linear-gradient(to right, rgba(14, 28, 47, 0.75), rgba(14, 28, 47, 0.3) 45%, transparent);
 }
 
-/* --------------------------------------------------------------------------
-   4. CONTENT GRID
-   Two-column layout on desktop:
-     left  7fr — persistent branding + H1 + lead + CTAs
-     right 5fr — evolving scene card + timeline/controls
-   Stacks to single column on mobile.
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__content-grid {
-  /* rrc-container already provides max-width and horizontal padding */
+.rrc-cinematic-hero__content {
   position: relative;
   z-index: 2;
-  flex: 1 1 auto;
   display: grid;
+  flex: 1 1 auto;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  gap: 2.5rem;
-  padding-block: 6rem 3rem;
-  align-items: end;
-  min-height: 100svh;
+  grid-template-rows: 1fr auto;
+  gap: 2rem;
   box-sizing: border-box;
+  min-height: 100svh;
+  padding-block: 6rem 3rem;
 }
 
-/* --------------------------------------------------------------------------
-   5. PERSISTENT PANEL — always visible, left column on desktop
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero__persistent {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 600px;
 }
 
-/* Brand eyebrow — small uppercase label above H1 */
 .rrc-cinematic-hero__brand {
-  /* Inherits .rrc-eyebrow utility; we override colour for the dark bg */
-  color: var(--rrc-gold-bright) !important;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.16em;
-  font-size: 0.72rem;
+  margin: 0 0 1rem;
+  color: var(--rrc-gold-bright, #fed488);
+  font-family: var(--rrc-font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 18px rgba(14, 28, 47, 0.75);
 }
 
-/* Suppress the ::before rule on .rrc-eyebrow inside the hero
-   (the horizontal rule reads poorly on dark backgrounds) */
-.rrc-cinematic-hero__brand::before {
-  display: none;
-}
-
-/* Main H1 — large display */
 .rrc-cinematic-hero__title {
-  /* Inherits .rrc-display sizing from design-system */
-  color: #ffffff !important;
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
+  color: #fff;
+  font-family: var(--rrc-font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.1;
-  text-shadow: 0 2px 24px rgba(14, 28, 47, 0.5);
+  text-shadow: 0 4px 24px rgba(14, 28, 47, 0.6);
 }
 
-/* The second subtitle line in restrained gold */
+.rrc-cinematic-hero__title-line {
+  display: block;
+}
+
 .rrc-cinematic-hero__title-gold {
-  color: var(--rrc-gold-bright);
+  color: var(--rrc-gold-bright, #fed488);
 }
 
-/* Lead / supporting text */
 .rrc-cinematic-hero__lead {
-  /* Inherits .rrc-lead */
-  color: rgba(255, 255, 255, 0.82) !important;
-  margin-bottom: 1.75rem;
-  max-width: 52ch;
-  text-shadow: 0 1px 8px rgba(14, 28, 47, 0.6);
+  max-width: 48ch;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--rrc-font-body);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+  text-shadow: 0 2px 12px rgba(14, 28, 47, 0.8);
 }
 
-/* CTA row — inherits .rrc-btn-row flex layout */
 .rrc-cinematic-hero__ctas {
-  /* Primary button already styled by rrc-btn--primary (gold fill, navy text).
-     Secondary button: override for dark background */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Override .rrc-btn--secondary on dark hero to use ghost white style */
 .rrc-cinematic-hero__ctas .rrc-btn--secondary {
+  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 .rrc-cinematic-hero__ctas .rrc-btn--secondary:hover {
+  border-color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: none;
 }
 
-/* --------------------------------------------------------------------------
-   6. EVOLVING PANEL — scene card + controls, right column on desktop
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__evolving {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1.5rem;
-}
-
-/* Container that holds the AnimatePresence motion.div */
-.rrc-cinematic-hero__scene-container {
+.rrc-cinematic-hero__panel-wrap {
   position: relative;
-  min-height: 11rem; /* Prevents layout shift during scene transitions */
+  align-self: end;
+  justify-self: start;
+  width: 100%;
+  max-width: 420px;
+  min-height: 140px;
 }
 
-/* Scene card — appears over the video */
-.rrc-cinematic-hero__scene-card {
+.rrc-cinematic-hero__panel {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.5rem 1.75rem;
-  border-radius: var(--rrc-radius-lg);
-  /* Refined glass-lite — just enough to read, not garish */
-  background: rgba(14, 28, 47, 0.68);
-  border: 1px solid rgba(254, 212, 136, 0.22);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(14, 28, 47, 0.35);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid rgba(254, 212, 136, 0.6);
+  border-radius: 6px;
+  background: rgba(14, 28, 47, 0.55);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Scene eyebrow row: number badge + title badge */
-.rrc-cinematic-hero__scene-eyebrow {
+.rrc-cinematic-hero__panel-eyebrow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.25rem;
 }
 
-.rrc-cinematic-hero__scene-number {
-  font-family: var(--rrc-font-body);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--rrc-gold-bright);
-  line-height: 1;
-}
-
-.rrc-cinematic-hero__scene-title-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.7rem;
-  border-radius: var(--rrc-radius-pill);
-  background: rgba(254, 212, 136, 0.12);
-  border: 1px solid rgba(254, 212, 136, 0.35);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rrc-gold-bright);
-  line-height: 1;
-}
-
-/* Scene headline — large, white, serif */
-.rrc-cinematic-hero__scene-headline {
-  /* Inherits .rrc-h2 font-size */
-  color: #ffffff !important;
-  margin: 0;
-  line-height: 1.15;
-  text-shadow: 0 1px 12px rgba(14, 28, 47, 0.4);
-}
-
-/* Scene tags — uppercase tracking moniker row */
-.rrc-cinematic-hero__scene-tags {
+.rrc-cinematic-hero__panel-num {
+  color: var(--rrc-gold-bright, #fed488);
   font-family: var(--rrc-font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(254, 212, 136, 0.85);
-  margin: 0.1rem 0 0;
 }
 
-/* Scene description text */
-.rrc-cinematic-hero__scene-desc {
+.rrc-cinematic-hero__panel-stage {
+  color: rgba(255, 255, 255, 0.65);
   font-family: var(--rrc-font-body);
-  font-size: var(--rrc-body-sm);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.80);
-  margin: 0.25rem 0 0;
-  max-width: 46ch;
-}
-
-/* --------------------------------------------------------------------------
-   7. CONTROLS ROW — pause/play + timeline buttons
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Pause / Play button */
-.rrc-cinematic-hero__playpause {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  background: rgba(14, 28, 47, 0.55);
-  color: #ffffff;
-  cursor: pointer;
-  transition:
-    background var(--rrc-duration) var(--rrc-ease),
-    border-color var(--rrc-duration) var(--rrc-ease),
-    transform var(--rrc-duration) var(--rrc-ease);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.rrc-cinematic-hero__playpause:hover {
-  background: rgba(254, 212, 136, 0.18);
-  border-color: var(--rrc-gold-bright);
-  transform: scale(1.08);
-}
-
-.rrc-cinematic-hero__playpause:active {
-  transform: scale(0.95);
-}
-
-/* --------------------------------------------------------------------------
-   8. TIMELINE — three stage buttons with animated progress bars
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__timeline {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-/* Individual stage button */
-.rrc-cinematic-hero__timeline-btn {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-  min-width: 0;
-  transition: opacity var(--rrc-duration) var(--rrc-ease);
-}
-
-.rrc-cinematic-hero__timeline-btn:not(.is-active) {
-  opacity: 0.55;
-}
-
-.rrc-cinematic-hero__timeline-btn:hover {
-  opacity: 1;
-}
-
-/* Progress track bar */
-.rrc-cinematic-hero__timeline-track {
-  display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.22);
-  overflow: hidden;
-}
-
-/* Animated fill — width driven by inline style in JSX */
-.rrc-cinematic-hero__timeline-progress {
-  display: block;
-  height: 100%;
-  background: var(--rrc-gold-bright);
-  border-radius: 2px;
-  width: 0%;
-  transition-property: width;
-  /* transitionDuration and transitionTimingFunction are set via inline style in JSX */
-}
-
-.rrc-cinematic-hero__timeline-btn.is-completed .rrc-cinematic-hero__timeline-progress {
-  width: 100%;
-  transition-duration: 300ms;
-  transition-timing-function: ease-out;
-}
-
-/* Stage label below the bar */
-.rrc-cinematic-hero__timeline-label {
-  display: block;
-  font-family: var(--rrc-font-body);
-  font-size: 0.67rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color var(--rrc-duration) var(--rrc-ease);
 }
 
-.rrc-cinematic-hero__timeline-btn.is-active .rrc-cinematic-hero__timeline-label {
-  color: var(--rrc-gold-bright);
+.rrc-cinematic-hero__panel-headline {
+  margin: 0;
+  color: #fff;
+  font-family: var(--rrc-font-display);
+  font-size: 1.5rem;
+  line-height: 1.2;
 }
 
-.rrc-cinematic-hero__timeline-btn.is-completed .rrc-cinematic-hero__timeline-label {
-  color: rgba(255, 255, 255, 0.9);
+.rrc-cinematic-hero__panel-tags {
+  margin: 0;
+  color: rgba(254, 212, 136, 0.9);
+  font-family: var(--rrc-font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.rrc-cinematic-hero__timeline-label strong {
-  font-weight: 800;
+.rrc-cinematic-hero__panel-desc {
+  margin: 0.25rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--rrc-font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-/* --------------------------------------------------------------------------
-   9. DESKTOP LAYOUT (≥1024px)
-   Two-column grid: persistent left, evolving right.
-   -------------------------------------------------------------------------- */
+.rrc-cinematic-hero__indicator {
+  position: absolute;
+  right: 0;
+  bottom: 1.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--rrc-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.rrc-cinematic-hero__indicator-current {
+  color: var(--rrc-gold-bright, #fed488);
+  font-size: 1rem;
+}
+
+.rrc-cinematic-hero__indicator-sep {
+  opacity: 0.55;
+}
+
 @media (min-width: 1024px) {
-  .rrc-cinematic-hero__content-grid {
-    grid-template-columns: 7fr 5fr;
+  .rrc-cinematic-hero__content {
+    grid-template-columns: 6fr 5fr;
     grid-template-rows: 1fr;
     align-items: center;
     padding-block: 7rem 4rem;
-    gap: 4rem;
+  }
+
+  .rrc-cinematic-hero__panel-wrap {
+    justify-self: end;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .rrc-cinematic-hero__content {
+    align-items: start;
   }
 
   .rrc-cinematic-hero__persistent {
-    justify-content: center;
+    margin-top: 2rem;
   }
 
-  .rrc-cinematic-hero__evolving {
-    justify-content: center;
-  }
-
-  .rrc-cinematic-hero__scene-card {
-    padding: 2rem 2.25rem;
-  }
-
-  .rrc-cinematic-hero__scene-container {
-    min-height: 13rem;
-  }
-
-  /* On desktop keep the video anchored top-center — law imagery looks better */
-  .rrc-cinematic-hero__video {
-    object-position: center 15%;
+  .rrc-cinematic-hero__panel-wrap {
+    justify-self: end;
+    max-width: 100%;
   }
 }
 
-/* --------------------------------------------------------------------------
-   10. TABLET (640px – 1023px)
-   -------------------------------------------------------------------------- */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .rrc-cinematic-hero__content-grid {
-    padding-block: 5.5rem 2.5rem;
-    gap: 2rem;
-  }
-
-  .rrc-cinematic-hero__title {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-  }
-
-  .rrc-cinematic-hero__scene-card {
-    padding: 1.25rem 1.5rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   11. MOBILE (< 640px)
-   Single-column. Controls must be reachable. No horizontal overflow.
-   -------------------------------------------------------------------------- */
 @media (max-width: 639px) {
-  .rrc-cinematic-hero {
-    min-height: 100svh;
-  }
-
-  /* Video anchored slightly higher on portrait so subject isn't cropped */
-  .rrc-cinematic-hero__video {
-    object-position: center 10%;
-  }
-
-  .rrc-cinematic-hero__content-grid {
-    padding-block: 4.5rem 2rem;
+  .rrc-cinematic-hero__content {
     gap: 1.5rem;
-    align-items: flex-end;
+    padding-block: 5rem 2rem;
   }
 
-  /* On mobile the buttons stack to full-width (inherits from design-system.css
-     .rrc-btn rule at max-width: 639px). Override here so they stay inline. */
-  .rrc-cinematic-hero__ctas {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  /* Slightly smaller on mobile */
-  .rrc-cinematic-hero__ctas .rrc-btn {
-    flex: 1 1 calc(50% - 0.375rem);
-    min-width: 8rem;
+  .rrc-cinematic-hero__persistent {
+    margin-top: 1rem;
   }
 
   .rrc-cinematic-hero__title {
-    font-size: clamp(1.65rem, 6.5vw, 2.2rem);
+    font-size: clamp(1.75rem, 7vw, 2.2rem);
   }
 
-  .rrc-cinematic-hero__lead {
-    font-size: 0.95rem;
+  .rrc-cinematic-hero__panel {
+    padding: 1.15rem;
+    background: rgba(14, 28, 47, 0.7);
   }
 
-  .rrc-cinematic-hero__scene-card {
-    padding: 1.1rem 1.25rem;
-    gap: 0.4rem;
-    border-radius: var(--rrc-radius-md);
+  .rrc-cinematic-hero__ctas {
+    flex-direction: column;
+    width: 100%;
   }
 
-  .rrc-cinematic-hero__scene-headline {
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
+  .rrc-cinematic-hero__ctas .rrc-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 
-  .rrc-cinematic-hero__scene-container {
-    min-height: 10rem;
-  }
-
-  /* Controls: play button + slim progress bars */
-  .rrc-cinematic-hero__controls {
-    gap: 0.75rem;
-  }
-
-  .rrc-cinematic-hero__playpause {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
-  /* Keep stage labels but allow wrapping on very small screens */
-  .rrc-cinematic-hero__timeline-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    white-space: normal;
-  }
-
-  /* Overlay: heavier at the bottom on mobile since content stacks lower */
-  .rrc-cinematic-hero__overlay {
-    background:
-      linear-gradient(
-        to top,
-        rgba(14, 28, 47, 0.95) 0%,
-        rgba(14, 28, 47, 0.78) 45%,
-        rgba(14, 28, 47, 0.42) 72%,
-        rgba(14, 28, 47, 0.20) 100%
-      );
+  .rrc-cinematic-hero__indicator {
+    bottom: 0.5rem;
   }
 }
 
-/* --------------------------------------------------------------------------
-   12. ACCESSIBILITY — prefers-reduced-motion
-   Disable all transitions and animations. The hero remains fully usable
-   with static poster images and instant scene switching.
-   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .rrc-cinematic-hero__video-wrapper {
     transition: none;
   }
-
-  .rrc-cinematic-hero__timeline-progress {
-    transition: none;
-  }
-
-  .rrc-cinematic-hero__timeline-btn {
-    transition: none;
-  }
-
-  .rrc-cinematic-hero__playpause {
-    transition: none;
-  }
-
-  /* Scene transitions (framer-motion) are handled by the existing global rule
-     in design-system.css: *, *::before, *::after { transition-duration: 0.01ms } */
-
-  /* Keep the active scene fully opaque even without transition */
-  .rrc-cinematic-hero__video-wrapper.is-active {
-    opacity: 1;
-  }
-  .rrc-cinematic-hero__video-wrapper:not(.is-active) {
-    opacity: 0;
-  }
-
-  /* Static progress fill for completed stages */
-  .rrc-cinematic-hero__timeline-btn.is-completed .rrc-cinematic-hero__timeline-progress {
-    width: 100%;
-  }
-  .rrc-cinematic-hero__timeline-btn.is-active .rrc-cinematic-hero__timeline-progress {
-    /* Show a partial fill so the active track is clearly marked */
-    width: 50%;
-    background: var(--rrc-gold-bright);
-  }
 }
 
-/* --------------------------------------------------------------------------
-   13. PREVENT HORIZONTAL OVERFLOW
-   Belt-and-suspenders guard — the parent overflow:hidden on the section
-   should catch everything, but this ensures no child can escape.
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero *,
 .rrc-cinematic-hero *::before,
 .rrc-cinematic-hero *::after {
-  max-width: 100%;
   box-sizing: border-box;
+  max-width: 100%;
 }

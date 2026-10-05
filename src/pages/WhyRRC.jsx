@@ -3,9 +3,16 @@ import Button from '../components/Button';
 import FeatureCard from '../components/FeatureCard';
 import RrcIcon from '../components/RrcIcon';
 import SectionHeader from '../components/SectionHeader';
+import WhyVisual from '../components/WhyVisual';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
+import whyHeroImage from '../assets/why_rrc_hero_section.jpg';
+import whyNextSectionImage from '../assets/why_rrc_next_hero_inside_section.png';
 import './WhyRRC.css';
+
+// Cinematic visual assets for the two wired slots, imported from src/assets
+// (repo convention). The WhyVisual slot keeps the approved vector illustration
+// visible until the photograph is ready, so the page never shows a broken image.
 
 const METHODOLOGY = coursePageList[0]?.methodology ?? [];
 const METHOD_COPY = {
@@ -124,13 +131,28 @@ export default function WhyRRC() {
               <Button to="/registration" variant="secondary">Enquire Now</Button>
             </div>
           </div>
-          <div className="rrc-why-hero__visual"><AcademicVisual /></div>
+          <div className="rrc-why-hero__visual">
+            <WhyVisual
+              src={whyHeroImage}
+              alt="A focused law aspirant studying legal preparation material at a desk in a modern law-academy study room."
+              focus="70% 50%"
+              priority
+              illustration={<AcademicVisual />}
+            />
+          </div>
         </div>
       </section>
 
       <section className="rrc-section" aria-label="Why structured preparation matters">
         <div className="rrc-container rrc-why-intro">
-          <div className="rrc-why-intro__visual"><StudyNotesVisual /></div>
+          <div className="rrc-why-intro__visual">
+            <WhyVisual
+              className="rrc-why-media--notes"
+              src={whyNextSectionImage}
+              alt="Organised study notes, legal preparation books and mock-test material on a study desk."
+              illustration={<StudyNotesVisual />}
+            />
+          </div>
           <div className="rrc-why-intro__copy">
             <SectionHeader eyebrow="A Clearer Preparation Process" title="Why Structured Preparation Matters" align="left" />
             <p>Law entrance preparation involves more than covering topics. Learners need conceptual understanding, reasoning practice, current affairs awareness, regular testing, performance review, and a consistent preparation routine.</p>

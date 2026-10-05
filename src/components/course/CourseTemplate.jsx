@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import Button from '../Button';
 import { getCoursePage } from '../../data/coursePages';
 import CourseHero from './CourseHero';
@@ -27,7 +27,6 @@ import './CourseTemplate.css';
 // Routes are deliberately NOT wired yet (Step 6C).
 export default function CourseTemplate({ slug }) {
   const course = getCoursePage(slug);
-  const previousSlug = useRef(slug);
   const rootRef = useRef(null);
 
   // The sticky site header is content-driven, so its height is not always the
@@ -52,16 +51,6 @@ export default function CourseTemplate({ slug }) {
       window.removeEventListener('resize', sync);
     };
   }, []);
-
-  // When the slug changes (e.g. CLAT UG -> CLAT PG), start the new course page
-  // from the top. Skipped on first mount so browser scroll restoration and
-  // in-page #hash anchors keep working.
-  useEffect(() => {
-    if (previousSlug.current !== slug) {
-      previousSlug.current = slug;
-      if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-  }, [slug]);
 
   if (!course) {
     return (

@@ -8,7 +8,10 @@
 .rrc-career-hero__title { max-width: 15ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
 .rrc-career-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
 .rrc-career-hero__visual { min-width: 0; }
-.rrc-career-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+/* Career in Law hero visual: the cinematic 16:9 photograph is shown uncropped
+   (width:100% / height:auto) so its composition — subject right, negative space
+   left — survives every breakpoint without stretching or face cropping. */
+.rrc-career-visual { display: block; width: 100%; height: auto; border-radius: var(--rrc-radius-lg); filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
 
 .rrc-career-intro { grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr); }
 .rrc-career-intro__ornament { display: flex; flex-direction: column; align-items: center; gap: 1rem; min-height: 18rem; justify-content: center; color: var(--rrc-gold); background: var(--rrc-surface-light); border-radius: var(--rrc-radius-lg); }

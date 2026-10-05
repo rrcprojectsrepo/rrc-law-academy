@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import rrcLawAcademyLogo from '../assets/rrc-law-academy-logo.png';
+import { SOCIAL_PROFILE_URLS } from '../config/socialLinks';
 import { coursePageList } from '../data/coursePages';
 import './Header.css';
 
@@ -28,6 +29,65 @@ const NAV_ITEMS = [
   { label: 'FAQ', to: '/faq' },
   { label: 'Contact', to: '/contact' },
 ];
+
+const SOCIAL_ITEMS = [
+  { label: 'Instagram', href: SOCIAL_PROFILE_URLS.instagram },
+  { label: 'Facebook', href: SOCIAL_PROFILE_URLS.facebook },
+  { label: 'LinkedIn', href: SOCIAL_PROFILE_URLS.linkedin },
+];
+
+function SocialIcon({ name }) {
+  if (name === 'Instagram') {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+
+  if (name === 'Facebook') {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+        <path d="M13.7 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5H17V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.5v3.2h2.8V21h3.4Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M6.5 9.2H3.3V20h3.2V9.2ZM4.9 7.8a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM20.7 13.8c0-3.3-1.8-4.8-4.2-4.8-1.9 0-2.7 1.1-3.2 1.8V9.2h-3.2V20h3.2v-5.4c0-1.4.3-2.8 2-2.8s1.9 1.6 1.9 2.9V20h3.3v-6.2Z" />
+    </svg>
+  );
+}
+
+function SocialLinks({ mobile = false }) {
+  return (
+    <div
+      className={`rrc-header__social${mobile ? ' rrc-header__social--mobile' : ''}`}
+      role="group"
+      aria-label="Social media"
+    >
+      {SOCIAL_ITEMS.map(({ label, href }) => (
+        <a
+          key={label}
+          className="rrc-header__social-link"
+          href={href || undefined}
+          target={href ? '_blank' : undefined}
+          rel={href ? 'noopener noreferrer' : undefined}
+          role={href ? undefined : 'link'}
+          aria-disabled={href ? undefined : 'true'}
+          aria-label={label}
+          title={href ? label : `${label} URL not configured`}
+          tabIndex={href ? undefined : 0}
+        >
+          <SocialIcon name={label} />
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -246,6 +306,7 @@ export default function Header() {
         </nav>
 
         <div className="rrc-header__actions">
+          <SocialLinks />
           <Link to="/registration" onClick={closeMenus} className="rrc-btn rrc-btn--primary rrc-header__cta">
             Enquire Now
           </Link>
@@ -365,6 +426,10 @@ export default function Header() {
               </li>
             ))}
           </ul>
+          <div className="rrc-mobile-menu__social-area">
+            <p className="rrc-mobile-menu__social-label">Social</p>
+            <SocialLinks mobile />
+          </div>
           <Link to="/registration" onClick={closeMenus} className="rrc-btn rrc-btn--primary rrc-mobile-menu__cta">
             Enquire Now
           </Link>

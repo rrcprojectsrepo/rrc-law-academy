@@ -15,6 +15,7 @@ export default function HomeHero() {
   // Autoplay: 4 seconds per scene, stops after the last scene
   useEffect(() => {
     if (hasEnded) return;
+    // Added a check for video.paused to avoid unhandled promise rejections
     const timer = setTimeout(() => {
       if (currentScene < totalScenes - 1) {
         setCurrentScene((prev) => prev + 1);
@@ -30,13 +31,22 @@ export default function HomeHero() {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
       if (index === currentScene) {
-        video.play().catch(() => { /* autoplay blocked — poster shown */ });
+        if (video.paused) {
+          video.play().catch(() => { /* autoplay blocked \u2014 poster shown */ });
+        }
       } else {
-        video.pause();
+        if (!video.paused) {
+          video.pause();
+        }
         video.currentTime = 0;
       }
     });
   }, [currentScene]);
+
+  // Pause every video when the hero unmounts
+  useEffect(() => () => {
+    videoRefs.current.forEach((video) => video && video.pause());
+  }, []);
 
   return (
     <section className="rrc-cinematic-hero" aria-label="RRC Law Academy — Legal Education Journey">

@@ -8,6 +8,7 @@ import ResourceCard from '../components/ResourceCard';
 import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
+import resourcesHeroImage from '../assets/resourses_hero.jpg';
 import './Resources.css';
 
 const RESOURCE_CATEGORIES = [
@@ -72,18 +73,11 @@ const FAQ_ITEMS = [
 
 function ResourceHeroVisual() {
   return (
-    <svg className="rrc-resources-visual" viewBox="0 0 640 500" role="img" aria-labelledby="rrc-resources-visual-title">
-      <title id="rrc-resources-visual-title">An open book with a connected learning path</title>
-      <rect x="12" y="12" width="616" height="476" rx="28" fill="#0e1c2f" />
-      <circle cx="320" cy="204" r="142" fill="#d8e3fb" fillOpacity=".07" stroke="#fed488" strokeOpacity=".34" strokeWidth="2" />
-      <path d="M116 156c58-30 122-26 204 14v172c-78-34-142-39-204-12V156ZM524 156c-58-30-122-26-204 14v172c78-34 142-39 204-12V156Z" fill="#f9f9ff" stroke="#fed488" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M146 194c46-16 92-10 142 12M146 228c46-16 92-10 142 12M146 262c46-16 92-10 142 12M494 194c-46-16-92-10-142 12M494 228c-46-16-92-10-142 12M494 262c-46-16-92-10-142 12" fill="none" stroke="#9aa9c0" strokeWidth="5" strokeLinecap="round" />
-      <path d="M320 170v-64M320 106h98M418 106v34" fill="none" stroke="#fed488" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="320" cy="96" r="12" fill="#fed488" />
-      <circle cx="418" cy="151" r="18" fill="#775a19" stroke="#fed488" strokeWidth="3" />
-      <path d="M180 362h280M212 388h216" stroke="#d8e3fb" strokeOpacity=".5" strokeWidth="4" strokeLinecap="round" />
-      <path d="M88 438h464" stroke="#fed488" strokeOpacity=".7" strokeWidth="3" />
-    </svg>
+    <img
+      className="rrc-resources-visual"
+      src={resourcesHeroImage}
+      alt="A law student studying legal documents beside a laptop in a bright library."
+    />
   );
 }
 

@@ -5,6 +5,7 @@ import RrcIcon from '../components/RrcIcon';
 import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
+import careerLawHeroImage from '../assets/career-law-hero.png';
 import './CareerInLaw.css';
 
 const JOURNEY = [
@@ -71,28 +72,6 @@ const REFLECTION_QUESTIONS = [
   'Which skills should I start building now?',
 ];
 
-function CareerHeroVisual() {
-  return (
-    <svg className="rrc-career-visual" viewBox="0 0 640 500" role="img" aria-labelledby="rrc-career-visual-title">
-      <title id="rrc-career-visual-title">A legal education pathway represented by books and the scales of justice</title>
-      <rect x="12" y="12" width="616" height="476" rx="28" fill="#0e1c2f" />
-      <circle cx="320" cy="192" r="122" fill="#d8e3fb" fillOpacity=".08" stroke="#fed488" strokeOpacity=".5" strokeWidth="2" />
-      <path d="M320 94v202M259 132h122M320 110l-76 23M320 110l76 23" fill="none" stroke="#fed488" strokeWidth="5" strokeLinecap="round" />
-      <path d="M244 133l-32 78h64l-32-78ZM396 133l-32 78h64l-32-78Z" fill="#fed488" fillOpacity=".14" stroke="#fed488" strokeWidth="3" />
-      <path d="M281 299h78l26 25H255l26-25Z" fill="#fed488" />
-      <path d="M144 358h302v40H144z" fill="#775a19" />
-      <path d="M126 346h302v40H126z" fill="#f9f9ff" />
-      <path d="M126 346h22v40h-22M166 360h218" stroke="#0e1c2f" strokeOpacity=".48" strokeWidth="3" />
-      <path d="M178 409h284v40H178z" fill="#775a19" />
-      <path d="M160 397h284v40H160z" fill="#d8e3fb" />
-      <path d="M160 397h22v40h-22M200 411h214M200 422h164" stroke="#0e1c2f" strokeOpacity=".48" strokeWidth="3" />
-      <path d="M72 72h496" stroke="#d8e3fb" strokeOpacity=".22" strokeWidth="2" />
-      <circle cx="520" cy="362" r="20" fill="#fed488" fillOpacity=".9" />
-      <circle cx="520" cy="362" r="42" fill="none" stroke="#fed488" strokeOpacity=".42" strokeWidth="2" />
-    </svg>
-  );
-}
-
 export default function CareerInLaw() {
   return (
     <div className="rrc-career-page">
@@ -107,7 +86,13 @@ export default function CareerInLaw() {
               <Button to="/registration" variant="secondary">Talk to a Counsellor</Button>
             </div>
           </div>
-          <div className="rrc-career-hero__visual"><CareerHeroVisual /></div>
+          <div className="rrc-career-hero__visual">
+            <img
+              className="rrc-career-visual"
+              src={careerLawHeroImage}
+              alt="Young law graduate in a professional legal environment"
+            />
+          </div>
         </div>
       </section>
 

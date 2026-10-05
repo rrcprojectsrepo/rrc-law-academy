@@ -31,7 +31,7 @@ export default function CourseFAQ({ course }) {
               <Button to="/faq" variant="secondary">
                 View General FAQs
               </Button>
-              <Button to="/contact" variant="primary">
+              <Button to="/registration" variant="primary">
                 Ask a Question
               </Button>
             </div>

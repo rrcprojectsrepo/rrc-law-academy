@@ -1,0 +1,36 @@
+/* WhyVisual — progressive cinematic visual slot (Why RRC page only). */
+
+.rrc-why-media {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+/* Intro slot keeps the approved max width; the base illustration fills it. */
+.rrc-why-media--notes {
+  width: min(100%, 34rem);
+  margin-inline: auto;
+}
+
+/* The photograph overlays the illustration and fades in once it has loaded. */
+.rrc-why-media__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--rrc-why-focus, 50% 50%);
+  border-radius: var(--rrc-why-radius, var(--rrc-radius-lg));
+  opacity: 0;
+  transition: opacity var(--rrc-duration-slow) var(--rrc-ease);
+}
+
+.rrc-why-media[data-status='loaded'] .rrc-why-media__photo {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrc-why-media__photo {
+    transition: none;
+  }
+}

@@ -1,5 +1,5 @@
 /* Header — sticky, white/light, Navy text, Gold active state. */
-:root { --rrc-header-height: 5.25rem; }
+:root { --rrc-header-height: 4.75rem; }
 
 .rrc-header {
   position: sticky;
@@ -16,7 +16,7 @@
   align-items: center;
   gap: clamp(0.5rem, 1vw, 1rem);
   max-width: 1280px;
-  min-height: 5.25rem;
+  min-height: 4.75rem;
   padding: 0.25rem clamp(1rem, 2vw, 2rem);
 }
 
@@ -30,8 +30,8 @@
 .rrc-header__logo {
   display: block;
   width: auto;
-  height: 4.75rem;
-  max-width: 4.75rem;
+  height: 4.25rem;
+  max-width: 4.25rem;
   flex: none;
   object-fit: contain;
 }
@@ -153,6 +153,46 @@
   justify-self: end;
 }
 
+.rrc-header__social {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.rrc-header__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 6px;
+  color: var(--rrc-navy);
+  text-decoration: none;
+  transition: color var(--rrc-duration) var(--rrc-ease), opacity var(--rrc-duration) var(--rrc-ease), transform var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-header__social-link:hover {
+  color: var(--rrc-gold);
+  transform: translateY(-1px);
+}
+
+.rrc-header__social-link:focus-visible {
+  outline: 2px solid var(--rrc-gold-bright);
+  outline-offset: 2px;
+}
+
+.rrc-header__social-link[aria-disabled="true"] {
+  color: var(--rrc-text-secondary);
+  cursor: default;
+}
+
+.rrc-header__social-link[aria-disabled="true"]:hover {
+  color: var(--rrc-text-secondary);
+  transform: none;
+}
+
+.rrc-mobile-menu__social-area { display: none; }
+
 .rrc-header__cta {
   min-height: 2.75rem;
   padding-inline: 1.25rem;
@@ -176,7 +216,10 @@
 
 .rrc-mobile-menu {
   display: grid;
-  grid-template-rows: 0fr;
+  /* minmax(0, 0fr) - NOT plain 0fr: the inner <nav> owns the panel padding, which
+     would otherwise raise the collapsed track's auto minimum to ~40px and leave a
+     hidden 40px strip beneath the desktop header. */
+  grid-template-rows: minmax(0, 0fr);
   border-top: 1px solid var(--rrc-border);
   background: var(--rrc-white);
   overflow: hidden;
@@ -326,9 +369,32 @@
   }
   .rrc-header__nav { display: none; }
   .rrc-header__actions { margin-left: auto; }
+  .rrc-header__social { display: none; }
+  .rrc-header__social--mobile { display: flex; }
   .rrc-mobile-menu__cta { width: 100%; }
   .rrc-header__cta { display: none; }
   .rrc-header__menu-btn { display: inline-flex; }
+
+  .rrc-mobile-menu__social-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.25rem 0 0.75rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--rrc-border);
+  }
+
+  .rrc-mobile-menu__social-label {
+    margin: 0;
+    color: var(--rrc-text-secondary);
+    font-size: var(--rrc-body-sm);
+    font-weight: 700;
+  }
+
+  .rrc-header__social--mobile .rrc-header__social-link {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
 }
 
 @media (max-width: 560px) {
