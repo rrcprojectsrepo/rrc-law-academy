@@ -1,30 +1,24 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Button from '../Button';
 import { hero } from '../../data/homepage';
 import './HomeHero.css';
 
 // Section 1 — Cinematic Legal Education Journey Hero
-// Auto-progresses Scene 01 → 02 → 03 (stops at 03). No manual controls.
+// Auto-progresses scenes continuously. No manual controls.
 export default function HomeHero() {
   const [currentScene, setCurrentScene] = useState(0);
-  const [hasEnded, setHasEnded] = useState(false);
   const videoRefs = useRef([]);
   const totalScenes = hero.scenes.length;
+  const shouldReduceMotion = useReducedMotion();
 
-  // Autoplay: 4 seconds per scene, stops after the last scene
+  // Autoplay: 5 seconds per scene, loops continuously
   useEffect(() => {
-    if (hasEnded) return;
-    // Added a check for video.paused to avoid unhandled promise rejections
     const timer = setTimeout(() => {
-      if (currentScene < totalScenes - 1) {
-        setCurrentScene((prev) => prev + 1);
-      } else {
-        setHasEnded(true); // stay on Scene 03
-      }
-    }, 4000);
+      setCurrentScene((prev) => (prev + 1) % totalScenes);
+    }, 5000);
     return () => clearTimeout(timer);
-  }, [currentScene, hasEnded, totalScenes]);
+  }, [currentScene, totalScenes]);
 
   // Keep each <video> playing/paused in sync with the active scene
   useEffect(() => {
@@ -47,6 +41,14 @@ export default function HomeHero() {
   useEffect(() => () => {
     videoRefs.current.forEach((video) => video && video.pause());
   }, []);
+
+  const transitionConfig = shouldReduceMotion 
+    ? { duration: 0.01 } 
+    : { duration: 0.55, ease: [0.22, 0.61, 0.21, 1] };
+
+  const initialConfig = shouldReduceMotion ? { opacity: 0, y: 0 } : { opacity: 0, y: 10 };
+  const animateConfig = { opacity: 1, y: 0 };
+  const exitConfig = shouldReduceMotion ? { opacity: 0, y: 0 } : { opacity: 0, y: -8 };
 
   return (
     <section className="rrc-cinematic-hero" aria-label="RRC Law Academy — Legal Education Journey">
@@ -104,17 +106,14 @@ export default function HomeHero() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentScene}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.55, ease: [0.22, 0.61, 0.21, 1] }}
+              initial={initialConfig}
+              animate={animateConfig}
+              exit={exitConfig}
+              transition={transitionConfig}
               className="rrc-cinematic-hero__panel"
             >
-              {/* Scene number + stage label */}
+              {/* Stage label */}
               <div className="rrc-cinematic-hero__panel-eyebrow">
-                <span className="rrc-cinematic-hero__panel-num">
-                  {hero.scenes[currentScene].number}
-                </span>
                 <span className="rrc-cinematic-hero__panel-stage">
                   {hero.scenes[currentScene].title}
                 </span>
@@ -136,17 +135,6 @@ export default function HomeHero() {
               </p>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Non-interactive scene indicator — e.g. "01 / 03" */}
-        <div className="rrc-cinematic-hero__indicator" aria-hidden="true">
-          <span className="rrc-cinematic-hero__indicator-current">
-            {hero.scenes[currentScene].number}
-          </span>
-          <span className="rrc-cinematic-hero__indicator-sep">/</span>
-          <span className="rrc-cinematic-hero__indicator-total">
-            {String(totalScenes).padStart(2, '0')}
-          </span>
         </div>
 
       </div>

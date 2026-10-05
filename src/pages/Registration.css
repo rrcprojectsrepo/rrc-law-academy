@@ -63,7 +63,7 @@
 .rrc-registration-faq__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--rrc-gold); font-size: var(--rrc-body-sm); font-weight: 700; text-underline-offset: 4px; }
 .rrc-registration-faq__links a:hover { color: var(--rrc-navy); }
 .rrc-registration-faq__links a:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 2px; border-radius: 4px; }
-.rrc-registration-ready { max-width: 900px; margin-inline: auto; padding: clamp(1.5rem, 4vw, 3rem); border-color: var(--rrc-gold); text-align: center; }
+.rrc-registration-ready { max-width: 900px; margin-inline: auto; padding: clamp(1.5rem, 4vw, 3rem); border-color: var(--rrc-gold); text-align: center; animation: rrc-fade-up var(--rrc-duration-slow) var(--rrc-ease) both; }
 .rrc-registration-ready > .rrc-icon-badge { display: inline-flex; }
 .rrc-registration-ready h3 { margin: 0 0 0.75rem; color: var(--rrc-navy); font-family: var(--rrc-font-display); font-size: var(--rrc-h2); }
 .rrc-registration-ready > p { max-width: 62ch; margin: 0 auto 0.75rem; color: var(--rrc-text-secondary); }

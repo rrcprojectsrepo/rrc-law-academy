@@ -102,6 +102,14 @@ img { max-width: 100%; height: auto; display: block; }
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
+  /* Exempt the page-progress bar — it has its own reduced-motion handling */
+  .rrc-page-progress,
+  .rrc-page-progress--active,
+  .rrc-page-progress--active.rrc-page-progress--completing,
+  .rrc-page-progress--done {
+    transition-duration: revert !important;
+    transition-delay: revert !important;
+  }
   .rrc-main,
   .rrc-anim-fade-up,
   .rrc-stagger > *,
@@ -225,7 +233,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-color: var(--rrc-navy);
 }
 .rrc-btn--secondary:hover { transform: translateY(-1px); background-color: var(--rrc-surface-light); box-shadow: var(--rrc-shadow-card); }
-.rrc-btn:active { transform: scale(0.98); }
+.rrc-btn:active { transform: scale(0.98); opacity: 0.9; }
 .rrc-section--navy .rrc-btn--secondary {
   background-color: transparent;
   color: var(--rrc-white);
@@ -307,7 +315,7 @@ img { max-width: 100%; height: auto; display: block; }
 .rrc-main section[data-rrc-reveal='visible'] .rrc-stagger > *:nth-child(5) { animation-delay: 240ms; }
 .rrc-main section[data-rrc-reveal='visible'] .rrc-stagger > *:nth-child(n+6) { animation-delay: 300ms; }
 .rrc-img-zoom { overflow: hidden; border-radius: var(--rrc-radius-lg); }
-.rrc-img-zoom img { transition: transform var(--rrc-duration-slow) var(--rrc-ease); }
+.rrc-img-zoom img { transition: transform 600ms var(--rrc-ease); }
 .rrc-img-zoom:hover img { transform: scale(1.03); }
 
 /* ---- 9. Responsive: tablet + desktop + mobile ---- */

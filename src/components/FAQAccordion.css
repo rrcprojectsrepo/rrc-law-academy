@@ -43,8 +43,9 @@
   display: grid;
   grid-template-rows: 0fr;
   padding-inline: 1.25rem;
-  transition: grid-template-rows 240ms var(--rrc-ease), padding-bottom 240ms var(--rrc-ease);
+  opacity: 0;
+  transition: grid-template-rows 240ms var(--rrc-ease), padding-bottom 240ms var(--rrc-ease), opacity 240ms var(--rrc-ease);
 }
-.rrc-faq__item.is-open .rrc-faq__panel { grid-template-rows: 1fr; padding-bottom: 1.25rem; }
+.rrc-faq__item.is-open .rrc-faq__panel { grid-template-rows: 1fr; padding-bottom: 1.25rem; opacity: 1; }
 .rrc-faq__panel-inner { min-height: 0; overflow: hidden; }
 .rrc-faq__panel p { margin: 0; color: var(--rrc-text-secondary); }

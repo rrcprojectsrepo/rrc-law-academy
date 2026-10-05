@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AIChatWidget from '../components/ai/AIChatWidget';
 import WhatsAppFloatingButton from '../components/whatsapp/WhatsAppFloatingButton';
+import PageProgress from '../components/PageProgress';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 export default function MainLayout() {
@@ -56,6 +57,7 @@ export default function MainLayout() {
 
   return (
     <div className="rrc-layout">
+      <PageProgress />
       <a className="rrc-skip-link" href="#rrc-main-content">
         Skip to main content
       </a>

@@ -1,0 +1,69 @@
+/*
+  PageProgress — thin gold top-of-page loading bar.
+  Uses class-based CSS transitions only (no Framer Motion) to avoid conflicts
+  with the global `prefers-reduced-motion` transition-duration override.
+
+  State machine:
+    (default)                  → invisible, zero width
+    --active                   → visible, races to ~80% width in 600ms
+    --active + --completing    → completes to 100% width, then fades out (450ms)
+    --done                     → opacity 0, no width, transition complete
+*/
+
+.rrc-page-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  /* Default: invisible */
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  background-color: #fed488;
+  box-shadow: 0 0 8px rgba(254, 212, 136, 0.7), 0 0 2px rgba(254, 212, 136, 0.9);
+  /* Do not use transition here — states below override it */
+}
+
+/* ACTIVE: bar sweeps from 0% to ~80% */
+.rrc-page-progress--active {
+  opacity: 1;
+  transform: scaleX(0.8);
+  /*
+    Long duration so it visibly "crawls" across 80% in 600ms.
+    cubic-bezier front-loaded: fast start, slow finish (mimics real loading).
+  */
+  transition:
+    transform 600ms cubic-bezier(0.1, 0.6, 0.4, 1),
+    opacity 80ms linear;
+}
+
+/* COMPLETING: snap to 100% then fade out */
+.rrc-page-progress--active.rrc-page-progress--completing {
+  transform: scaleX(1);
+  opacity: 0;
+  transition:
+    transform 150ms cubic-bezier(0.4, 0, 1, 1),
+    opacity 300ms 150ms linear; /* fade starts after bar finishes */
+}
+
+/* DONE: fully hidden, no transition (instant cleanup) */
+.rrc-page-progress--done {
+  opacity: 0;
+  transform: scaleX(0);
+  transition: none;
+}
+
+/* Respect reduced motion: keep bar visible (shows at full width instantly) but skip animation */
+@media (prefers-reduced-motion: reduce) {
+  .rrc-page-progress--active {
+    transform: scaleX(1);
+    transition: none;
+  }
+  .rrc-page-progress--active.rrc-page-progress--completing {
+    opacity: 0;
+    transition: none;
+  }
+}
