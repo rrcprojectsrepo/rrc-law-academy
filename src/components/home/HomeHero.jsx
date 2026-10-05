@@ -4,22 +4,29 @@ import Button from '../Button';
 import { hero } from '../../data/homepage';
 import './HomeHero.css';
 
-// Section 1 \u2014 Cinematic Legal Education Journey Hero
+// Section 1 — Cinematic Legal Education Journey Hero
+// Auto-progresses Scene 01 → 02 → 03 (stops at 03). No manual controls.
 export default function HomeHero() {
   const [currentScene, setCurrentScene] = useState(0);
+  const [hasEnded, setHasEnded] = useState(false);
   const videoRefs = useRef([]);
   const totalScenes = hero.scenes.length;
 
+  // Autoplay: 4 seconds per scene, stops after the last scene
   useEffect(() => {
+    if (hasEnded) return;
+    // Added a check for video.paused to avoid unhandled promise rejections
     const timer = setTimeout(() => {
-      setCurrentScene((scene) => (scene + 1) % totalScenes);
-    }, 5000);
+      if (currentScene < totalScenes - 1) {
+        setCurrentScene((prev) => prev + 1);
+      } else {
+        setHasEnded(true); // stay on Scene 03
+      }
+    }, 4000);
     return () => clearTimeout(timer);
-  }, [currentScene, totalScenes]);
+  }, [currentScene, hasEnded, totalScenes]);
 
   // Keep each <video> playing/paused in sync with the active scene
-  // Added a check for video.paused to avoid unhandled promise rejections
-  // when calling play()/pause() in rapid succession.
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
@@ -42,9 +49,9 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="rrc-cinematic-hero" aria-label="RRC Law Academy \u2014 Legal Education Journey">
+    <section className="rrc-cinematic-hero" aria-label="RRC Law Academy — Legal Education Journey">
 
-      {/* \u2500\u2500 Background media layer \u2500\u2500 */}
+      {/* ── Background media layer ── */}
       <div className="rrc-cinematic-hero__media" aria-hidden="true">
         {hero.scenes.map((scene, index) => (
           <div
@@ -67,20 +74,20 @@ export default function HomeHero() {
         <div className="rrc-cinematic-hero__overlay" />
       </div>
 
-      {/* \u2500\u2500 Content layer \u2500\u2500 */}
+      {/* ── Content layer ── */}
       <div className="rrc-container rrc-cinematic-hero__content">
 
-        {/* Persistent branding \u2014 always visible */}
+        {/* Persistent branding — always visible */}
         <div className="rrc-cinematic-hero__persistent">
-          <h1 className="rrc-cinematic-hero__brand">
+          <p className="rrc-cinematic-hero__brand">
             {hero.persistent.title}
-          </h1>
-          <h2 className="rrc-cinematic-hero__title">
+          </p>
+          <h1 className="rrc-cinematic-hero__title">
             <span className="rrc-cinematic-hero__title-line">{hero.persistent.subtitle1}</span>
             <span className="rrc-cinematic-hero__title-line rrc-cinematic-hero__title-gold">
               {hero.persistent.subtitle2}
             </span>
-          </h2>
+          </h1>
           <p className="rrc-cinematic-hero__lead">{hero.persistent.text}</p>
           <div className="rrc-cinematic-hero__ctas">
             <Button to={hero.persistent.primaryCta.link} variant="primary">
@@ -92,7 +99,7 @@ export default function HomeHero() {
           </div>
         </div>
 
-        {/* Scene info panel \u2014 transitions with each scene */}
+        {/* Scene info panel — transitions with each scene */}
         <div className="rrc-cinematic-hero__panel-wrap">
           <AnimatePresence mode="wait">
             <motion.div
@@ -103,7 +110,11 @@ export default function HomeHero() {
               transition={{ duration: 0.55, ease: [0.22, 0.61, 0.21, 1] }}
               className="rrc-cinematic-hero__panel"
             >
+              {/* Scene number + stage label */}
               <div className="rrc-cinematic-hero__panel-eyebrow">
+                <span className="rrc-cinematic-hero__panel-num">
+                  {hero.scenes[currentScene].number}
+                </span>
                 <span className="rrc-cinematic-hero__panel-stage">
                   {hero.scenes[currentScene].title}
                 </span>
@@ -125,6 +136,17 @@ export default function HomeHero() {
               </p>
             </motion.div>
           </AnimatePresence>
+        </div>
+
+        {/* Non-interactive scene indicator — e.g. "01 / 03" */}
+        <div className="rrc-cinematic-hero__indicator" aria-hidden="true">
+          <span className="rrc-cinematic-hero__indicator-current">
+            {hero.scenes[currentScene].number}
+          </span>
+          <span className="rrc-cinematic-hero__indicator-sep">/</span>
+          <span className="rrc-cinematic-hero__indicator-total">
+            {String(totalScenes).padStart(2, '0')}
+          </span>
         </div>
 
       </div>

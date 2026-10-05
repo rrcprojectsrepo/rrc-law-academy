@@ -1,37 +1,27 @@
-/* ==========================================================================
-   HomeHero — Cinematic Legal Education Journey Hero
-   Classes consumed by HomeHero.jsx (v2 cinematic auto-progressing).
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. ROOT SECTION
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   isolation: isolate;
-  background-color: var(--rrc-navy, #0e1c2f);
+  background: var(--rrc-navy, #0e1c2f);
 }
 
-/* --------------------------------------------------------------------------
-   2. MEDIA LAYER (Videos & Poster Fallbacks)
-   -------------------------------------------------------------------------- */
-.rrc-cinematic-hero__media {
+.rrc-cinematic-hero__media,
+.rrc-cinematic-hero__video-wrapper {
   position: absolute;
   inset: 0;
+}
+
+.rrc-cinematic-hero__media {
   z-index: 0;
 }
 
 .rrc-cinematic-hero__video-wrapper {
-  position: absolute;
-  inset: 0;
   opacity: 0;
   transition: opacity 900ms cubic-bezier(0.22, 0.61, 0.21, 1);
-  will-change: opacity;
 }
 
 .rrc-cinematic-hero__video-wrapper.is-active {
@@ -46,50 +36,29 @@
   object-position: center 20%;
 }
 
-/* --------------------------------------------------------------------------
-   3. OVERLAY
-   Darkens the video for text readability. Stronger on the left and bottom.
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(
-      to top,
-      rgba(14, 28, 47, 0.95) 0%,
-      rgba(14, 28, 47, 0.65) 30%,
-      rgba(14, 28, 47, 0.25) 70%,
-      rgba(14, 28, 47, 0.10) 100%
-    ),
-    linear-gradient(
-      to right,
-      rgba(14, 28, 47, 0.75) 0%,
-      rgba(14, 28, 47, 0.3) 45%,
-      rgba(14, 28, 47, 0.0) 100%
-    );
   pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(14, 28, 47, 0.95), rgba(14, 28, 47, 0.65) 30%, rgba(14, 28, 47, 0.25) 70%, rgba(14, 28, 47, 0.1)),
+    linear-gradient(to right, rgba(14, 28, 47, 0.75), rgba(14, 28, 47, 0.3) 45%, transparent);
 }
 
-/* --------------------------------------------------------------------------
-   4. CONTENT LAYOUT (Grid)
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero__content {
   position: relative;
   z-index: 2;
-  flex: 1 1 auto;
   display: grid;
+  flex: 1 1 auto;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
   gap: 2rem;
-  padding-block: 6rem 3rem;
-  min-height: 100svh;
   box-sizing: border-box;
+  min-height: 100svh;
+  padding-block: 6rem 3rem;
 }
 
-/* --------------------------------------------------------------------------
-   5. PERSISTENT PANEL (Left / Top side)
-   -------------------------------------------------------------------------- */
 .rrc-cinematic-hero__persistent {
   display: flex;
   flex-direction: column;
@@ -99,23 +68,23 @@
 }
 
 .rrc-cinematic-hero__brand {
+  margin: 0 0 1rem;
+  color: var(--rrc-gold-bright, #fed488);
   font-family: var(--rrc-font-display);
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--rrc-gold-bright, #fed488);
   line-height: 1.2;
-  margin: 0 0 1rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-shadow: 0 3px 18px rgba(14, 28, 47, 0.75);
 }
 
 .rrc-cinematic-hero__title {
-  color: #ffffff;
+  margin: 0 0 1.25rem;
+  color: #fff;
   font-family: var(--rrc-font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.1;
-  margin-bottom: 1.25rem;
   text-shadow: 0 4px 24px rgba(14, 28, 47, 0.6);
 }
 
@@ -128,57 +97,53 @@
 }
 
 .rrc-cinematic-hero__lead {
+  max-width: 48ch;
+  margin: 0 0 2rem;
   color: rgba(255, 255, 255, 0.85);
   font-family: var(--rrc-font-body);
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 48ch;
   text-shadow: 0 2px 12px rgba(14, 28, 47, 0.8);
 }
 
 .rrc-cinematic-hero__ctas {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Override secondary button to be a ghost button on dark background */
 .rrc-cinematic-hero__ctas .rrc-btn--secondary {
-  background-color: transparent;
-  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.5);
-}
-.rrc-cinematic-hero__ctas .rrc-btn--secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
+  background-color: transparent;
+  color: #fff;
 }
 
-/* --------------------------------------------------------------------------
-   6. SCENE INFO PANEL (Right / Bottom side)
-   Premium documentary/film style interface
-   -------------------------------------------------------------------------- */
+.rrc-cinematic-hero__ctas .rrc-btn--secondary:hover {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .rrc-cinematic-hero__panel-wrap {
-  align-self: flex-end;
-  justify-self: flex-start;
+  position: relative;
+  align-self: end;
+  justify-self: start;
   width: 100%;
   max-width: 420px;
-  position: relative;
-  min-height: 140px; /* Prevents layout shift during animation */
+  min-height: 140px;
 }
 
 .rrc-cinematic-hero__panel {
-  background: rgba(14, 28, 47, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 2px solid rgba(254, 212, 136, 0.6); /* Subtle gold accent */
-  border-radius: 6px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid rgba(254, 212, 136, 0.6);
+  border-radius: 6px;
+  background: rgba(14, 28, 47, 0.55);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .rrc-cinematic-hero__panel-eyebrow {
@@ -188,44 +153,72 @@
   margin-bottom: 0.25rem;
 }
 
+.rrc-cinematic-hero__panel-num {
+  color: var(--rrc-gold-bright, #fed488);
+  font-family: var(--rrc-font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
 .rrc-cinematic-hero__panel-stage {
+  color: rgba(255, 255, 255, 0.65);
   font-family: var(--rrc-font-body);
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .rrc-cinematic-hero__panel-headline {
+  margin: 0;
+  color: #fff;
   font-family: var(--rrc-font-display);
   font-size: 1.5rem;
-  color: #ffffff;
   line-height: 1.2;
-  margin: 0;
 }
 
 .rrc-cinematic-hero__panel-tags {
+  margin: 0;
+  color: rgba(254, 212, 136, 0.9);
   font-family: var(--rrc-font-body);
   font-size: 0.65rem;
   font-weight: 700;
-  color: rgba(254, 212, 136, 0.9);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin: 0;
 }
 
 .rrc-cinematic-hero__panel-desc {
+  margin: 0.25rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
   font-family: var(--rrc-font-body);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
-  margin: 0.25rem 0 0;
 }
 
-/* --------------------------------------------------------------------------
-   8. DESKTOP LAYOUT (≥1024px)
-   -------------------------------------------------------------------------- */
+.rrc-cinematic-hero__indicator {
+  position: absolute;
+  right: 0;
+  bottom: 1.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--rrc-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.rrc-cinematic-hero__indicator-current {
+  color: var(--rrc-gold-bright, #fed488);
+  font-size: 1rem;
+}
+
+.rrc-cinematic-hero__indicator-sep {
+  opacity: 0.55;
+}
+
 @media (min-width: 1024px) {
   .rrc-cinematic-hero__content {
     grid-template-columns: 6fr 5fr;
@@ -233,88 +226,72 @@
     align-items: center;
     padding-block: 7rem 4rem;
   }
-  
+
   .rrc-cinematic-hero__panel-wrap {
-    justify-self: flex-end;
-    align-self: flex-end;
+    justify-self: end;
     margin-bottom: 2rem;
   }
-  
 }
 
-/* --------------------------------------------------------------------------
-   9. TABLET (640px – 1023px)
-   -------------------------------------------------------------------------- */
 @media (min-width: 640px) and (max-width: 1023px) {
   .rrc-cinematic-hero__content {
-    grid-template-columns: 1fr;
-    align-items: flex-start;
+    align-items: start;
   }
-  
+
   .rrc-cinematic-hero__persistent {
     margin-top: 2rem;
   }
-  
+
   .rrc-cinematic-hero__panel-wrap {
-    align-self: flex-end;
+    justify-self: end;
     max-width: 100%;
   }
 }
 
-/* --------------------------------------------------------------------------
-   10. MOBILE (< 640px)
-   -------------------------------------------------------------------------- */
 @media (max-width: 639px) {
   .rrc-cinematic-hero__content {
-    padding-block: 5rem 2rem;
     gap: 1.5rem;
+    padding-block: 5rem 2rem;
   }
 
   .rrc-cinematic-hero__persistent {
     margin-top: 1rem;
   }
-  
+
   .rrc-cinematic-hero__title {
     font-size: clamp(1.75rem, 7vw, 2.2rem);
   }
 
   .rrc-cinematic-hero__panel {
     padding: 1.15rem;
-    background: rgba(14, 28, 47, 0.65); /* slightly darker for mobile readability */
+    background: rgba(14, 28, 47, 0.7);
   }
 
   .rrc-cinematic-hero__ctas {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .rrc-cinematic-hero__ctas .rrc-btn {
     width: 100%;
     text-align: center;
     justify-content: center;
   }
+
+  .rrc-cinematic-hero__indicator {
+    bottom: 0.5rem;
+  }
 }
 
-/* --------------------------------------------------------------------------
-   11. ACCESSIBILITY — prefers-reduced-motion
-   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .rrc-cinematic-hero__video-wrapper {
     transition: none;
   }
-  
-  .rrc-cinematic-hero__video-wrapper.is-active {
-    opacity: 1;
-  }
-  .rrc-cinematic-hero__video-wrapper:not(.is-active) {
-    opacity: 0;
-  }
 }
 
-/* Prevent horizontal overflow */
 .rrc-cinematic-hero *,
 .rrc-cinematic-hero *::before,
 .rrc-cinematic-hero *::after {
-  max-width: 100%;
   box-sizing: border-box;
+  max-width: 100%;
 }

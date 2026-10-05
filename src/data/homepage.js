@@ -18,6 +18,7 @@ export const hero = {
   scenes: [
     {
       id: "aspirant",
+      number: "01",
       title: "LAW ASPIRANT",
       headline: "BUILD YOUR FOUNDATION",
       tags: "CLAT • AILET • ENTRANCE PREPARATION",
@@ -27,6 +28,7 @@ export const hero = {
     },
     {
       id: "student",
+      number: "02",
       title: "LAW STUDENT",
       headline: "LEARN BEYOND THE CLASSROOM",
       tags: "MOOT COURT • CASE ANALYSIS • LEGAL RESEARCH",
@@ -36,6 +38,7 @@ export const hero = {
     },
     {
       id: "professional",
+      number: "03",
       title: "LEGAL PROFESSIONAL",
       headline: "BUILD YOUR LEGAL CAREER",
       tags: "ADVOCACY • SPECIALIZATION • PROFESSIONAL SKILLS",
