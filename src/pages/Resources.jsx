@@ -8,6 +8,7 @@ import ResourceCard from '../components/ResourceCard';
 import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
+import { prospectusDownload, studyResourceDownloads } from '../data/resourcesData';
 import resourcesHeroImage from '../assets/resourses_hero.jpg';
 import './Resources.css';
 
@@ -110,6 +111,71 @@ export default function Resources() {
             </div>
           </div>
           <div className="rrc-resources-hero__visual"><ResourceHeroVisual /></div>
+        </div>
+      </section>
+
+      <section className="rrc-section" aria-label="Available PDFs and prospectus">
+        <div className="rrc-container">
+          <SectionHeader eyebrow="Downloadable Resources" title="Available PDF Resources" description="Use the sample papers and prospectus below as reference material for law entrance preparation and academy information." />
+          <div className="rrc-resources-download-grid">
+            {studyResourceDownloads.map((resource) => (
+              <article className="rrc-card rrc-resources-download-card" key={resource.file}>
+                <div className="rrc-resources-download-card__meta">
+                  <span className="rrc-badge">{resource.category}</span>
+                  <span className="rrc-resources-download-card__type">{resource.type}</span>
+                </div>
+                <h3 className="rrc-card__title">{resource.title}</h3>
+                <p className="rrc-card__text">{resource.description}</p>
+                <div className="rrc-resources-download-card__actions">
+                  <a
+                    className="rrc-btn rrc-btn--primary rrc-resources-download-card__action"
+                    href={resource.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${resource.title}`}
+                  >
+                    View PDF
+                  </a>
+                  <a
+                    className="rrc-btn rrc-btn--secondary rrc-resources-download-card__action"
+                    href={resource.file}
+                    download={resource.downloadName}
+                    aria-label={`Download ${resource.title}`}
+                  >
+                    Download PDF
+                  </a>
+                </div>
+              </article>
+            ))}
+
+            <article className="rrc-card rrc-resources-download-card rrc-resources-download-card--prospectus" key={prospectusDownload.file}>
+              <div className="rrc-resources-download-card__meta">
+                <span className="rrc-badge">{prospectusDownload.category}</span>
+                <span className="rrc-resources-download-card__type">{prospectusDownload.type}</span>
+              </div>
+              <h3 className="rrc-card__title">{prospectusDownload.title}</h3>
+              <p className="rrc-card__text">{prospectusDownload.description}</p>
+              <div className="rrc-resources-download-card__actions">
+                <a
+                  className="rrc-btn rrc-btn--primary rrc-resources-download-card__action"
+                  href={prospectusDownload.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${prospectusDownload.title}`}
+                >
+                  View Prospectus
+                </a>
+                <a
+                  className="rrc-btn rrc-btn--secondary rrc-resources-download-card__action"
+                  href={prospectusDownload.file}
+                  download={prospectusDownload.downloadName}
+                  aria-label={`Download ${prospectusDownload.title}`}
+                >
+                  Download Prospectus
+                </a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

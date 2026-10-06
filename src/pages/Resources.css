@@ -21,6 +21,16 @@
 .rrc-resources-category-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .rrc-resources-category-grid > * { min-width: 0; height: 100%; }
 
+.rrc-resources-download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.rrc-resources-download-card { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+.rrc-resources-download-card__meta { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; }
+.rrc-resources-download-card__type { color: var(--rrc-gold); font-size: var(--rrc-caption); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.rrc-resources-download-card .rrc-card__title { margin-bottom: 0.75rem; }
+.rrc-resources-download-card .rrc-card__text { flex: 1; margin-bottom: 1.25rem; }
+.rrc-resources-download-card__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.rrc-resources-download-card__action { min-height: 44px; justify-content: center; }
+.rrc-resources-download-card--prospectus { border-color: rgba(119, 90, 25, 0.35); }
+
 .rrc-resources-current { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr); gap: 1.5rem clamp(2rem, 6vw, 5rem); }
 .rrc-resources-current__copy { max-width: 42rem; }
 .rrc-resources-current__copy .rrc-section-head { margin-bottom: 1rem; }
@@ -121,6 +131,7 @@
   .rrc-resources-hero__title { font-size: clamp(2rem, 9.6vw, 2.65rem); }
   .rrc-resources-hero__actions { align-items: stretch; }
   .rrc-resources-hero__actions .rrc-btn { width: 100%; white-space: normal; text-align: center; }
+  .rrc-resources-download-grid,
   .rrc-resources-category-grid,
   .rrc-resources-reading-grid,
   .rrc-resources-reading-approach ol,
