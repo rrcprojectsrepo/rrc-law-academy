@@ -14,6 +14,7 @@ import {
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
 import { COURSE_OPTIONS, validateForm } from './registrationValidation';
+import registrationHeroImage from '../assets/rrc-law-academy-home-hero.png';
 import './Registration.css';
 
 const INTRO_CARDS = [
@@ -63,19 +64,16 @@ function getInitialForm(search) {
 
 function RegistrationHeroVisual() {
   return (
-    <svg className="rrc-registration-visual" viewBox="0 0 640 500" role="img" aria-labelledby="rrc-registration-visual-title">
-      <title id="rrc-registration-visual-title">A study pathway leading from an enquiry document toward learning options</title>
-      <rect x="12" y="12" width="616" height="476" rx="28" fill="#0e1c2f" />
-      <path d="M152 102h220l74 74v215H152z" fill="#f9f9ff" stroke="#fed488" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M372 102v78h74" fill="#d8e3fb" stroke="#775a19" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M194 218h174M194 250h206M194 282h152" stroke="#aebbd0" strokeWidth="7" strokeLinecap="round" />
-      <circle cx="218" cy="337" r="16" fill="#775a19" />
-      <path d="M210 337h16M218 329v16" stroke="#fed488" strokeWidth="3" strokeLinecap="round" />
-      <path d="M390 350h93v-63M483 287v-41" fill="none" stroke="#fed488" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="483" cy="225" r="20" fill="#fed488" />
-      <circle cx="483" cy="225" r="38" fill="none" stroke="#fed488" strokeOpacity=".45" strokeWidth="2" />
-      <path d="M80 436h480" stroke="#d8e3fb" strokeOpacity=".4" strokeWidth="3" />
-    </svg>
+    <img
+      className="rrc-registration-visual"
+      src={registrationHeroImage}
+      alt="Law entrance preparation students collaborating with study materials and laptops in the academy library"
+      width="1448"
+      height="1086"
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+    />
   );
 }
 

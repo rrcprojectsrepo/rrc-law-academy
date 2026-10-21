@@ -5,7 +5,15 @@
 .rrc-registration-hero__title { max-width: 14ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
 .rrc-registration-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
 .rrc-registration-hero__visual { min-width: 0; }
-.rrc-registration-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+.rrc-registration-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--rrc-radius-lg);
+  object-fit: cover;
+  object-position: center;
+  filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16));
+}
 
 .rrc-registration-intro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .rrc-registration-intro-grid .rrc-feature-card { min-width: 0; height: 100%; }

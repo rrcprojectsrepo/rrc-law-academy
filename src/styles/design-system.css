@@ -46,7 +46,7 @@
   --rrc-space-5: 1.25rem;
   --rrc-space-6: 1.5rem;
   --rrc-space-8: 2rem;
-  --rrc-section-y: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  --rrc-section-y: clamp(2.25rem, 1.5rem + 2vw, 3.5rem);
   --rrc-container-max: 1200px;
   --rrc-container-px: 1.5rem;
 
