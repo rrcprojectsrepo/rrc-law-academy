@@ -7,6 +7,7 @@ const QUICK_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Why RRC', to: '/why-rrc' },
+  { label: 'Law Colleges', to: '/law-colleges' },
   { label: 'Career in Law', to: '/career-in-law' },
   { label: 'Study Resources', to: '/resources' },
   { label: 'FAQ', to: '/faq' },

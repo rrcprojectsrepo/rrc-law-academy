@@ -1,0 +1,52 @@
+.rrc-colleges-hero {
+  background-color: var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  padding-block: clamp(2.5rem, 1.8rem + 2.5vw, 4rem);
+}
+
+.rrc-colleges-hero__inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 820px;
+}
+
+.rrc-colleges-hero__title {
+  margin: 0 0 var(--rrc-space-3);
+  color: var(--rrc-navy);
+}
+
+.rrc-colleges-hero__desc {
+  margin-bottom: var(--rrc-space-5);
+}
+
+.rrc-colleges-hero__actions {
+  margin-top: var(--rrc-space-2);
+}
+
+.rrc-colleges-empty {
+  text-align: center;
+  padding: clamp(3rem, 2rem + 3vw, 4.5rem) var(--rrc-space-6);
+  background-color: var(--rrc-surface-light);
+  border: 1px dashed var(--rrc-border-navy);
+  margin-block: var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rrc-colleges-empty__title {
+  margin: var(--rrc-space-3) 0 var(--rrc-space-2);
+  color: var(--rrc-navy);
+}
+
+.rrc-colleges-empty__desc {
+  max-width: 50ch;
+  margin-inline: auto;
+  margin-bottom: var(--rrc-space-5);
+  font-size: 1rem;
+}
+
+.rrc-colleges-empty__actions {
+  display: flex;
+  justify-content: center;
+}

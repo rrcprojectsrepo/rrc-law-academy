@@ -23,6 +23,7 @@ const NAV_ITEMS = [
   { label: 'About', to: '/about' },
   { label: 'Courses', to: '/courses' },
   { label: 'Programs', to: '/programs/foundation' },
+  { label: 'Colleges', to: '/law-colleges' },
   { label: 'Why RRC', to: '/why-rrc' },
   { label: 'Career in Law', to: '/career-in-law' },
   { label: 'Resources', to: '/resources' },

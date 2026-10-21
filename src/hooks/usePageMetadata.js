@@ -23,7 +23,8 @@
  */
 
 import { useLayoutEffect } from 'react';
-import { SEO_METADATA } from '../data/seoMetadata';
+import { SEO_METADATA, seo } from '../data/seoMetadata';
+import { getCollegeBySlug } from '../data/collegesData';
 
 const DATA_ATTRIBUTE = 'data-rrc-seo';
 
@@ -73,8 +74,24 @@ function setCanonicalLink(rel, hrefAttr, href) {
 
 export default function usePageMetadata(routeKey) {
   useLayoutEffect(() => {
+    let config = SEO_METADATA[routeKey];
+
+    // Dynamically generate metadata for individual college profile pages.
+    if (!config && routeKey.startsWith('/law-colleges/')) {
+      const slug = routeKey.replace('/law-colleges/', '').replace(/\/$/, '');
+      const college = getCollegeBySlug(slug);
+      if (college) {
+        config = seo({
+          title: `${college.name} — Admission Routes, Courses & Law Entrance Preparation | RRC Law Academy`,
+          description: `Explore admissions, entrance exams, courses, and eligibility for ${college.fullName} (${college.city}, ${college.state}). Prepare for ${college.entranceExams.join(', ')} with RRC Law Academy.`,
+        });
+      }
+    }
+
     // Fall back to the 404 config for any unmatched route.
-    const config = SEO_METADATA[routeKey] ?? SEO_METADATA['*'];
+    if (!config) {
+      config = SEO_METADATA['*'];
+    }
     if (!config) return;
 
     // Single document title.

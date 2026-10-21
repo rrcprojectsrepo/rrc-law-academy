@@ -1,0 +1,134 @@
+.rrc-college-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  padding: var(--rrc-space-6);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-college-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+
+.rrc-college-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--rrc-space-2);
+  margin-bottom: var(--rrc-space-4);
+  padding-bottom: var(--rrc-space-3);
+  border-bottom: 1px solid var(--rrc-surface-light);
+}
+
+.rrc-college-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rrc-space-2);
+}
+
+.rrc-college-card__year {
+  font-size: var(--rrc-caption);
+  font-weight: 600;
+  color: var(--rrc-text-secondary);
+}
+
+.rrc-college-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--rrc-caption);
+  font-weight: 600;
+  color: var(--rrc-gold);
+  white-space: nowrap;
+}
+
+.rrc-college-card__body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rrc-college-card__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.rrc-college-card__title-link {
+  color: var(--rrc-navy);
+  text-decoration: none;
+  transition: color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-college-card__title-link:hover {
+  color: var(--rrc-gold);
+}
+
+.rrc-college-card__fullname {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--rrc-text-secondary);
+  margin: 0 0 var(--rrc-space-3);
+}
+
+.rrc-college-card__tagline {
+  margin-bottom: var(--rrc-space-4);
+  line-height: 1.55;
+}
+
+.rrc-college-card__section {
+  margin-top: var(--rrc-space-3);
+}
+
+.rrc-college-card__section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rrc-navy);
+  margin: 0 0 var(--rrc-space-2);
+}
+
+.rrc-college-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rrc-space-2);
+}
+
+.rrc-college-card__courses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rrc-college-card__course-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--rrc-text);
+}
+
+.rrc-college-card__course-item svg {
+  color: var(--rrc-gold);
+  flex-shrink: 0;
+}
+
+.rrc-college-card__footer {
+  margin-top: var(--rrc-space-5);
+  padding-top: var(--rrc-space-4);
+  border-top: 1px solid var(--rrc-surface-light);
+}
+
+.rrc-college-card__cta {
+  width: 100%;
+  justify-content: center;
+}

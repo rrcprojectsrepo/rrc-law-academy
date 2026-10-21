@@ -18,6 +18,8 @@ import Resources from './pages/Resources';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Registration from './pages/Registration';
+import LawColleges from './pages/LawColleges';
+import CollegeProfile from './pages/CollegeProfile';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
           <Route path="faq" element={<FAQ />} />
           <Route path="contact" element={<Contact />} />
           <Route path="registration" element={<Registration />} />
+          <Route path="law-colleges" element={<LawColleges />} />
+          <Route path="law-colleges/:slug" element={<CollegeProfile />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

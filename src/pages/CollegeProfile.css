@@ -1,0 +1,322 @@
+.rrc-college-profile-hero {
+  background-color: var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  padding-block: clamp(2.5rem, 1.8rem + 2.5vw, 4rem);
+}
+
+.rrc-college-profile-hero__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.rrc-college-profile-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rrc-space-2);
+  margin-bottom: var(--rrc-space-3);
+}
+
+.rrc-college-profile-hero__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  color: var(--rrc-gold);
+}
+
+.rrc-college-profile-hero__title {
+  margin: 0 0 0.5rem;
+  color: var(--rrc-navy);
+}
+
+.rrc-college-profile-hero__fullname {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--rrc-text-secondary);
+  margin: 0 0 var(--rrc-space-3);
+}
+
+.rrc-college-profile-hero__tagline {
+  margin-bottom: var(--rrc-space-5);
+  max-width: 65ch;
+}
+
+.rrc-college-profile-hero__actions {
+  margin-top: var(--rrc-space-2);
+}
+
+/* Quick Facts Strip */
+.rrc-college-facts-strip {
+  background-color: var(--rrc-white);
+  border-bottom: 1px solid var(--rrc-border);
+  padding-block: var(--rrc-space-5);
+}
+
+.rrc-college-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--rrc-space-4);
+}
+
+.rrc-college-fact-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--rrc-space-3) var(--rrc-space-4);
+  background-color: var(--rrc-surface-light);
+  border-radius: var(--rrc-radius-md);
+  border: 1px solid var(--rrc-border);
+}
+
+.rrc-college-fact-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rrc-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.rrc-college-fact-card__value {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+/* About & Highlights */
+.rrc-college-about-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--rrc-space-8);
+  align-items: start;
+}
+
+.rrc-college-about-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--rrc-text);
+  margin: 0;
+}
+
+.rrc-college-highlights-card {
+  background-color: var(--rrc-surface-light);
+  border: 1px solid var(--rrc-border);
+}
+
+.rrc-college-highlights-title {
+  margin-bottom: var(--rrc-space-4);
+}
+
+.rrc-college-highlights-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-3);
+}
+
+.rrc-college-highlights-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--rrc-text);
+}
+
+.rrc-college-highlights-item svg {
+  color: var(--rrc-gold);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* Programmes list */
+.rrc-college-programmes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-5);
+}
+
+.rrc-college-programme-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-4);
+}
+
+.rrc-college-programme-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--rrc-space-4);
+  padding-bottom: var(--rrc-space-3);
+  border-bottom: 1px solid var(--rrc-surface-light);
+}
+
+.rrc-college-programme-card__title {
+  margin: var(--rrc-space-2) 0 0;
+  font-size: 1.35rem;
+}
+
+.rrc-college-programme-card__route {
+  display: flex;
+  align-items: center;
+  gap: var(--rrc-space-2);
+}
+
+.rrc-college-programme-card__route-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--rrc-text-secondary);
+}
+
+.rrc-college-programme-card__details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--rrc-space-4);
+}
+
+.rrc-college-programme-card__meta-item {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.rrc-college-programme-card__meta-item strong {
+  color: var(--rrc-navy);
+  margin-right: 0.35rem;
+}
+
+/* RRC Bridge Box inside Programme Card */
+.rrc-college-programme-card__rrc-bridge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rrc-space-4);
+  padding: var(--rrc-space-4) var(--rrc-space-5);
+  background-color: var(--rrc-card-bg);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-md);
+}
+
+.rrc-college-programme-card__rrc-bridge-text {
+  display: flex;
+  align-items: center;
+  gap: var(--rrc-space-3);
+}
+
+.rrc-college-programme-card__rrc-bridge-text svg {
+  color: var(--rrc-gold);
+  flex-shrink: 0;
+}
+
+.rrc-college-programme-card__rrc-bridge-title {
+  margin: 0 0 0.15rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+  font-size: 0.95rem;
+}
+
+.rrc-college-programme-card__rrc-bridge-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--rrc-text-secondary);
+}
+
+.rrc-college-programme-card__rrc-bridge-btn {
+  flex-shrink: 0;
+}
+
+/* Official Verification Notice Card */
+.rrc-college-verification-card {
+  background-color: var(--rrc-surface-light);
+  border: 1px solid var(--rrc-border);
+  padding: var(--rrc-space-6);
+}
+
+.rrc-college-verification-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--rrc-space-4);
+  margin-bottom: var(--rrc-space-4);
+}
+
+.rrc-college-verification-card__title {
+  margin: 0 0 0.25rem;
+}
+
+.rrc-college-verification-card__timestamp {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--rrc-gold);
+}
+
+.rrc-college-verification-card__text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: var(--rrc-space-4);
+}
+
+.rrc-college-verification-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rrc-space-4);
+  padding-top: var(--rrc-space-3);
+  border-top: 1px solid var(--rrc-border);
+}
+
+.rrc-college-verification-card__source-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.rrc-college-verification-card__source-link:hover {
+  color: var(--rrc-gold);
+}
+
+/* Missing State */
+.rrc-college-missing {
+  text-align: center;
+  padding: clamp(3rem, 2rem + 3vw, 5rem) var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rrc-college-missing .rrc-lead {
+  max-width: 55ch;
+  margin-bottom: var(--rrc-space-5);
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .rrc-college-facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rrc-college-about-grid {
+    grid-template-columns: 1fr;
+  }
+  .rrc-college-programme-card__rrc-bridge {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 639px) {
+  .rrc-college-facts-grid {
+    grid-template-columns: 1fr;
+  }
+  .rrc-college-programme-card__header {
+    flex-direction: column;
+  }
+  .rrc-college-programme-card__details {
+    grid-template-columns: 1fr;
+  }
+  .rrc-college-programme-card__rrc-bridge-btn {
+    width: 100%;
+  }
+}

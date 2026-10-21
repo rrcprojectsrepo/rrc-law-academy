@@ -166,6 +166,12 @@ export const SEO_METADATA = {
       'Submit your details and indicate the course or program you would like to enquire about. CLAT UG, CLAT PG, AILET UG and AILET PG are available as courses.',
   }),
 
+  '/law-colleges': seo({
+    title: 'Explore Law Colleges in India | RRC Law Academy',
+    description:
+      'Explore premier law colleges across India, understand courses, eligibility, and admission routes including CLAT and AILET, and connect with RRC Law Academy preparation.',
+  }),
+
   // Fallback for unmatched routes (404).
   '*': seo({
     title: 'Page Not Found | RRC Law Academy',
