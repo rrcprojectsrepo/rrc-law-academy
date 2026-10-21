@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigationType } from 'react-router-dom';
+import usePageMetadata from '../hooks/usePageMetadata';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AIChatWidget from '../components/ai/AIChatWidget';
@@ -54,6 +55,10 @@ export default function MainLayout() {
   }, [location.key, navigationType]);
 
   useScrollReveal(mainRef, location.pathname);
+
+  // Sync the document head (title, description, canonical, Open Graph,
+  // Twitter/X) with the current route on every navigation.
+  usePageMetadata(location.pathname);
 
   return (
     <div className="rrc-layout">
