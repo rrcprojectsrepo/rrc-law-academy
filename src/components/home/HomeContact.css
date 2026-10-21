@@ -27,6 +27,9 @@
 }
 .rrc-contact__rows dt { color: var(--rrc-text-secondary); }
 .rrc-contact__rows dd { margin: 0; font-weight: 600; color: var(--rrc-navy); }
+.rrc-contact__link { color: inherit; text-underline-offset: 4px; }
+.rrc-contact__link:hover { color: var(--rrc-gold); }
+.rrc-contact__link:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 3px; border-radius: 4px; }
 /* Location map - real keyless Google Maps embed of the confirmed academy address. */
 .rrc-contact__map {
   display: flex;

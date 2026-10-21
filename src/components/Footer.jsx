@@ -21,6 +21,12 @@ const COURSE_LINKS = [
   { label: 'All Courses', to: '/courses' },
 ];
 
+const CONTACT_DETAILS = [
+  { label: 'Phone', display: '97511 82452', href: 'tel:+919751182452' },
+  { label: 'Email', display: 'rrclawacademy@gmail.com', href: 'mailto:rrclawacademy@gmail.com' },
+  { label: 'Address', display: "1st Floor, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001" },
+];
+
 export default function Footer() {
   return (
     <footer className="rrc-footer">
@@ -63,9 +69,16 @@ export default function Footer() {
         <div className="rrc-footer__col">
           <h2 className="rrc-footer__heading">Contact</h2>
           <ul className="rrc-footer__contact">
-            <li>Phone: [TO CONFIRM]</li>
-            <li>Email: [TO CONFIRM]</li>
-            <li>Address: [TO CONFIRM]</li>
+            {CONTACT_DETAILS.map((item) => (
+              <li key={item.label}>
+                {item.label}:{' '}
+                {item.href ? (
+                  <a className="rrc-footer__contact-value" href={item.href}>{item.display}</a>
+                ) : (
+                  item.display
+                )}
+              </li>
+            ))}
           </ul>
           <Link to="/contact" className="rrc-footer__contact-link">
             Go to Contact page <ArrowRight size={16} aria-hidden="true" />

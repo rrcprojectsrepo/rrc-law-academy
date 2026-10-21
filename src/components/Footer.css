@@ -70,6 +70,16 @@
   color: var(--rrc-text-muted-on-navy);
 }
 
+.rrc-footer__contact-value {
+  color: var(--rrc-white);
+  text-underline-offset: 4px;
+}
+
+.rrc-footer__contact-value:hover {
+  color: var(--rrc-gold-bright);
+  text-decoration: underline;
+}
+
 .rrc-footer__contact-link {
   display: inline-flex;
   align-items: center;

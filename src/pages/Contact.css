@@ -28,6 +28,9 @@
 .rrc-contact-info-card .rrc-icon-badge { display: flex; }
 .rrc-contact-info-card .rrc-card__title { margin-bottom: 0.5rem; }
 .rrc-contact-info-card .rrc-card__text { overflow-wrap: anywhere; font-weight: 600; color: var(--rrc-navy); }
+.rrc-contact-info-link { color: inherit; text-underline-offset: 4px; }
+.rrc-contact-info-link:hover { color: var(--rrc-gold); }
+.rrc-contact-info-link:focus-visible { outline: 3px solid var(--rrc-gold); outline-offset: 3px; border-radius: 4px; }
 .rrc-contact-location__directions { margin-top: 0.75rem; }
 .rrc-contact-info-link { margin-top: 1rem; }
 

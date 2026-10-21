@@ -32,7 +32,7 @@ const ENQUIRY_DETAILS = [
   'Question or message',
 ];
 
-const ACADEMY_ADDRESS = "No 82/6B, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001";
+const ACADEMY_ADDRESS = "1st Floor, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001";
 const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(ACADEMY_ADDRESS)}&output=embed`;
 const MAP_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(ACADEMY_ADDRESS)}`;
 
@@ -44,8 +44,8 @@ const CONTACT_FAQS = [
 ];
 
 const CONTACT_INFORMATION = [
-  { icon: 'support_agent', label: 'Phone', value: '+91 9751 1824 52' },
-  { icon: 'edit_document', label: 'Email', value: contactData?.counsellor?.email ?? '[TO CONFIRM]' },
+  { icon: 'support_agent', label: 'Phone', value: '97511 82452', href: 'tel:+919751182452' },
+  { icon: 'edit_document', label: 'Email', value: 'rrclawacademy@gmail.com', href: 'mailto:rrclawacademy@gmail.com' },
   { icon: 'public', label: 'Location', value: ACADEMY_ADDRESS },
   { icon: 'timer', label: 'Availability', value: contactData?.counsellor?.hours ?? '[TO CONFIRM]' },
 ];
@@ -109,7 +109,13 @@ export default function Contact() {
               <article className="rrc-card rrc-contact-info-card" key={item.label}>
                 <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name={item.icon} size={20} /></span>
                 <h3 className="rrc-card__title">{item.label}</h3>
-                <p className="rrc-card__text">{item.value}</p>
+                {item.href ? (
+                  <p className="rrc-card__text">
+                    <a className="rrc-contact-info-link" href={item.href}>{item.value}</a>
+                  </p>
+                ) : (
+                  <p className="rrc-card__text">{item.value}</p>
+                )}
                 {item.label === 'Location' ? (
                   <Button href={MAP_DIRECTIONS_URL} external variant="navy" className="rrc-contact-location__directions">
                     Get Directions

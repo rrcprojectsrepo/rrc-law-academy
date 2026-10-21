@@ -4,11 +4,11 @@ import Button from '../Button';
 import { contact } from '../../data/homepage';
 import './HomeContact.css';
 
-// Section 16 — Contact / Visit. Counsellor details stay [TO CONFIRM];
+// Section 16 — Contact / Visit. Phone + email are official; hours stay [TO CONFIRM];
 // enquiry is a CTA pair to /contact + /registration (no fake form submit).
-// The location block is a real keyless Google Maps embed of the confirmed address.
+// The location block is a real keyless Google Maps embed of the official address.
 const ACADEMY_ADDRESS =
-  "No 82/6B, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001";
+  "1st Floor, Deen Complex, Mary's Corner, Parisutham Nagar, Thanjavur, Tamil Nadu 613001";
 const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(ACADEMY_ADDRESS)}&output=embed`;
 const MAP_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(ACADEMY_ADDRESS)}`;
 
@@ -30,11 +30,15 @@ export default function HomeContact() {
               <dl className="rrc-contact__rows">
                 <div>
                   <dt>Phone</dt>
-                  <dd>{contact.counsellor.phone}</dd>
+                  <dd>
+                    <a className="rrc-contact__link" href="tel:+919751182452">{contact.counsellor.phone}</a>
+                  </dd>
                 </div>
                 <div>
                   <dt>Email</dt>
-                  <dd>{contact.counsellor.email}</dd>
+                  <dd>
+                    <a className="rrc-contact__link" href="mailto:rrclawacademy@gmail.com">{contact.counsellor.email}</a>
+                  </dd>
                 </div>
                 <div>
                   <dt>Hours</dt>

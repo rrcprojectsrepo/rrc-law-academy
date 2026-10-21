@@ -167,7 +167,7 @@ export const contact = {
   eyebrow: 'Get In Touch',
   title: "Let's Plan Your Legal Learning Journey",
   text: 'Share your details and our counsellor will guide you.',
-  counsellor: { title: 'Talk to a Counsellor', text: 'Speak with our counsellor for selection and schedules.', phone: '[TO CONFIRM]', email: '[TO CONFIRM]', hours: '[TO CONFIRM]' },
+  counsellor: { title: 'Talk to a Counsellor', text: 'Speak with our counsellor for selection and schedules.', phone: '97511 82452', email: 'rrclawacademy@gmail.com', hours: '[TO CONFIRM]' },
   formTitle: 'Send an Enquiry',
   formText: 'Fill in your details and preferred programme.',
   targetExams: ['CLAT UG', 'CLAT PG', 'AILET UG', 'AILET PG', 'Foundation', 'Not Sure Yet'],
