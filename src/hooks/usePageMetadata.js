@@ -11,8 +11,9 @@
  *
  * Every managed tag carries the `data-rrc-seo` attribute. When the route
  * changes the hook first *updates* any existing matching element (so there is
- * never more than one effective instance of each tag), and only creates a new
- * element if none is present.
+ * never more than one effective instance of each tag), adopts existing unmanaged
+ * tags (e.g. from index.html) to prevent duplication, and ensures only one
+ * accurate instance is present.
  *
  * @param {string} routeKey - React Router `location.pathname` value, or `'*'`
  *                            for unmatched routes.
@@ -28,12 +29,6 @@ import { getCollegeBySlug } from '../data/collegesData';
 
 const DATA_ATTRIBUTE = 'data-rrc-seo';
 
-function getManagedElement(tag, attribute, value) {
-  return document.head.querySelector(
-    `${tag}[${attribute}="${escapeAttribute(value)}"][${DATA_ATTRIBUTE}]`
-  );
-}
-
 function escapeAttribute(value) {
   return String(value).replace(/"/g, '&quot;');
 }
@@ -43,42 +38,74 @@ function setMeta(attribute, value, content) {
     return;
   }
 
-  const existing = getManagedElement('meta', attribute, value);
-  if (existing) {
-    existing.setAttribute('content', content);
-    return;
+  // Find all existing tags matching attribute and value (managed or unmanaged)
+  const allMatching = Array.from(
+    document.head.querySelectorAll(`meta[${attribute}="${escapeAttribute(value)}"]`)
+  );
+
+  let target = allMatching.find((el) => el.hasAttribute(DATA_ATTRIBUTE)) || allMatching[0];
+
+  if (!target) {
+    target = document.createElement('meta');
+    target.setAttribute(DATA_ATTRIBUTE, '1');
+    target.setAttribute(attribute, value);
+    document.head.appendChild(target);
+  } else {
+    target.setAttribute(DATA_ATTRIBUTE, '1');
   }
 
-  const el = document.createElement('meta');
-  el.setAttribute(DATA_ATTRIBUTE, '1');
-  el.setAttribute(attribute, value);
-  el.setAttribute('content', content);
-  document.head.appendChild(el);
+  target.setAttribute('content', content);
+
+  // Remove any duplicate matching elements so only one meta description/tag exists
+  for (const el of allMatching) {
+    if (el !== target) {
+      el.remove();
+    }
+  }
 }
 
 function setCanonicalLink(rel, hrefAttr, href) {
-  if (!href) return;
+  const existing = Array.from(
+    document.head.querySelectorAll(`link[rel="${escapeAttribute(rel)}"]`)
+  );
 
-  const existing = getManagedElement('link', 'rel', rel);
-  if (existing) {
-    existing.setAttribute(hrefAttr, href);
+  if (!href) {
+    // If no verified canonical URL is provided, remove any existing canonical tag
+    for (const el of existing) {
+      el.remove();
+    }
     return;
   }
 
-  const el = document.createElement('link');
-  el.setAttribute(DATA_ATTRIBUTE, '1');
-  el.setAttribute('rel', rel);
-  el.setAttribute(hrefAttr, href);
-  document.head.appendChild(el);
+  let target = existing.find((el) => el.hasAttribute(DATA_ATTRIBUTE)) || existing[0];
+
+  if (!target) {
+    target = document.createElement('link');
+    target.setAttribute(DATA_ATTRIBUTE, '1');
+    target.setAttribute('rel', rel);
+    document.head.appendChild(target);
+  } else {
+    target.setAttribute(DATA_ATTRIBUTE, '1');
+  }
+
+  target.setAttribute(hrefAttr, href);
+
+  for (const el of existing) {
+    if (el !== target) {
+      el.remove();
+    }
+  }
 }
 
 export default function usePageMetadata(routeKey) {
   useLayoutEffect(() => {
-    let config = SEO_METADATA[routeKey];
+    const normalizedKey =
+      routeKey && routeKey !== '/' ? routeKey.replace(/\/+$/, '') : (routeKey || '/');
+    let config = SEO_METADATA[normalizedKey] || SEO_METADATA[routeKey];
 
     // Dynamically generate metadata for individual college profile pages.
-    if (!config && routeKey.startsWith('/law-colleges/')) {
-      const slug = routeKey.replace('/law-colleges/', '').replace(/\/$/, '');
+    if (!config && normalizedKey.startsWith('/law-colleges/')) {
+      const slug = normalizedKey.replace('/law-colleges/', '').replace(/\/$/, '');
       const college = getCollegeBySlug(slug);
       if (college) {
         config = seo({
@@ -102,7 +129,9 @@ export default function usePageMetadata(routeKey) {
 
     // Canonical link (only when a verified base URL is available).
     if (config.canonical) {
-      setCanonicalLink('rel', 'href', config.canonical);
+      setCanonicalLink('canonical', 'href', config.canonical);
+    } else {
+      setCanonicalLink('canonical', 'href', null);
     }
 
     // Open Graph.
@@ -123,4 +152,3 @@ export default function usePageMetadata(routeKey) {
     }
   }, [routeKey]);
 }
-

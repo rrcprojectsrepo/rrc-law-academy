@@ -2,6 +2,7 @@
 .rrc-course-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--rrc-white);
   border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
@@ -29,7 +30,12 @@
 .rrc-course-card:hover .rrc-course-card__image {
   transform: scale(1.03);
 }
-.rrc-course-card__body { padding: var(--rrc-space-6); }
+.rrc-course-card__body {
+  padding: var(--rrc-space-6);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
 .rrc-course-card__top {
   display: flex;
   align-items: center;
@@ -54,6 +60,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  margin-top: auto;
 }
 .rrc-course-card__points li {
   display: flex;
@@ -63,4 +70,7 @@
   color: var(--rrc-text);
 }
 .rrc-course-card__points svg { color: var(--rrc-gold); flex: none; margin-top: 2px; }
-.rrc-course-card__foot { padding: 0 var(--rrc-space-6) var(--rrc-space-6); margin-top: auto; }
+.rrc-course-card__foot {
+  padding: 0 var(--rrc-space-6) var(--rrc-space-6);
+  margin-top: 1.25rem;
+}

@@ -7,6 +7,7 @@ import {
   Briefcase,
   CheckCircle2,
   Compass,
+  ExternalLink,
   FileText,
   Gavel,
   Globe,
@@ -65,6 +66,7 @@ const MAP = {
   check_circle: CheckCircle2,
   person: Users,
   trending_up: TrendingUp,
+  open_in_new: ExternalLink,
 };
 
 export default function RrcIcon({ name, size = 20, ...rest }) {

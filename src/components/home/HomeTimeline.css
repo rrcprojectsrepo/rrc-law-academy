@@ -1,4 +1,11 @@
-/* Timeline — vertical rail with icon markers; single column on mobile, no overflow. */
+/* ============================================================================
+   Student Learning Journey Timeline Component
+   Semantic <ol> timeline with continuous connecting line, centered markers,
+   and mathematically aligned cards across desktop, tablet, and mobile.
+   Brand palette: Navy (#0e1c2f), Gold (#775a19 / #fed488), White (#ffffff).
+   ============================================================================ */
+
+/* Base Timeline (<ol>) — Mobile single-column vertical timeline */
 .rrc-timeline {
   list-style: none;
   margin: 0;
@@ -7,7 +14,10 @@
   gap: 1.25rem;
   grid-template-columns: 1fr;
   position: relative;
+  width: 100%;
 }
+
+/* Timeline Item (<li>) — Mobile default: marker rail on left, card on right */
 .rrc-timeline__item {
   display: grid;
   grid-template-columns: 2.75rem 1fr;
@@ -15,6 +25,17 @@
   align-items: start;
   position: relative;
 }
+
+/* Marker Wrapper: centers marker or aligns with vertical rail */
+.rrc-timeline__marker-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Circular Icon Marker */
 .rrc-timeline__marker {
   display: inline-flex;
   align-items: center;
@@ -24,43 +45,211 @@
   border-radius: 50%;
   background: var(--rrc-navy);
   color: var(--rrc-gold-bright);
+  border: 2px solid rgba(254, 212, 136, 0.28);
+  box-shadow: 0 4px 12px rgba(14, 28, 47, 0.16);
   flex: none;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  transition: transform var(--rrc-duration) var(--rrc-ease),
+              border-color var(--rrc-duration) var(--rrc-ease),
+              box-shadow var(--rrc-duration) var(--rrc-ease);
 }
+
+/* Mobile Connecting Line: vertical line through center of markers */
 .rrc-timeline__item:not(:last-child)::before {
   content: '';
   position: absolute;
   left: 1.375rem;
-  top: 3rem;
-  bottom: -1.25rem;
+  transform: translateX(-50%);
+  top: 2.75rem;
+  bottom: -1.35rem;
   width: 2px;
   background: var(--rrc-border);
+  z-index: 1;
 }
+
+/* Timeline Card (<article>) */
 .rrc-timeline__card {
   background: var(--rrc-white);
   border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
   box-shadow: var(--rrc-shadow-card);
   padding: var(--rrc-space-5) var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform var(--rrc-duration) var(--rrc-ease),
+              box-shadow var(--rrc-duration) var(--rrc-ease),
+              border-color var(--rrc-duration) var(--rrc-ease);
 }
+
+/* Step Label ("Phase 1", etc.) */
 .rrc-timeline__step {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.35rem;
   font-size: var(--rrc-caption);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--rrc-gold);
 }
-@media (min-width: 1024px) {
-  .rrc-timeline { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-  .rrc-timeline__item { grid-template-columns: 1fr; }
+
+/* Card Title */
+.rrc-timeline__card .rrc-card__title {
+  font-family: var(--rrc-font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--rrc-navy);
+  margin: 0 0 0.5rem;
+}
+
+/* Card Text */
+.rrc-timeline__card .rrc-card__text {
+  font-family: var(--rrc-font-body);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+  color: var(--rrc-text-secondary);
+  margin: 0;
+}
+
+/* Interactive Hover States */
+@media (hover: hover) and (pointer: fine) {
+  .rrc-timeline__item:hover .rrc-timeline__marker {
+    transform: translateY(-2px) scale(1.05);
+    border-color: var(--rrc-gold-bright);
+    box-shadow: 0 6px 16px rgba(14, 28, 47, 0.22);
+  }
+
+  .rrc-timeline__item:hover .rrc-timeline__card {
+    transform: translateY(-3px);
+    box-shadow: var(--rrc-shadow-card-hover);
+    border-color: rgba(119, 90, 25, 0.35);
+  }
+}
+
+/* ============================================================================
+   Tablet Breakpoint (640px to 1023px) — Balanced 2-Column Progression
+   ============================================================================ */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .rrc-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+    align-items: stretch;
+  }
+
+  .rrc-timeline__item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  .rrc-timeline__marker-wrap {
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+
+  .rrc-timeline__card {
+    flex: 1;
+    height: 100%;
+  }
+
+  .rrc-timeline__card .rrc-card__title {
+    min-height: 2.7em;
+  }
+
+  /* Reset mobile vertical connector */
   .rrc-timeline__item:not(:last-child)::before {
-    left: 1.375rem;
-    right: -1.5rem;
+    display: none;
+  }
+
+  /* Horizontal connector between Phase 1 and Phase 2 (Row 1) */
+  .rrc-timeline__item:nth-child(1)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 1.5rem);
+    top: 1.375rem;
+    transform: translateY(-50%);
+    height: 2px;
+    background: var(--rrc-border);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Horizontal connector between Phase 3 and Phase 4 (Row 2) */
+  .rrc-timeline__item:nth-child(3)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 1.5rem);
+    top: 1.375rem;
+    transform: translateY(-50%);
+    height: 2px;
+    background: var(--rrc-border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+/* ============================================================================
+   Desktop Breakpoint (>= 1024px) — 4-Column Aligned Horizontal Progression
+   ============================================================================ */
+@media (min-width: 1024px) {
+  .rrc-timeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .rrc-timeline__item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    position: relative;
+  }
+
+  .rrc-timeline__marker-wrap {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+
+  .rrc-timeline__card {
+    flex: 1;
+    height: 100%;
+  }
+
+  /* Harmonize title block height so all 4 descriptions start at identical vertical baseline */
+  .rrc-timeline__card .rrc-card__title {
+    min-height: 2.8em;
+  }
+
+  /* Continuous horizontal line passing through geometric centers of markers 1 -> 2 -> 3 -> 4 */
+  .rrc-timeline__item:not(:last-child)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 1.5rem);
     top: 1.375rem;
     bottom: auto;
-    width: auto;
+    transform: translateY(-50%);
     height: 2px;
+    background: var(--rrc-border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .rrc-timeline__marker,
+  .rrc-timeline__card {
+    transition: none !important;
+    transform: none !important;
   }
 }

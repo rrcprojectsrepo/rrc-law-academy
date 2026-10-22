@@ -46,7 +46,7 @@
   --rrc-space-5: 1.25rem;
   --rrc-space-6: 1.5rem;
   --rrc-space-8: 2rem;
-  --rrc-section-y: clamp(2.25rem, 1.5rem + 2vw, 3.5rem);
+  --rrc-section-y: clamp(2rem, 1.5rem + 1.2vw, 2.75rem);
   --rrc-container-max: 1200px;
   --rrc-container-px: 1.5rem;
 
@@ -291,6 +291,7 @@ img { max-width: 100%; height: auto; display: block; }
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.rrc-anim-fade-up { animation: rrc-fade-up 480ms var(--rrc-ease) both; }
 .rrc-main { animation: rrc-page-enter 480ms var(--rrc-ease) both; }
 @keyframes rrc-page-enter {
   from { opacity: 0; transform: translateY(12px); }
@@ -300,9 +301,28 @@ img { max-width: 100%; height: auto; display: block; }
   from { opacity: 0; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
 }
-.rrc-anim-fade-up { animation: rrc-fade-up var(--rrc-duration-slow) var(--rrc-ease) both; }
-.rrc-main section[data-rrc-reveal='pending'] { opacity: 0; transform: translateY(20px); }
-.rrc-main section[data-rrc-reveal='visible'] { opacity: 1; transform: translateY(0); transition: opacity 480ms var(--rrc-ease), transform 480ms var(--rrc-ease); }
+@keyframes rrc-reveal-fallback {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.rrc-main section[data-rrc-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: rrc-reveal-fallback 400ms ease 1.5s forwards;
+}
+.rrc-main section[data-rrc-reveal='visible'] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 360ms var(--rrc-ease), transform 360ms var(--rrc-ease);
+}
+@media print {
+  .rrc-main section[data-rrc-reveal='pending'],
+  .rrc-main section[data-rrc-reveal='visible'] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
 .rrc-main section[data-rrc-reveal='visible'] .rrc-cta__actions { animation: rrc-fade-up 420ms var(--rrc-ease) 120ms both; }
 .rrc-main section[data-rrc-reveal='visible'] .rrc-section-head > * { animation: rrc-fade-up 420ms var(--rrc-ease) both; }
 .rrc-main section[data-rrc-reveal='visible'] .rrc-section-head > *:nth-child(2) { animation-delay: 60ms; }

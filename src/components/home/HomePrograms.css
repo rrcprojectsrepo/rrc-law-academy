@@ -1,0 +1,46 @@
+/* ============================================================================
+   Programmes Section (Home)
+   Responsive 4-col desktop, 2-col tablet, 1-col mobile grid.
+   Brand palette: Navy (#0e1c2f), Gold (#775a19 / #fed488), White (#ffffff).
+   ============================================================================ */
+
+.rrc-programs-section {
+  position: relative;
+}
+
+.rrc-programs__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.rrc-programs__motion-item {
+  display: flex;
+  height: 100%;
+}
+
+.rrc-programs__motion-item > .rrc-program-card {
+  width: 100%;
+}
+
+/* Tablet (640px to 1023px): 2 balanced columns */
+@media (min-width: 640px) {
+  .rrc-programs__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Desktop (>= 1024px): 4 balanced columns */
+@media (min-width: 1024px) {
+  .rrc-programs__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Harmonize title block height across cards in same row */
+  .rrc-programs__grid .rrc-card__title {
+    min-height: 2.8em;
+  }
+}

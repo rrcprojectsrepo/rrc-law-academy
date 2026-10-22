@@ -39,30 +39,34 @@ export const programs = [
   {
     id: 'foundation',
     title: 'Foundation Program',
-    description: 'Build strong fundamentals and disciplined study habits from an early academic stage.',
+    description: 'Build strong fundamentals, conceptual clarity, and disciplined study habits from an early stage.',
     icon: 'layers',
     link: '/programs/foundation',
+    action: 'Explore Foundation',
   },
   {
     id: 'intensive-revision',
     title: 'Intensive Revision',
-    description: 'Focused revision and high-yield examination preparation for upcoming entrance dates.',
+    description: 'High-yield syllabus review, core concept consolidation, and targeted drills for entrance dates.',
     icon: 'update',
     link: '/programs/intensive-revision',
+    action: 'View Revision Programme',
   },
   {
     id: 'mock-test',
     title: 'Mock Test Program',
-    description: 'Timed practice and rigorous performance review to master sectional speed and pacing.',
+    description: 'Full-length timed simulations and sectional analytics to master pacing, accuracy, and exam temperament.',
     icon: 'fact_check',
     link: '/programs/mock-test',
+    action: 'Explore Test Series',
   },
   {
     id: 'current-affairs',
     title: 'Current Affairs & GK',
-    description: 'Regular awareness and comprehensive knowledge development tailored to legal examinations.',
+    description: 'Curated legal updates, national developments, and monthly compendiums tailored to entrance syllabi.',
     icon: 'public',
     link: '/programs/current-affairs',
+    action: 'Explore Current Affairs',
   },
 ];
 

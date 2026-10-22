@@ -2,7 +2,7 @@ import Button from './Button';
 import RrcIcon from './RrcIcon';
 import './CourseCard.css';
 
-// Reusable course card driven by src/data/courses.js.
+// Reusable course card driven by src/data/courses.js / coursePages.js.
 // badgeVariant: light (pale blue) | navy (dark navy + bright gold text).
 export default function CourseCard({ course, linkLabel }) {
   if (!course) return null;
@@ -25,8 +25,11 @@ export default function CourseCard({ course, linkLabel }) {
           <img
             className="rrc-course-card__image"
             src={image}
-            alt={course.imageAlt || `${title} students preparing for law entrance examinations`}
+            alt={course.imageAlt || course.heroImageAlt || `${title} candidates preparing for law entrance examinations`}
+            width="1280"
+            height="800"
             loading="lazy"
+            decoding="async"
           />
         </div>
       ) : null}
@@ -62,4 +65,3 @@ export default function CourseCard({ course, linkLabel }) {
     </article>
   );
 }
-

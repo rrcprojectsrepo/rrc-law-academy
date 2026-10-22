@@ -16,6 +16,7 @@ export default function CourseStudentJourney({ course }) {
           eyebrow="Student Journey"
           title={`Your Path Through ${course.title}`}
           description="A phased route from first principles to final exam readiness."
+          align="left"
         />
         <ol className="rrc-course-journey__list rrc-stagger">
           {course.studentJourney.map((phase) => (

@@ -3,7 +3,7 @@ import RrcIcon from '../RrcIcon';
 import { testimonials } from '../../data/homepage';
 import './HomeTestimonials.css';
 
-// Section 14 — Testimonials. Verified placeholders only; no names/ranks invented.
+// Section 14 — Law Entrance Preparation Focus (honest academic perspectives).
 export default function HomeTestimonials() {
   return (
     <section className="rrc-section rrc-section--light" aria-labelledby="rrc-testimonials-title">
@@ -20,15 +20,23 @@ export default function HomeTestimonials() {
                 &ldquo;
               </span>
               <blockquote>
-                <p>{item.quote}</p>
+                <p>{item.insight || item.quote}</p>
               </blockquote>
               <figcaption>
                 <span className="rrc-testimonial-card__avatar" aria-hidden="true">
-                  <RrcIcon name="person" size={20} />
+                  <RrcIcon name={item.icon || 'school'} size={20} />
                 </span>
-                <span>
-                  <span className="rrc-testimonial-card__name">{item.name}</span>
-                  <span className="rrc-testimonial-card__role">{item.role}</span>
+                <span className="rrc-testimonial-card__info">
+                  <span className="rrc-testimonial-card__name">{item.title || item.name}</span>
+                  <span className="rrc-testimonial-card__meta">
+                    <span className="rrc-testimonial-card__course">{item.track || item.course}</span>
+                    {(item.discipline || item.location) ? (
+                      <>
+                        <span className="rrc-testimonial-card__dot" aria-hidden="true">•</span>
+                        <span className="rrc-testimonial-card__location">{item.discipline || item.location}</span>
+                      </>
+                    ) : null}
+                  </span>
                 </span>
               </figcaption>
             </figure>

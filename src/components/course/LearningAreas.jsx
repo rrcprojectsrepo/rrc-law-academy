@@ -4,7 +4,7 @@ import './LearningAreas.css';
 
 // 06 — Learning Areas. Icons are presentational only and cycle by position;
 // every title/text comes verbatim from course.learningAreas.
-const AREA_ICONS = ['menu_book', 'newspaper', 'gavel', 'psychology', 'analytics'];
+const AREA_ICONS = ['menu_book', 'balance', 'gavel', 'psychology', 'analytics', 'library_books', 'verified', 'school'];
 
 export default function LearningAreas({ course }) {
   if (!course || course.learningAreas.length === 0) return null;
@@ -17,13 +17,14 @@ export default function LearningAreas({ course }) {
         <SectionHeader
           eyebrow="Learning Areas"
           title={`What You Will Study in ${course.title}`}
-          description={course.learningAreasDescription}
+          description={course.learningAreasDescription || 'The official paper assesses comprehension and reasoning skills across core legal domains through passage-based formats.'}
+          align="left"
         />
-        <div className="rrc-course-areas__list rrc-stagger">
+        <div className={`rrc-course-areas__list rrc-course-areas__list--${course.learningAreas.length} rrc-stagger`}>
           {course.learningAreas.map((area, index) => (
             <FeatureCard
               key={area.id}
-              icon={AREA_ICONS[index % AREA_ICONS.length]}
+              icon={area.icon || AREA_ICONS[index % AREA_ICONS.length]}
               title={area.title}
               description={area.text}
             />

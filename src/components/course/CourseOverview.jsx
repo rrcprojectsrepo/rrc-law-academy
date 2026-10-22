@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import './CourseOverview.css';
 
 // 04 — Overview. Narrative copy from course.overview (rendered verbatim).
-// Aside lists the exact fields still holding "[TO CONFIRM]" / "[ASSET TO CONFIRM]"
-// so no unverified claim is presented as fact.
+// Aside lists unverified fields if pending, or admissions/cohort guidance if confirmed.
 const PENDING_FIELDS = [
   { key: 'mode', label: 'Mode' },
   { key: 'duration', label: 'Duration' },
@@ -20,6 +19,7 @@ export default function CourseOverview({ course }) {
   );
   const imagePending = String(course.heroImage ?? '').includes('ASSET TO CONFIRM');
   const hasNotice = pending.length > 0 || imagePending;
+  const showAside = hasNotice || Boolean(course.admissionsNotice);
 
   return (
     <section
@@ -27,45 +27,14 @@ export default function CourseOverview({ course }) {
       className="rrc-section rrc-course-anchor"
     >
       <div className="rrc-container">
-        <div className={`rrc-course-overview${hasNotice ? '' : ' rrc-course-overview--single'}`}>
-          <div>
+        <div className={`rrc-course-overview${showAside ? '' : ' rrc-course-overview--single'}`}>
+          <div className="rrc-course-overview__body">
             <SectionHeader eyebrow="Course Overview" title={`About ${course.title}`} align="left" />
             {course.overview.map((paragraph) => (
               <p key={paragraph} className="rrc-course-overview__para">
                 {paragraph}
               </p>
             ))}
-            {course.eligibility ? (
-              <section className="rrc-course-eligibility" aria-labelledby="rrc-course-eligibility-title">
-                <h3 id="rrc-course-eligibility-title">{course.eligibility.title}</h3>
-                <p>{course.eligibility.intro}</p>
-                <ul>
-                  {course.eligibility.criteria.map((criterion) => (
-                    <li key={criterion}>{criterion}</li>
-                  ))}
-                </ul>
-                <a href={course.eligibility.sourceUrl} target="_blank" rel="noreferrer">
-                  {course.eligibility.sourceLabel}
-                </a>
-              </section>
-            ) : null}
-            {course.relatedLinkGroups?.length ? (
-              <nav className="rrc-course-related" aria-label={`Related pathways for ${course.title}`}>
-                <h3 className="rrc-course-related__heading">Explore Related Pathways</h3>
-                <div className="rrc-course-related__groups">
-                  {course.relatedLinkGroups.map((group) => (
-                    <section className="rrc-course-related__group" key={group.title}>
-                      <h4>{group.title}</h4>
-                      <ul>
-                        {group.links.map((link) => (
-                          <li key={link.to}><Link to={link.to}>{link.label}</Link></li>
-                        ))}
-                      </ul>
-                    </section>
-                  ))}
-                </div>
-              </nav>
-            ) : null}
           </div>
 
           {hasNotice ? (
@@ -95,8 +64,51 @@ export default function CourseOverview({ course }) {
                 ) : null}
               </ul>
             </aside>
+          ) : course.admissionsNotice ? (
+            <aside className="rrc-course-overview__notice rrc-course-overview__notice--admissions" aria-label="Admissions & Programme Guidance">
+              <span className="rrc-icon-badge rrc-course-overview__notice-icon" aria-hidden="true">
+                <RrcIcon name="school" size={20} />
+              </span>
+              <h3 className="rrc-card__title">{course.admissionsNotice.title || 'Admissions & Enquiries'}</h3>
+              <p className="rrc-card__text">{course.admissionsNotice.text}</p>
+              {course.admissionsNotice.points?.length ? (
+                <ul className="rrc-course-overview__notice-list">
+                  {course.admissionsNotice.points.map((pt, i) => (
+                    <li key={i}>
+                      <RrcIcon name="check_circle" size={16} />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {course.admissionsNotice.cta ? (
+                <div className="rrc-course-overview__notice-cta">
+                  <Link to={course.admissionsNotice.cta.link} className="rrc-btn rrc-btn--navy rrc-btn--sm">
+                    {course.admissionsNotice.cta.label}
+                  </Link>
+                </div>
+              ) : null}
+            </aside>
           ) : null}
         </div>
+
+        {course.relatedLinkGroups?.length ? (
+          <nav className="rrc-course-related" aria-label={`Related pathways for ${course.title}`}>
+            <h3 className="rrc-course-related__heading">Explore Related Pathways</h3>
+            <div className="rrc-course-related__groups">
+              {course.relatedLinkGroups.map((group) => (
+                <section className="rrc-course-related__group" key={group.title}>
+                  <h4>{group.title}</h4>
+                  <ul>
+                    {group.links.map((link) => (
+                      <li key={link.to}><Link to={link.to}>{link.label}</Link></li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </nav>
+        ) : null}
       </div>
     </section>
   );

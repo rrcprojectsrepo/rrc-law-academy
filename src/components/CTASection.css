@@ -1,7 +1,7 @@
 /* CTASection — navy banner with gold icon; light variant for inline CTAs. */
 .rrc-cta { padding-block: var(--rrc-section-y); }
 .rrc-cta--navy {
-  background: var(--rrc-navy);
+  background: radial-gradient(circle at 50% 0%, rgba(254, 212, 136, 0.08) 0%, transparent 65%), var(--rrc-navy);
   color: var(--rrc-white);
   border-top: 2px solid var(--rrc-gold);
 }

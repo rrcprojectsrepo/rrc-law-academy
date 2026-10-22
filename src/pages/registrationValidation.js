@@ -7,7 +7,7 @@ export const COURSE_OPTIONS = [
   'Not Sure',
 ];
 
-function isValidIndianPhone(input) {
+export function isValidIndianPhone(input) {
   const value = input.trim();
   if (!value || !/^[+()\d\s.-]+$/.test(value)) return false;
 

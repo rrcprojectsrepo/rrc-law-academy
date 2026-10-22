@@ -1,0 +1,92 @@
+/* CourseStudyMaterial (11) — split visual layout for study resources. */
+.rrc-study-split {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.rrc-study-split__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+.rrc-study-split__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.15rem;
+  border-radius: var(--rrc-radius-md);
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  box-shadow: var(--rrc-shadow-sm);
+  transition: transform 0.25s var(--rrc-ease), box-shadow 0.25s var(--rrc-ease);
+}
+.rrc-study-split__item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--rrc-shadow-md);
+}
+.rrc-study-split__icon {
+  background: var(--rrc-card-bg);
+  color: var(--rrc-gold);
+  flex: none;
+}
+.rrc-study-split__text {
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-navy);
+  line-height: 1.5;
+}
+.rrc-study-split__frame {
+  position: relative;
+  border-radius: var(--rrc-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(14, 28, 47, 0.1);
+  border: 1px solid rgba(14, 28, 47, 0.1);
+  aspect-ratio: 1 / 1;
+  max-width: 480px;
+  margin-inline: auto;
+  background: var(--rrc-white);
+}
+.rrc-study-split__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s var(--rrc-ease);
+}
+.rrc-study-split__frame:hover .rrc-study-split__image {
+  transform: scale(1.02);
+}
+.rrc-study-split__badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(14, 28, 47, 0.92);
+  backdrop-filter: blur(8px);
+  color: var(--rrc-gold-bright);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--rrc-radius-pill);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(254, 212, 136, 0.3);
+}
+.rrc-study-split__badge svg {
+  color: var(--rrc-gold-bright);
+}
+@media (min-width: 640px) {
+  .rrc-study-split__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .rrc-study-split {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 3.5rem;
+  }
+}

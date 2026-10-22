@@ -2,8 +2,9 @@ import SectionHeader from '../SectionHeader';
 import RrcIcon from '../RrcIcon';
 import './CourseCurriculum.css';
 
-// 08 — Curriculum modules. Every module title and topic is rendered verbatim,
-// including any "[TO CONFIRM]" placeholder, so nothing is presented as settled.
+// 08 — Curriculum modules. Structured 3-phase educational roadmap.
+const MODULE_ICONS = ['menu_book', 'balance', 'analytics'];
+
 export default function CourseCurriculum({ course }) {
   if (!course || course.curriculum.length === 0) return null;
 
@@ -22,11 +23,18 @@ export default function CourseCurriculum({ course }) {
         <SectionHeader
           eyebrow="Curriculum"
           title={`${course.title} Syllabus Coverage`}
+          description={course.curriculumDescription || 'A structured three-phase syllabus progressing from foundational reading stamina to all-India full-length mock simulations.'}
+          align="left"
         />
         <div className="rrc-course-curriculum__list rrc-stagger">
           {course.curriculum.map((module, index) => (
             <article key={module.id} className="rrc-card rrc-course-curriculum__module">
-              <span className="rrc-badge">Module {index + 1}</span>
+              <div className="rrc-course-curriculum__head">
+                <span className="rrc-icon-badge rrc-course-curriculum__icon" aria-hidden="true">
+                  <RrcIcon name={MODULE_ICONS[index % MODULE_ICONS.length]} size={20} />
+                </span>
+                <span className="rrc-badge rrc-badge--sm">Phase 0{index + 1}</span>
+              </div>
               <h3 className="rrc-card__title rrc-course-curriculum__title">{module.title}</h3>
               {module.topics.length > 0 ? (
                 <ul className="rrc-course-curriculum__topics">

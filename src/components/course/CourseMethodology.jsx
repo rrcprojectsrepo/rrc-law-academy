@@ -2,8 +2,7 @@ import SectionHeader from '../SectionHeader';
 import FeatureCard from '../FeatureCard';
 import './CourseMethodology.css';
 
-// 07 — Methodology. Ordered list of the shared Understand → Improve sequence
-// (course.methodology). Same shape as HomeMethodology, course-scoped classnames.
+// 07 — Methodology. Ordered list of the shared Understand → Improve sequence.
 export default function CourseMethodology({ course }) {
   if (!course || course.methodology.length === 0) return null;
   return (
@@ -15,7 +14,8 @@ export default function CourseMethodology({ course }) {
         <SectionHeader
           eyebrow="How We Teach"
           title={course.methodologyTitle || `${course.title} Learning Methodology`}
-          description={course.methodologyDescription || `A ${course.methodology.length}-step cycle followed for every learning area of this course.`}
+          description={course.methodologyDescription || `A ${course.methodology.length}-step structured coaching cycle moving from concept fundamentals to full-length test readiness.`}
+          align="left"
         />
         <ol className={`rrc-course-method__list rrc-stagger${course.methodology.length === 6 ? ' rrc-course-method__list--six-step' : ''}`}>
           {course.methodology.map((step) => (

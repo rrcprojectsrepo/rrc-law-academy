@@ -1,69 +1,241 @@
-.rrc-courses-page__hero {
-  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+.rrc-courses-page {
+  min-width: 0;
+  overflow: clip;
+}
+.rrc-courses-page section {
+  scroll-margin-top: 5rem;
 }
 
-.rrc-courses-page__hero-content {
-  max-width: 56rem;
+/* ==========================================================================
+   Section 1: Hero
+   ========================================================================== */
+.rrc-courses-hero {
+  background: radial-gradient(ellipse 65% 55% at 88% 25%, rgba(254, 212, 136, 0.12), transparent 70%), var(--rrc-surface-light);
+  border-bottom: 1px solid var(--rrc-border);
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
 }
 
-.rrc-courses-page__title {
-  max-width: 18ch;
+.rrc-courses-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
 }
 
-.rrc-courses-page__intro {
-  margin-top: 1.25rem;
+.rrc-courses-hero__copy {
+  min-width: 0;
 }
 
-.rrc-courses-page__hero-actions {
+.rrc-courses-hero__title {
+  margin: 0 0 1.2rem;
+  max-width: 22ch;
+  color: var(--rrc-navy);
+}
+
+.rrc-courses-hero__intro {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--rrc-text-secondary);
+}
+
+.rrc-courses-hero__actions {
   margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rrc-space-3);
 }
 
+.rrc-courses-hero__visual {
+  min-width: 0;
+  position: relative;
+}
+
+.rrc-courses-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--rrc-radius-lg);
+  filter: drop-shadow(0 14px 28px rgba(14, 28, 47, 0.12));
+}
+
+.rrc-courses-hero__visual-note {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  max-width: calc(100% - 1.8rem);
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(216, 227, 251, 0.85);
+  border-radius: var(--rrc-radius-md);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  color: var(--rrc-navy);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Section 2: Course Pathways Grid
+   ========================================================================== */
 .rrc-courses-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--rrc-space-6);
   align-items: stretch;
 }
 
-.rrc-courses-page__grid .rrc-course-card__top {
-  flex-wrap: wrap;
-  justify-content: flex-start;
+.rrc-courses-page__grid .rrc-course-card {
+  min-width: 0;
 }
 
-.rrc-courses-page__grid .rrc-course-card__body {
-  flex: 1;
-}
-
-.rrc-courses-page__grid .rrc-course-card__body > p {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
+/* ==========================================================================
+   Section 3: Preparation Approach Steps
+   ========================================================================== */
 .rrc-courses-approach__steps {
+  list-style: none;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--rrc-space-4);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--rrc-space-5);
   margin: 0;
   padding: 0;
-  list-style: none;
+  align-items: stretch;
 }
 
 .rrc-courses-approach__step {
   min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--rrc-space-6);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-courses-approach__step:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+
+.rrc-courses-approach__step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: var(--rrc-space-3);
+}
+
+.rrc-courses-approach__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(119, 90, 25, 0.08);
+  color: var(--rrc-gold);
+}
+
+.rrc-courses-approach__step:hover .rrc-courses-approach__icon {
+  background: var(--rrc-gold);
+  color: var(--rrc-white);
+}
+
+.rrc-courses-approach__title {
+  margin: 0 0 var(--rrc-space-2);
+  font-family: var(--rrc-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-courses-approach__step .rrc-card__text {
+  flex: 1 1 auto;
   margin: 0;
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+  color: var(--rrc-text-secondary);
 }
 
-.rrc-courses-approach__step .rrc-card__title {
-  margin: var(--rrc-space-4) 0 0;
-}
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 
+/* Tablet & Phablet (min-width: 640px) */
 @media (min-width: 640px) {
-  .rrc-courses-approach__steps {
+  .rrc-courses-page__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 640px) and (max-width: 767px) {
+  .rrc-courses-approach__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-courses-approach__step:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 28rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+/* Tablet (768px to 1023px): Approach grid has 3 on top, 2 centered on bottom */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rrc-courses-approach__steps {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--rrc-space-5);
+  }
+  .rrc-courses-approach__step {
+    grid-column: span 2;
+  }
+  .rrc-courses-approach__step:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .rrc-courses-approach__step:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+/* Desktop (min-width: 1024px) */
 @media (min-width: 1024px) {
+  .rrc-courses-hero__grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 4vw, 4rem);
+  }
+  .rrc-courses-hero__title {
+    max-width: 20ch;
+  }
+  /* Approach grid: 5 equal balanced columns */
   .rrc-courses-approach__steps {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.2vw, 1.25rem);
+  }
+  .rrc-courses-approach__step {
+    grid-column: auto;
+  }
+}
+
+/* Wide Desktop (min-width: 1200px) */
+@media (min-width: 1200px) {
+  /* 4 equal balanced columns for course cards only when width is ample */
+  .rrc-courses-page__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+  }
+}
+
+/* Mobile Touchups (max-width: 639px) */
+@media (max-width: 639px) {
+  .rrc-courses-hero__actions .rrc-btn {
+    flex: 1 1 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .rrc-courses-hero__visual-note {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.45rem 0.65rem;
   }
 }

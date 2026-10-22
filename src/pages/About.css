@@ -1,6 +1,7 @@
 .rrc-about-page { min-width: 0; overflow: clip; }
 .rrc-about-page section { scroll-margin-top: 5rem; }
 
+/* ---- Section 1: Hero ---- */
 .rrc-about-hero {
   background: var(--rrc-surface-light);
   border-bottom: 1px solid var(--rrc-border);
@@ -10,15 +11,24 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
-  padding-block: clamp(3.5rem, 7vw, 6rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
 }
 .rrc-about-hero__copy { min-width: 0; }
-.rrc-about-hero__title { margin: 0 0 1.2rem; max-width: 15ch; color: var(--rrc-navy); }
+.rrc-about-hero__title {
+  margin: 0 0 1.2rem;
+  max-width: 24ch;
+  color: var(--rrc-navy);
+}
 .rrc-about-hero__copy .rrc-lead { max-width: 62ch; }
 .rrc-about-hero__actions { margin-top: 1.75rem; }
 .rrc-about-hero__visual { min-width: 0; position: relative; }
-.rrc-about-artwork { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 28px rgba(14, 28, 47, .14)); }
+.rrc-about-artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgba(14, 28, 47, .14));
+}
 .rrc-about-hero__visual-note {
   position: absolute;
   right: .9rem;
@@ -33,6 +43,7 @@
   font-weight: 700;
 }
 
+/* ---- Section 2: Who We Are / Our Identity ---- */
 .rrc-about-who {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -40,17 +51,29 @@
   gap: clamp(2rem, 5vw, 4rem);
 }
 .rrc-about-who__visual { min-width: 0; position: relative; padding-bottom: 2.5rem; }
-.rrc-about-book-art { display: block; width: 100%; height: auto; border-radius: var(--rrc-radius-lg); }
+.rrc-about-book-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--rrc-radius-lg);
+}
 .rrc-about-highlight {
   position: relative;
   width: min(88%, 24rem);
   margin: -3rem 1rem 0 auto;
   border-top: 3px solid var(--rrc-gold);
 }
-.rrc-about-highlight__title { margin: 0 0 .35rem; color: var(--rrc-navy); font-family: var(--rrc-font-display); font-size: 1.2rem; font-weight: 700; }
+.rrc-about-highlight__title {
+  margin: 0 0 .35rem;
+  color: var(--rrc-navy);
+  font-family: var(--rrc-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 .rrc-about-who__copy > p { max-width: 65ch; color: var(--rrc-text-secondary); }
 .rrc-about-who__copy > p:last-child { margin-bottom: 0; }
 
+/* ---- Card Grids Common Baseline ---- */
 .rrc-about-approach-grid,
 .rrc-about-skill-grid,
 .rrc-about-audience-grid,
@@ -59,12 +82,25 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--rrc-space-6);
+  align-items: stretch;
 }
 .rrc-about-approach-grid .rrc-feature-card,
 .rrc-about-skill-grid .rrc-feature-card,
 .rrc-about-audience-grid .rrc-feature-card,
-.rrc-about-structure-grid .rrc-feature-card { min-width: 0; }
+.rrc-about-structure-grid .rrc-feature-card {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-about-approach-grid .rrc-feature-card .rrc-feature-card__text,
+.rrc-about-skill-grid .rrc-feature-card .rrc-feature-card__text,
+.rrc-about-audience-grid .rrc-feature-card .rrc-feature-card__text,
+.rrc-about-structure-grid .rrc-feature-card .rrc-feature-card__text {
+  flex: 1 1 auto;
+}
 
+/* ---- Section 6: Preparation Ecosystem Timeline ---- */
 .rrc-about-ecosystem {
   list-style: none;
   display: grid;
@@ -78,22 +114,22 @@
   display: grid;
   grid-template-columns: 3.25rem minmax(0, 1fr);
   align-items: start;
-  gap: 1rem;
+  gap: clamp(0.75rem, 2.5vw, 1.25rem);
   position: relative;
 }
-.rrc-about-ecosystem__item:not(:last-child)::after {
-  content: '↓';
+/* Continuous vertical spine securely connecting marker to marker */
+.rrc-about-ecosystem__item:not(:last-child)::before {
+  content: '';
   position: absolute;
   left: 1.625rem;
-  bottom: -1.8rem;
-  z-index: 1;
-  color: var(--rrc-gold);
-  font-size: 1.2rem;
-  font-weight: 700;
+  top: 3.25rem;
+  bottom: calc(-1 * var(--rrc-space-8));
+  width: 2px;
+  background: var(--rrc-gold);
   transform: translateX(-50%);
+  z-index: 0;
 }
-.rrc-about-ecosystem__marker,
-.rrc-about-journey__marker {
+.rrc-about-ecosystem__marker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -109,7 +145,14 @@
 }
 .rrc-about-ecosystem__card { min-width: 0; }
 .rrc-about-ecosystem__card .rrc-card__title { margin-bottom: .35rem; }
-.rrc-about-link-chips { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; padding: 0; }
+.rrc-about-link-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
 .rrc-about-link-chips a {
   display: inline-flex;
   align-items: center;
@@ -123,8 +166,12 @@
   font-weight: 700;
   text-decoration: none;
 }
-.rrc-about-link-chips a:hover { border-color: var(--rrc-gold); color: var(--rrc-gold); }
+.rrc-about-link-chips a:hover {
+  border-color: var(--rrc-gold);
+  color: var(--rrc-gold);
+}
 
+/* ---- Section 7: Learning Journey ---- */
 .rrc-about-journey {
   list-style: none;
   display: grid;
@@ -132,55 +179,287 @@
   gap: var(--rrc-space-6);
   margin: 0;
   padding: 0;
+  align-items: stretch;
 }
-.rrc-about-journey__item { min-width: 0; display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: .9rem; align-items: start; position: relative; }
-.rrc-about-journey__marker { width: 3rem; height: 3rem; border: 0; background: var(--rrc-gold-bright); color: var(--rrc-navy); }
-.rrc-about-journey__item:not(:last-child)::after { content: ''; position: absolute; left: 1.45rem; top: 3rem; bottom: -1.5rem; width: 2px; background: var(--rrc-border); }
-.rrc-about-journey__card { min-width: 0; height: 100%; }
+.rrc-about-journey__item {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: .9rem;
+  align-items: start;
+  position: relative;
+}
+.rrc-about-journey__marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--rrc-gold-bright);
+  color: var(--rrc-navy);
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+/* Vertical connector for mobile & small viewports */
+.rrc-about-journey__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 1.45rem;
+  top: 3rem;
+  bottom: calc(-1 * var(--rrc-space-6));
+  width: 2px;
+  background: var(--rrc-border);
+  z-index: 0;
+}
+.rrc-about-journey__card {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .rrc-about-journey__card .rrc-card__title { margin-bottom: .35rem; }
+.rrc-about-journey__card .rrc-card__text { flex: 1 1 auto; }
 
+/* ---- Section 8: Why Structure Matters ---- */
 .rrc-about-structure .rrc-section-head__title { color: var(--rrc-white); }
 .rrc-about-structure .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
 .rrc-about-structure .rrc-section-head__eyebrow { color: var(--rrc-gold-bright); }
-.rrc-about-structure-grid .rrc-feature-card__icon { background: rgba(254, 212, 136, .14); color: var(--rrc-gold-bright); }
+.rrc-about-structure-grid .rrc-feature-card__icon {
+  background: rgba(254, 212, 136, .14);
+  color: var(--rrc-gold-bright);
+}
 
-.rrc-about-program-card { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+/* ---- Section 9: Programs ---- */
+.rrc-about-program-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
 .rrc-about-program-card__icon { margin-bottom: var(--rrc-space-4); }
-.rrc-about-program-card__link { display: inline-flex; gap: .4rem; margin-top: auto; padding-top: 1.25rem; color: var(--rrc-gold); font-weight: 700; text-decoration: none; }
-.rrc-about-program-card__link:hover { text-decoration: underline; text-underline-offset: 4px; }
-.rrc-about-cta__inner { max-width: 58rem; }
-.rrc-about-cta__inner .rrc-section-head { margin-bottom: 2rem; }
+.rrc-about-program-card .rrc-card__text { flex: 1 1 auto; }
+.rrc-about-program-card__link {
+  display: inline-flex;
+  gap: .4rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  color: var(--rrc-gold);
+  font-weight: 700;
+  text-decoration: none;
+}
+.rrc-about-program-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---- Section 10: Final CTA ---- */
+.rrc-about-cta__inner {
+  max-width: 58rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.rrc-about-cta__inner .rrc-section-head {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.rrc-about-cta__inner .rrc-section-head__desc {
+  max-width: 62ch;
+  margin-inline: auto;
+}
 .rrc-about-cta .rrc-section-head__eyebrow { color: var(--rrc-gold-bright); }
 .rrc-about-cta .rrc-section-head__title { color: var(--rrc-white); }
 .rrc-about-cta .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
-.rrc-about-cta__actions { justify-content: center; }
+.rrc-about-cta__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Phablet & Small Tablet (640px to 767px) */
 @media (min-width: 640px) {
   .rrc-about-approach-grid,
   .rrc-about-skill-grid,
   .rrc-about-audience-grid,
-  .rrc-about-structure-grid,
-  .rrc-about-programs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rrc-about-programs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .rrc-about-structure-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-about-structure-grid .rrc-feature-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 28rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media (min-width: 768px) {
+  .rrc-about-structure-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rrc-about-structure-grid .rrc-feature-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+/* Approach grid at tablet (768px to 1023px): 3 on top, 2 centered on bottom */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rrc-about-approach-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--rrc-space-5);
+  }
+  .rrc-about-approach-grid .rrc-feature-card {
+    grid-column: span 2;
+  }
+  .rrc-about-approach-grid .rrc-feature-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .rrc-about-approach-grid .rrc-feature-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+/* Journey grid at tablet and medium desktop (768px to 1279px): 3 columns, 2 rows */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .rrc-about-journey {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--rrc-space-6) var(--rrc-space-4);
+  }
+  .rrc-about-journey__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+    height: 100%;
+  }
+  .rrc-about-journey__card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  /* Horizontal line between cards in the same row (Step 1->2, 2->3 and 4->5, 5->6) */
+  .rrc-about-journey__item:not(:last-child)::after {
+    left: 3rem;
+    right: -1rem;
+    top: 1.45rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .rrc-about-journey__item:nth-child(3n)::after {
+    content: none;
+  }
+}
+
+/* Desktop (min-width: 1024px) */
 @media (min-width: 1024px) {
-  .rrc-about-hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2.5rem; }
-  .rrc-about-who { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
-  .rrc-about-approach-grid,
-  .rrc-about-audience-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rrc-about-skill-grid,
-  .rrc-about-structure-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rrc-about-programs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .rrc-about-ecosystem__card { padding: var(--rrc-space-5) var(--rrc-space-6); }
+  .rrc-about-hero__grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+  .rrc-about-hero__title {
+    max-width: 22ch;
+  }
+  .rrc-about-who {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+  /* Section 3: 5 balanced columns on desktop */
+  .rrc-about-approach-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.2vw, 1.25rem);
+  }
+  .rrc-about-approach-grid .rrc-feature-card {
+    grid-column: auto;
+  }
+  /* Section 4: Skills - 3 columns */
+  .rrc-about-skill-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* Section 5: Who We Support - 4 balanced columns, no stranded card */
+  .rrc-about-audience-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.2vw, 1.25rem);
+  }
+  /* Section 8: Structure - 3 balanced columns */
+  .rrc-about-structure-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* Section 9: Programs - 4 columns */
+  .rrc-about-programs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .rrc-about-ecosystem__card {
+    padding: var(--rrc-space-5) var(--rrc-space-6);
+  }
 }
-@media (min-width: 1024px) {
-  .rrc-about-journey { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--rrc-space-4); }
-  .rrc-about-journey__item { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
-  .rrc-about-journey__item:not(:last-child)::after { left: 3rem; right: -1rem; top: 1.45rem; bottom: auto; width: auto; height: 2px; }
+
+/* Wide Desktop (min-width: 1280px) */
+@media (min-width: 1280px) {
+  /* Journey 6-column single-row layout only on sufficiently wide screens */
+  .rrc-about-journey {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--rrc-space-4);
+  }
+  .rrc-about-journey__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+    height: 100%;
+  }
+  .rrc-about-journey__card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .rrc-about-journey__item:not(:last-child)::after {
+    left: 3rem;
+    right: -1rem;
+    top: 1.45rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .rrc-about-journey__item:nth-child(3n)::after {
+    content: '';
+  }
+  .rrc-about-journey__item:last-child::after {
+    content: none;
+  }
 }
+
+/* Mobile specific touchups */
 @media (max-width: 639px) {
   .rrc-about-hero__actions .rrc-btn,
-  .rrc-about-cta__actions .rrc-btn { flex: 1 1 100%; white-space: normal; text-align: center; }
-  .rrc-about-hero__visual-note { right: .5rem; bottom: .5rem; }
-  .rrc-about-who__visual { padding-bottom: 1.5rem; }
-  .rrc-about-highlight { margin-top: -2rem; }
+  .rrc-about-cta__actions .rrc-btn {
+    flex: 1 1 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .rrc-about-hero__visual-note {
+    right: .5rem;
+    bottom: .5rem;
+  }
+  .rrc-about-who__visual {
+    padding-bottom: 1.5rem;
+  }
+  .rrc-about-highlight {
+    margin-top: -2rem;
+  }
 }

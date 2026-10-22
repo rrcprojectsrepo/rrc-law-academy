@@ -15,11 +15,29 @@ export default function CourseHero({ course }) {
             {course.title}
           </h1>
           <p className="rrc-lead">{course.description}</p>
+          {course.points && course.points.length > 0 ? (
+            <ul className="rrc-course-hero__points">
+              {course.points.map((point) => (
+                <li key={point}>
+                  <RrcIcon name="check_circle" size={18} />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="rrc-btn-row rrc-course-hero__ctas">
-            <Button to={course.heroPrimaryCta?.link || '/registration'} variant="navy">
+            <Button
+              to={course.heroPrimaryCta?.link?.startsWith('#') ? undefined : course.heroPrimaryCta?.link || '/registration'}
+              href={course.heroPrimaryCta?.link?.startsWith('#') ? course.heroPrimaryCta.link : undefined}
+              variant="navy"
+            >
               {course.heroPrimaryCta?.label || 'Enquire Now →'}
             </Button>
-            <Button to={course.heroSecondaryCta?.link || '/registration'} variant="secondary">
+            <Button
+              to={course.heroSecondaryCta?.link?.startsWith('#') ? undefined : course.heroSecondaryCta?.link || '/registration'}
+              href={course.heroSecondaryCta?.link?.startsWith('#') ? course.heroSecondaryCta.link : undefined}
+              variant="secondary"
+            >
               {course.heroSecondaryCta?.label || 'Talk to a Counsellor'}
             </Button>
           </div>
@@ -38,13 +56,24 @@ export default function CourseHero({ course }) {
         <div className="rrc-course-hero__visual">
           <div className={`rrc-course-hero__frame${hasHeroImage ? ' rrc-course-hero__frame--image' : ''}`}>
             {hasHeroImage ? (
-              <img
-                className="rrc-course-hero__image"
-                src={course.heroImage}
-                alt={course.heroImageAlt || (course.slug === 'clat-ug'
-                  ? 'Indian students preparing for CLAT and law entrance examinations'
-                  : `${course.title} students preparing for law entrance examinations`)}
-              />
+              <>
+                <img
+                  className="rrc-course-hero__image"
+                  src={course.heroImage}
+                  alt={course.heroImageAlt || (course.slug === 'clat-ug'
+                    ? 'Indian students preparing for CLAT and law entrance examinations'
+                    : `${course.title} students preparing for law entrance examinations`)}
+                  width="1568"
+                  height="1003"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+                <span className="rrc-course-hero__badge">
+                  <RrcIcon name="verified" size={16} />
+                  <span>{course.heroBadge || 'Consortium-Aligned 2027'}</span>
+                </span>
+              </>
             ) : (
               <span
                 className="rrc-course-hero__placeholder"

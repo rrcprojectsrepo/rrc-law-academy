@@ -5,9 +5,12 @@
 /* Sticky site header (4.5rem baseline) + sticky course nav (3.25rem) + breathing
    room. --rrc-course-header-h carries the *measured* header height, because the
    header is content-driven (its nav labels can wrap). Applied to every section
-   that the in-page nav links to. */
+   that the in-page nav links to.
+   Specificity elevated to override global .rrc-main > div > section rule. */
+.rrc-course-template section.rrc-course-anchor,
+.rrc-course-template .rrc-course-anchor,
 .rrc-course-anchor {
-  scroll-margin-top: calc(var(--rrc-course-header-h, 4.5rem) + 4.25rem);
+  scroll-margin-top: calc(var(--rrc-course-header-h, 4.5rem) + 4.5rem);
 }
 
 /* Shared white panel used by Practice, Current Affairs, Study Material
@@ -48,12 +51,3 @@
 }
 
 /* Fallback when a slug has no matching course record. */
-.rrc-course-missing {
-  max-width: 56rem;
-  text-align: center;
-}
-.rrc-course-missing .rrc-lead { margin: 1rem auto 1.5rem; }
-.rrc-course-missing .rrc-btn-row { justify-content: center; }
-@media (max-width: 639px) {
-  .rrc-course-anchor { scroll-margin-top: calc(var(--rrc-course-header-h, 4.5rem) + 3.75rem); }
-}

@@ -1,0 +1,103 @@
+/* CourseCurrentAffairs (10) — alternating split visual layout. */
+.rrc-ca-split {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.rrc-ca-split__list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+}
+.rrc-ca-split__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: var(--rrc-body-sm);
+  font-weight: 600;
+  color: var(--rrc-text);
+  line-height: 1.5;
+}
+.rrc-ca-split__check {
+  color: var(--rrc-gold);
+  flex: none;
+  margin-top: 2px;
+}
+.rrc-ca-split__note {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--rrc-radius-md);
+  background: var(--rrc-card-bg);
+  border-left: 3px solid var(--rrc-gold);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
+  line-height: 1.5;
+}
+.rrc-ca-split__note svg {
+  color: var(--rrc-gold);
+  flex: none;
+  margin-top: 2px;
+}
+.rrc-ca-split__note p {
+  margin: 0;
+}
+.rrc-ca-split__frame {
+  position: relative;
+  border-radius: var(--rrc-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(14, 28, 47, 0.1);
+  border: 1px solid rgba(14, 28, 47, 0.1);
+  aspect-ratio: 1 / 1;
+  max-width: 480px;
+  margin-inline: auto;
+  background: var(--rrc-white);
+}
+.rrc-ca-split__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s var(--rrc-ease);
+}
+.rrc-ca-split__frame:hover .rrc-ca-split__image {
+  transform: scale(1.02);
+}
+.rrc-ca-split__badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(14, 28, 47, 0.92);
+  backdrop-filter: blur(8px);
+  color: var(--rrc-gold-bright);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--rrc-radius-pill);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(254, 212, 136, 0.3);
+}
+.rrc-ca-split__badge svg {
+  color: var(--rrc-gold-bright);
+}
+@media (min-width: 640px) {
+  .rrc-ca-split__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .rrc-ca-split {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3.5rem;
+  }
+}

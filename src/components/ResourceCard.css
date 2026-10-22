@@ -1,14 +1,130 @@
-/* ResourceCard — white card with navy icon badge. */
+/* ============================================================================
+   ResourceCard Component
+   White surface card with navy icon badge, gold accent, and verified action link.
+   ============================================================================ */
+
 .rrc-resource-card {
   background: var(--rrc-white);
   border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
   box-shadow: var(--rrc-shadow-card);
-  padding: var(--rrc-space-6);
-  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+  padding: 1.35rem 1.35rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform var(--rrc-duration) var(--rrc-ease),
+              box-shadow var(--rrc-duration) var(--rrc-ease),
+              border-color var(--rrc-duration) var(--rrc-ease);
 }
+
 .rrc-resource-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--rrc-gold);
+  transform: translateY(-3px);
+  border-color: rgba(119, 90, 25, 0.35);
   box-shadow: var(--rrc-shadow-card-hover);
+}
+
+.rrc-resource-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.rrc-resource-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.625rem;
+  height: 2.625rem;
+  border-radius: 10px;
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  border: 1px solid rgba(254, 212, 136, 0.2);
+  flex: none;
+  transition: transform var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-resource-card:hover .rrc-resource-card__icon {
+  transform: scale(1.04);
+}
+
+.rrc-resource-card__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rrc-navy);
+  background: var(--rrc-card-bg);
+  border: 1px solid var(--rrc-border);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--rrc-radius-pill);
+}
+
+.rrc-resource-card .rrc-card__title {
+  font-family: var(--rrc-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--rrc-navy);
+  margin: 0 0 0.45rem;
+}
+
+.rrc-resource-card .rrc-card__text {
+  font-family: var(--rrc-font-body);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.55;
+  color: var(--rrc-text-secondary);
+  margin: 0;
+  flex: 1; /* Pushes footer link cleanly to bottom */
+}
+
+.rrc-resource-card__foot {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rrc-border);
+}
+
+.rrc-resource-card__link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rrc-gold);
+  text-decoration: none;
+  transition: color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-resource-card__arrow {
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-resource-card:hover .rrc-resource-card__link {
+  color: #5d4512;
+}
+
+.rrc-resource-card:hover .rrc-resource-card__arrow {
+  transform: translateX(4px);
+}
+
+.rrc-resource-card__link:focus-visible {
+  outline: 2px solid var(--rrc-gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrc-resource-card,
+  .rrc-resource-card__icon,
+  .rrc-resource-card__arrow {
+    transition: none !important;
+    transform: none !important;
+  }
 }

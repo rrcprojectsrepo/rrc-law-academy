@@ -5,8 +5,8 @@ import RrcIcon from '../components/RrcIcon';
 import SectionHeader from '../components/SectionHeader';
 import { courses } from '../data/courses';
 import { programPageList } from '../data/programPages';
-import aboutHeroImage from '../assets/rrc-law-academy-about-hero.png';
-import aboutLearningImage from '../assets/rrc-law-academy-about-learning.png';
+import aboutHeroImage from '../assets/rrc-law-academy-about-hero.webp';
+import aboutLearningImage from '../assets/rrc-law-academy-about-learning.webp';
 import './About.css';
 
 const APPROACH = programPageList[0]?.methodology ?? [];
@@ -66,6 +66,9 @@ function LegalStudyArtwork() {
       alt="Law students studying together in a library"
       width="1536"
       height="1024"
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
     />
   );
 }
@@ -78,6 +81,8 @@ function OpenBookArtwork() {
       alt="Law students learning with an instructor in a library"
       width="1536"
       height="1024"
+      loading="lazy"
+      decoding="async"
     />
   );
 }
@@ -119,7 +124,7 @@ export default function About() {
             </aside>
           </div>
           <div className="rrc-about-who__copy">
-            <SectionHeader eyebrow="Who We Are" title="Who We Are" align="left" />
+            <SectionHeader eyebrow="Our Identity" title="Who We Are" align="left" />
             <p>
               RRC Law Academy brings together structured preparation, guided practice, current
               affairs awareness, reasoning development, and continuous performance review to help
@@ -159,7 +164,7 @@ export default function About() {
 
       <section className="rrc-section rrc-section--light" aria-label="Who we support">
         <div className="rrc-container">
-          <SectionHeader eyebrow="Who We Support" title="Who We Support" />
+          <SectionHeader eyebrow="Learner Pathways" title="Who We Support" />
           <div className="rrc-about-audience-grid rrc-stagger">
             {AUDIENCES.map((audience) => <FeatureCard key={audience.title} icon={audience.icon} title={audience.title} description={audience.text} />)}
           </div>
@@ -250,6 +255,7 @@ export default function About() {
       <section className="rrc-section rrc-section--navy rrc-about-cta" aria-label="Build your path toward law">
         <div className="rrc-container rrc-about-cta__inner">
           <SectionHeader
+            align="center"
             eyebrow="Take the Next Step"
             title="Build Your Path Toward Law"
             description="Explore the courses and preparation programs available through RRC Law Academy."

@@ -33,12 +33,13 @@ export default function Footer() {
     <footer className="rrc-footer">
       <div className="rrc-container rrc-footer__grid">
         <div className="rrc-footer__brand">
-          <p className="rrc-footer__logo">
-            <img className="rrc-footer__logo-image" src={rrcLawAcademyLogo} alt="RRC Law Academy" />
-            RRC LAW ACADEMY
-          </p>
+          <Link to="/" className="rrc-footer__logo-link" aria-label="RRC Law Academy — Home">
+            <div className="rrc-footer__logo-badge">
+              <img className="rrc-footer__logo-image" src={rrcLawAcademyLogo} alt="RRC Law Academy" />
+            </div>
+          </Link>
           <p className="rrc-footer__desc">
-            Placeholder description only. Detailed academy information will be added after approval.
+            Dedicated law entrance preparation and mentorship for CLAT, AILET, and legal foundation programs.
           </p>
           <Link to="/registration" className="rrc-btn rrc-btn--primary rrc-footer__cta">
             Enquire Now <ArrowRight size={18} aria-hidden="true" />
@@ -90,7 +91,7 @@ export default function Footer() {
       <div className="rrc-footer__bottom">
         <div className="rrc-container rrc-footer__bottom-inner">
           <p>© {new Date().getFullYear()} RRC Law Academy. All rights reserved.</p>
-          <p className="rrc-footer__note">Content placeholders only — details to be confirmed.</p>
+          <p className="rrc-footer__note">Empowering legal aspirants with structured coaching, comprehensive materials, and expert guidance.</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 /* SectionHeader — Stitch eyebrow + centered gold divider. */
 .rrc-section-head {
   max-width: 42rem;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto clamp(1.5rem, 1.25rem + 0.8vw, 2rem);
 }
 .rrc-section-head--left {
   margin-inline: 0;

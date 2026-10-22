@@ -79,8 +79,13 @@ export default function HomeHero() {
       {/* ── Content layer ── */}
       <div className="rrc-container rrc-cinematic-hero__content">
 
-        {/* Persistent branding — always visible */}
-        <div className="rrc-cinematic-hero__persistent">
+        {/* Persistent branding — subtle entrance animation */}
+        <motion.div
+          className="rrc-cinematic-hero__persistent"
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.21, 1] }}
+        >
           <p className="rrc-cinematic-hero__brand">
             {hero.persistent.title}
           </p>
@@ -99,7 +104,7 @@ export default function HomeHero() {
               {hero.persistent.secondaryCta.label}
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Scene info panel — transitions with each scene */}
         <div className="rrc-cinematic-hero__panel-wrap">

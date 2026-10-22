@@ -1,4 +1,3 @@
-/* FacultyCard — centered placeholder-safe mentor card. */
 .rrc-faculty-card {
   background: var(--rrc-white);
   border: 1px solid var(--rrc-border);
@@ -9,6 +8,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  box-sizing: border-box;
   transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
 }
 .rrc-faculty-card:hover {
@@ -34,8 +35,12 @@
   color: var(--rrc-gold);
   margin: 0.25rem 0 0.75rem;
 }
+.rrc-faculty-card .rrc-card__text {
+  flex: 1;
+}
 .rrc-faculty-card__link {
-  margin-top: var(--rrc-space-4);
+  margin-top: auto;
+  padding-top: var(--rrc-space-4);
   font-weight: 700;
   color: var(--rrc-gold);
   text-decoration: none;

@@ -7,6 +7,8 @@
   padding: var(--rrc-space-6);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
   transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
 }
 .rrc-batch-card:hover {
@@ -33,6 +35,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
 }
 .rrc-batch-card__rows div {
   display: flex;
@@ -43,5 +46,5 @@
 }
 .rrc-batch-card__rows dt { color: var(--rrc-text-secondary); }
 .rrc-batch-card__rows dd { margin: 0; font-weight: 600; color: var(--rrc-navy); }
-.rrc-batch-card__foot { margin-top: 1.5rem; }
+.rrc-batch-card__foot { margin-top: auto; padding-top: 1.25rem; }
 .rrc-batch-card__foot .rrc-btn { width: 100%; }

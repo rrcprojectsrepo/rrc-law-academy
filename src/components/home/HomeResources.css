@@ -1,43 +1,46 @@
-/* Resources — wrapper adds Stitch footer link row; card itself stays reusable. */
-.rrc-resource-wrap {
-  background: var(--rrc-white);
-  border: 1px solid var(--rrc-border);
-  border-radius: var(--rrc-radius-lg);
-  box-shadow: var(--rrc-shadow-card);
-  overflow: hidden;
+/* ============================================================================
+   Study Resources Section (Home)
+   Responsive 3-col desktop, 2-col tablet, 1-col mobile grid.
+   Brand palette: Navy (#0e1c2f), Gold (#775a19 / #fed488), White (#ffffff).
+   ============================================================================ */
+
+.rrc-resources-section {
+  position: relative;
+}
+
+.rrc-resources__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.rrc-resources__motion-item {
   display: flex;
-  flex-direction: column;
-  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+  height: 100%;
 }
-.rrc-resource-wrap:hover {
-  transform: translateY(-4px);
-  border-color: var(--rrc-gold);
-  box-shadow: var(--rrc-shadow-card-hover);
+
+.rrc-resources__motion-item > .rrc-resource-card {
+  width: 100%;
 }
-.rrc-resource-wrap .rrc-resource-card {
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-  padding-bottom: 0;
+
+/* Tablet (640px to 1023px): 2 balanced columns */
+@media (min-width: 640px) {
+  .rrc-resources__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
-.rrc-resource-wrap .rrc-resource-card:hover {
-  transform: none;
-  box-shadow: none;
+
+/* Desktop (>= 1024px): 3 balanced columns */
+@media (min-width: 1024px) {
+  .rrc-resources__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Harmonize title block height across cards in same row */
+  .rrc-resources__grid .rrc-card__title {
+    min-height: 2.7em;
+  }
 }
-.rrc-resource-wrap__foot {
-  margin-top: auto;
-  padding: 1rem var(--rrc-space-6) var(--rrc-space-6);
-  border-top: 1px solid var(--rrc-border);
-  margin-inline: var(--rrc-space-6);
-  padding-inline: 0;
-  margin-top: 1rem;
-}
-.rrc-resource-wrap__link {
-  font-size: var(--rrc-body-sm);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--rrc-gold);
-  text-decoration: none;
-}
-.rrc-resource-wrap__link:hover { text-decoration: underline; text-underline-offset: 4px; }

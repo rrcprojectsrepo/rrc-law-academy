@@ -7,7 +7,7 @@ import './CourseFAQ.css';
 // an explicit empty state is rendered rather than invented questions.
 export default function CourseFAQ({ course }) {
   if (!course) return null;
-  const hasFaqs = course.faqs.length > 0;
+  const hasFaqs = course.faqs && course.faqs.length > 0;
 
   return (
     <section
@@ -15,7 +15,12 @@ export default function CourseFAQ({ course }) {
       className="rrc-section rrc-course-anchor"
     >
       <div className="rrc-container rrc-course-faq">
-        <SectionHeader eyebrow="FAQs" title={course.faqTitle || `${course.title} Questions`} />
+        <SectionHeader
+          eyebrow="FAQs"
+          title={course.faqTitle || `${course.title} Questions`}
+          description="Common inquiries regarding curriculum scope, batch progression, and enrollment."
+          align="left"
+        />
         {hasFaqs ? (
           <FAQAccordion items={course.faqs} />
         ) : (

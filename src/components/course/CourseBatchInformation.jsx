@@ -2,8 +2,7 @@ import SectionHeader from '../SectionHeader';
 import Button from '../Button';
 import './CourseBatchInformation.css';
 
-// 13 — Batch Information. Values come from course.batchInformation only;
-// programme / start date / mode are "[TO CONFIRM]" in data and shown verbatim.
+// 13 — Batch Information. Values come from course.batchInformation.
 export default function CourseBatchInformation({ course }) {
   if (!course || !course.batchInformation) return null;
   const info = course.batchInformation;
@@ -39,10 +38,11 @@ export default function CourseBatchInformation({ course }) {
             </div>
           </dl>
           <div className="rrc-course-batch__aside">
-            <h3 className="rrc-card__title">Need confirmed dates?</h3>
+            <h3 className="rrc-card__title">
+              {info.asideTitle || 'Need confirmed dates?'}
+            </h3>
             <p className="rrc-card__text">
-              Batch schedules are shared only once verified. Reach out to the academy for the
-              current intimation.
+              {info.asideText || 'Batch schedules are shared only once verified. Reach out to the academy for the current intimation.'}
             </p>
             <Button to={`/registration?course=${course.slug}`} variant="gold">
               Enquire Now

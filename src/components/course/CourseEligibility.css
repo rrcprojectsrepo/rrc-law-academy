@@ -1,0 +1,174 @@
+/* CourseEligibility — dedicated eligibility criteria section */
+.rrc-course-eligibility__grid {
+  display: grid;
+  gap: var(--rrc-space-6);
+  grid-template-columns: 1fr;
+}
+
+.rrc-course-eligibility__card {
+  position: relative;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-top: 3px solid var(--rrc-gold);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-3);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-course-eligibility__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+
+.rrc-course-eligibility__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.rrc-course-eligibility__card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--rrc-radius-md);
+  background: var(--rrc-surface-light);
+  color: var(--rrc-gold);
+}
+
+.rrc-course-eligibility__card-badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--rrc-radius-pill);
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Criteria List (Fallback or Additional) */
+.rrc-course-eligibility__criteria-panel {
+  margin-top: var(--rrc-space-6);
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-left: 4px solid var(--rrc-gold-bright);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+}
+
+.rrc-course-eligibility__criteria-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rrc-space-3);
+}
+
+.rrc-course-eligibility__criteria-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text);
+  line-height: 1.6;
+}
+
+.rrc-course-eligibility__criteria-list svg {
+  color: var(--rrc-gold);
+  flex: none;
+  margin-top: 3px;
+}
+
+/* Important Notes Box */
+.rrc-course-eligibility__notes-panel {
+  margin-top: var(--rrc-space-6);
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-left: 4px solid var(--rrc-gold);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: var(--rrc-space-6);
+}
+
+.rrc-course-eligibility__notes-heading {
+  margin: 0 0 var(--rrc-space-4);
+  font-family: var(--rrc-font-display);
+  font-size: 1.25rem;
+  color: var(--rrc-navy);
+}
+
+.rrc-course-eligibility__notes-grid {
+  display: grid;
+  gap: var(--rrc-space-5);
+  grid-template-columns: 1fr;
+}
+
+.rrc-course-eligibility__note-item h5 {
+  margin: 0 0 0.35rem;
+  color: var(--rrc-navy);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.rrc-course-eligibility__note-item p {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+}
+
+/* Source Link */
+.rrc-course-eligibility__footer {
+  margin-top: var(--rrc-space-5);
+  display: flex;
+  align-items: center;
+}
+
+.rrc-course-eligibility__source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  color: var(--rrc-navy);
+  font-size: var(--rrc-body-sm);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--rrc-gold);
+  text-underline-offset: 0.25em;
+  transition: color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-course-eligibility__source-link:hover {
+  color: var(--rrc-gold);
+}
+
+.rrc-course-eligibility__source-link:focus-visible {
+  outline: 3px solid var(--rrc-gold-bright);
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .rrc-course-eligibility__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .rrc-course-eligibility__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .rrc-course-eligibility__notes-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

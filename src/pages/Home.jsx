@@ -1,5 +1,4 @@
 import HomeHero from '../components/home/HomeHero';
-import HomeQuickStrip from '../components/home/HomeQuickStrip';
 import HomeJourney from '../components/home/HomeJourney';
 import HomeCourses from '../components/home/HomeCourses';
 import HomePillars from '../components/home/HomePillars';
@@ -16,13 +15,12 @@ import HomeFAQ from '../components/home/HomeFAQ';
 import HomeContact from '../components/home/HomeContact';
 import HomeFinalCTA from '../components/home/HomeFinalCTA';
 
-// Home — full 17-section composition (clean, data lives in src/data).
+// Home — full 16-section composition (clean, data lives in src/data).
 export default function Home() {
   return (
     <>
       <HomeHero />
       <HomeCourses />
-      <HomeQuickStrip />
       <HomeJourney />
       <HomePillars />
       <HomeMethodology />
@@ -40,4 +38,3 @@ export default function Home() {
     </>
   );
 }
-

@@ -5,6 +5,7 @@ import CourseHero from './CourseHero';
 import CourseQuickFacts from './CourseQuickFacts';
 import CourseNavigation from './CourseNavigation';
 import CourseOverview from './CourseOverview';
+import CourseEligibility from './CourseEligibility';
 import AudienceCards from './AudienceCards';
 import LearningAreas from './LearningAreas';
 import CourseMethodology from './CourseMethodology';
@@ -79,6 +80,7 @@ export default function CourseTemplate({ slug }) {
       <CourseQuickFacts course={course} />
       <CourseNavigation course={course} />
       <CourseOverview course={course} />
+      <CourseEligibility course={course} />
       <AudienceCards course={course} />
       <LearningAreas course={course} />
       <CourseMethodology course={course} />

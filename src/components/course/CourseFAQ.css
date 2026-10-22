@@ -1,12 +1,21 @@
-/* CourseFAQ (16) — narrow column (matches HomeFAQ) + explicit empty state. */
-.rrc-course-faq { max-width: 56rem; }
+/* CourseFAQ (16) — Full container alignment with comfortable accordion max-width. */
+.rrc-course-faq {
+  /* Inherits standard .rrc-container max-width (1200px) so SectionHeader aligns with other sections */
+}
+
+.rrc-course-faq .rrc-faq {
+  max-width: 960px;
+}
+
 .rrc-course-faq__empty {
+  max-width: 960px;
   background: var(--rrc-white);
   border: 1px dashed var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
   padding: var(--rrc-space-8) var(--rrc-space-6);
   text-align: center;
 }
+
 .rrc-course-faq__empty-title {
   margin: 0 0 var(--rrc-space-2);
   font-family: var(--rrc-font-display);
@@ -14,12 +23,15 @@
   font-weight: 700;
   color: var(--rrc-navy);
 }
+
 .rrc-course-faq__empty-text {
   margin: 0 auto;
-  max-width: 46ch;
+  max-width: 48ch;
   font-size: var(--rrc-body-sm);
   color: var(--rrc-text-secondary);
+  line-height: 1.6;
 }
+
 .rrc-course-faq__empty-cta {
   justify-content: center;
   margin-top: var(--rrc-space-6);

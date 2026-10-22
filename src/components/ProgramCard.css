@@ -1,30 +1,81 @@
-/* ProgramCard — white card + gold Explore link; strip variant is a full-area Link. */
+/* ============================================================================
+   ProgramCard Component
+   White surface card with navy icon badge, gold accent, and verified action link.
+   Supports both standard card layout and quick-strip variant.
+   Brand palette: Navy (#0e1c2f), Gold (#775a19 / #fed488), White (#ffffff).
+   ============================================================================ */
+
 .rrc-program-card {
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease), background-color var(--rrc-duration) var(--rrc-ease);
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform var(--rrc-duration) var(--rrc-ease),
+              box-shadow var(--rrc-duration) var(--rrc-ease),
+              border-color var(--rrc-duration) var(--rrc-ease),
+              background-color var(--rrc-duration) var(--rrc-ease);
 }
+
+/* Card variant (used in Programmes Section) */
+.rrc-program-card.rrc-card {
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  padding: 1.5rem 1.35rem 1.35rem;
+}
+
+.rrc-program-card.rrc-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(119, 90, 25, 0.35);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+
+/* Quick Strip variant (used in HomeQuickStrip) */
 .rrc-program-card--strip {
   background: var(--rrc-white);
   border: 1px solid transparent;
   border-radius: var(--rrc-radius-lg);
   padding: var(--rrc-space-5);
 }
+
 .rrc-program-card--strip:hover {
   transform: translateY(-4px);
   background: var(--rrc-surface-light);
   border-color: var(--rrc-border);
   box-shadow: var(--rrc-shadow-card-hover);
 }
+
+/* Header & Icon */
 .rrc-program-card__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
 }
-.rrc-program-card__icon { margin-bottom: var(--rrc-space-4); }
+
+.rrc-program-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  background: var(--rrc-navy);
+  color: var(--rrc-gold-bright);
+  border: 1px solid rgba(254, 212, 136, 0.2);
+  flex: none;
+  margin-bottom: 0;
+  transition: transform var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-program-card:hover .rrc-program-card__icon {
+  transform: scale(1.05);
+}
+
 .rrc-program-card__label {
   font-size: var(--rrc-caption);
   font-weight: 700;
@@ -32,10 +83,73 @@
   text-transform: uppercase;
   color: var(--rrc-gold);
 }
+
+/* Typography */
+.rrc-program-card .rrc-card__title {
+  font-family: var(--rrc-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--rrc-navy);
+  margin: 0 0 0.5rem;
+}
+
+.rrc-program-card .rrc-card__text {
+  font-family: var(--rrc-font-body);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+  color: var(--rrc-text-secondary);
+  margin: 0;
+  flex: 1; /* Pushes footer link cleanly to bottom */
+}
+
+/* Footer & Action Link */
+.rrc-program-card__foot {
+  margin-top: 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rrc-border);
+}
+
 .rrc-program-card__link {
   display: inline-flex;
-  margin-top: var(--rrc-space-4);
+  align-items: center;
+  font-size: 0.84rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--rrc-gold);
+  text-decoration: none;
+  transition: color var(--rrc-duration) var(--rrc-ease);
 }
-.rrc-program-card:hover .rrc-program-card__link { text-decoration: underline; text-underline-offset: 4px; }
+
+.rrc-program-card__arrow {
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-program-card:hover .rrc-program-card__link,
+.rrc-program-card__link:hover {
+  color: #5d4512;
+}
+
+.rrc-program-card:hover .rrc-program-card__arrow,
+.rrc-program-card__link:hover .rrc-program-card__arrow {
+  transform: translateX(4px);
+}
+
+.rrc-program-card__link:focus-visible {
+  outline: 2px solid var(--rrc-gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rrc-program-card,
+  .rrc-program-card__icon,
+  .rrc-program-card__arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+}

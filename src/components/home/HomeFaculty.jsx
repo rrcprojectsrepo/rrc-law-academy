@@ -12,7 +12,6 @@ export default function HomeFaculty() {
           title={facultyPlaceholders.title}
           description={facultyPlaceholders.text}
         />
-        <p className="rrc-faculty__asset-note">[ASSET TO CONFIRM — faculty photos pending; avatar icons are placeholders]</p>
         <div className="rrc-grid-3 rrc-stagger">
           {facultyPlaceholders.items.map((person) => (
             <FacultyCard key={person.id} faculty={person} />

@@ -1,4 +1,164 @@
-/* Why RRC — full-span highlight card below the 6-card grid. */
-.rrc-why .rrc-section-head__title { color: var(--rrc-white); }
-.rrc-why .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
-.rrc-why__highlight { margin-top: 1.5rem; }
+/* ============================================================================
+   RRC Law Academy — Why Choose RRC Law Academy
+   Dark navy section with refined #1A2B40 cards, elegant 01-06 indices,
+   subtle gold icon accents, and responsive 3-col desktop / 2-col tablet / 1-col mobile.
+   ============================================================================ */
+
+.rrc-why {
+  background-color: var(--rrc-navy);
+  padding: clamp(2.25rem, 1.75rem + 1.25vw, 3.25rem) 0;
+}
+
+.rrc-why .rrc-section-head {
+  margin-bottom: clamp(1.75rem, 1.25rem + 1vw, 2.5rem);
+}
+
+.rrc-why .rrc-section-head__eyebrow {
+  color: var(--rrc-gold-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.rrc-why .rrc-section-head__title {
+  color: var(--rrc-white);
+  font-family: var(--rrc-font-heading);
+}
+
+.rrc-why .rrc-section-head__rule {
+  background: var(--rrc-gold);
+}
+
+.rrc-why .rrc-section-head__desc {
+  color: #B8C5D9;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------------------
+   Responsive Grid
+   Desktop: 3 columns, 2 rows
+   Tablet: 2 columns
+   Mobile: 1 column
+   ---------------------------------------------------------------------------- */
+.rrc-why__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .rrc-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rrc-why__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Benefit Cards
+   ---------------------------------------------------------------------------- */
+.rrc-why-card__motion-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.rrc-why-card {
+  width: 100%;
+  height: 100%;
+  background: #1A2B40;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--rrc-radius-lg);
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform var(--rrc-duration-normal) var(--rrc-ease-out),
+              box-shadow var(--rrc-duration-normal) var(--rrc-ease-out),
+              border-color var(--rrc-duration-normal) var(--rrc-ease-out);
+  box-sizing: border-box;
+}
+
+.rrc-why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(254, 212, 136, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.rrc-why-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+}
+
+.rrc-why-card__icon-wrap {
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: var(--rrc-radius-md);
+  background: rgba(119, 90, 25, 0.16);
+  border: 1px solid rgba(254, 212, 136, 0.2);
+  color: var(--rrc-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color var(--rrc-duration-normal) var(--rrc-ease-out),
+              border-color var(--rrc-duration-normal) var(--rrc-ease-out),
+              transform var(--rrc-duration-normal) var(--rrc-ease-out);
+}
+
+.rrc-why-card:hover .rrc-why-card__icon-wrap {
+  background: rgba(119, 90, 25, 0.28);
+  border-color: rgba(254, 212, 136, 0.45);
+  transform: scale(1.04);
+}
+
+.rrc-why-card__index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--rrc-gold-light);
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+  transition: opacity var(--rrc-duration-normal) var(--rrc-ease-out);
+}
+
+.rrc-why-card:hover .rrc-why-card__index {
+  opacity: 1;
+}
+
+.rrc-why-card__title {
+  font-family: var(--rrc-font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rrc-white);
+  margin: 0 0 0.55rem;
+  line-height: 1.35;
+}
+
+.rrc-why-card__text {
+  font-size: 0.8875rem;
+  line-height: 1.6;
+  color: #B8C5D9;
+  margin: 0;
+  flex: 1;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .rrc-why-card,
+  .rrc-why-card__icon-wrap {
+    transition: none !important;
+    transform: none !important;
+  }
+}

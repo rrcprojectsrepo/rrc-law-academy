@@ -55,7 +55,14 @@ function getContextCourse(search) {
   if (course) return course.shortTitle;
 
   const program = programPageList.find((item) => item.slug === courseSlug);
-  return program?.title ?? '';
+  if (program) return program.title;
+
+  const normalized = courseSlug.toLowerCase().replace(/[-_]/g, ' ');
+  if (normalized === 'not sure' || normalized === 'not sure yet') {
+    return 'Not Sure';
+  }
+
+  return '';
 }
 
 function getInitialForm(search) {

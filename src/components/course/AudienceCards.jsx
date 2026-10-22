@@ -1,8 +1,7 @@
 import SectionHeader from '../SectionHeader';
 import FeatureCard from '../FeatureCard';
 
-// 05 — Who It's For. Composes the shared 4-up grid + FeatureCard, so it needs
-// no stylesheet of its own (same pattern as HomePillars / HomePrograms).
+// 05 — Who It's For. Composes the shared 4-up grid + FeatureCard.
 export default function AudienceCards({ course }) {
   if (!course || course.audience.length === 0) return null;
   return (
@@ -14,11 +13,17 @@ export default function AudienceCards({ course }) {
         <SectionHeader
           eyebrow="Who It's For"
           title={`Who Should Join ${course.title}`}
+          description={course.audienceDescription || 'Targeted preparatory pathways structured for high schoolers, board exam candidates, and dedicated gap-year aspirants.'}
           align="left"
         />
         <div className="rrc-grid-4 rrc-stagger">
           {course.audience.map((item) => (
-            <FeatureCard key={item.id} icon="groups" title={item.title} description={item.text} />
+            <FeatureCard
+              key={item.id}
+              icon={item.icon || 'groups'}
+              title={item.title}
+              description={item.text}
+            />
           ))}
         </div>
       </div>
