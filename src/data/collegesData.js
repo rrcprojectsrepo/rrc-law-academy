@@ -12,6 +12,7 @@
 export const collegesData = [
   {
     id: 'nlsiu-bengaluru',
+    shortCode: 'NLSIU',
     slug: 'nlsiu-bengaluru',
     name: 'NLSIU Bengaluru',
     fullName: 'National Law School of India University',
@@ -68,6 +69,7 @@ export const collegesData = [
   },
   {
     id: 'nlu-delhi',
+    shortCode: 'NLU Delhi',
     slug: 'nlu-delhi',
     name: 'NLU Delhi',
     fullName: 'National Law University, Delhi',
@@ -114,6 +116,7 @@ export const collegesData = [
   },
   {
     id: 'nalsar-hyderabad',
+    shortCode: 'NALSAR',
     slug: 'nalsar-hyderabad',
     name: 'NALSAR Hyderabad',
     fullName: 'NALSAR University of Law',
@@ -160,6 +163,7 @@ export const collegesData = [
   },
   {
     id: 'wbnujs-kolkata',
+    shortCode: 'WBNUJS',
     slug: 'wbnujs-kolkata',
     name: 'WBNUJS Kolkata',
     fullName: 'The West Bengal National University of Juridical Sciences',
@@ -206,6 +210,7 @@ export const collegesData = [
   },
   {
     id: 'nlu-jodhpur',
+    shortCode: 'NLU Jodhpur',
     slug: 'nlu-jodhpur',
     name: 'NLU Jodhpur',
     fullName: 'National Law University, Jodhpur',
@@ -252,6 +257,7 @@ export const collegesData = [
   },
   {
     id: 'gnlu-gandhinagar',
+    shortCode: 'GNLU',
     slug: 'gnlu-gandhinagar',
     name: 'GNLU Gandhinagar',
     fullName: 'Gujarat National Law University',
@@ -298,6 +304,7 @@ export const collegesData = [
   },
   {
     id: 'tnnlu-tiruchirappalli',
+    shortCode: 'TNNLU',
     slug: 'tnnlu-tiruchirappalli',
     name: 'TNNLU Tiruchirappalli',
     fullName: 'Tamil Nadu National Law University',
@@ -344,6 +351,7 @@ export const collegesData = [
   },
   {
     id: 'tndalu-chennai',
+    shortCode: 'TNDALU',
     slug: 'tndalu-chennai',
     name: 'TNDALU School of Excellence in Law',
     fullName: 'The Tamil Nadu Dr. Ambedkar Law University (SOEL)',
@@ -400,6 +408,7 @@ export const collegesData = [
   },
   {
     id: 'mnlu-mumbai',
+    shortCode: 'MNLU',
     slug: 'mnlu-mumbai',
     name: 'MNLU Mumbai',
     fullName: 'Maharashtra National Law University Mumbai',
@@ -446,6 +455,7 @@ export const collegesData = [
   },
   {
     id: 'nliu-bhopal',
+    shortCode: 'NLIU',
     slug: 'nliu-bhopal',
     name: 'NLIU Bhopal',
     fullName: 'National Law Institute University',
@@ -492,6 +502,7 @@ export const collegesData = [
   },
   {
     id: 'du-faculty-of-law',
+    shortCode: 'DU Law',
     slug: 'du-faculty-of-law',
     name: 'Faculty of Law, University of Delhi',
     fullName: 'Faculty of Law, University of Delhi',
@@ -548,6 +559,7 @@ export const collegesData = [
   },
   {
     id: 'symbiosis-law-school-pune',
+    shortCode: 'SLS Pune',
     slug: 'symbiosis-law-school-pune',
     name: 'Symbiosis Law School, Pune',
     fullName: 'Symbiosis Law School, Pune (Symbiosis International Deemed University)',

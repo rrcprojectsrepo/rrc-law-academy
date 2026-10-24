@@ -1,41 +1,47 @@
 .rrc-filter-bar {
+  min-width: 0;
   background-color: var(--rrc-white);
   border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
   box-shadow: var(--rrc-shadow-card);
   padding: var(--rrc-space-6);
   margin-bottom: var(--rrc-space-6);
+  box-sizing: border-box;
 }
 
 .rrc-filter-bar__top {
   display: flex;
   flex-direction: column;
   gap: var(--rrc-space-4);
+  min-width: 0;
 }
 
 .rrc-filter-bar__label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--rrc-navy);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--rrc-space-2);
+  margin-bottom: 0.35rem;
 }
 
 .rrc-filter-bar__search {
   width: 100%;
+  min-width: 0;
 }
 
 .rrc-filter-bar__search-wrap {
   position: relative;
   display: flex;
   align-items: center;
+  min-width: 0;
+  width: 100%;
 }
 
 .rrc-filter-bar__search-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.85rem;
   color: var(--rrc-text-secondary);
   pointer-events: none;
   display: flex;
@@ -44,8 +50,10 @@
 
 .rrc-filter-bar__search-input {
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   height: var(--rrc-btn-height);
-  padding: 0 2.5rem 0 2.75rem;
+  padding: 0 2.25rem 0 2.6rem;
   border-radius: var(--rrc-radius-md);
   border: 1.5px solid var(--rrc-border);
   background-color: var(--rrc-surface-light);
@@ -64,13 +72,13 @@
 
 .rrc-filter-bar__search-clear {
   position: absolute;
-  right: 0.75rem;
+  right: 0.65rem;
   background: transparent;
   border: none;
   color: var(--rrc-text-secondary);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   line-height: 1;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.4rem;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -81,23 +89,28 @@
 
 .rrc-filter-bar__selects {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--rrc-space-3);
+  min-width: 0;
 }
 
 .rrc-filter-bar__select-group {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .rrc-filter-bar__select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   height: var(--rrc-btn-height);
-  padding: 0 1rem;
+  padding: 0 0.75rem;
   border-radius: var(--rrc-radius-md);
   border: 1.5px solid var(--rrc-border);
   background-color: var(--rrc-surface-light);
   font-family: var(--rrc-font-body);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--rrc-navy);
   cursor: pointer;
@@ -120,12 +133,14 @@
   margin-top: var(--rrc-space-4);
   padding-top: var(--rrc-space-4);
   border-top: 1px solid var(--rrc-border);
+  min-width: 0;
 }
 
 .rrc-filter-bar__count {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--rrc-text-secondary);
+  min-width: 0;
 }
 
 .rrc-filter-bar__count strong {
@@ -136,19 +151,22 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--rrc-space-2);
+  gap: 0.35rem;
+  min-width: 0;
 }
 
 .rrc-filter-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   background-color: var(--rrc-surface-variant);
   color: var(--rrc-navy);
-  padding: 0.25rem 0.65rem;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--rrc-radius-pill);
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   font-weight: 600;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .rrc-filter-chip button {
@@ -174,7 +192,7 @@
   border: none;
   color: var(--rrc-gold);
   font-family: var(--rrc-font-body);
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   cursor: pointer;
   text-decoration: underline;
@@ -186,10 +204,10 @@
   color: var(--rrc-navy);
 }
 
-/* Responsive adjustments */
+/* Responsive rules */
 @media (max-width: 1023px) {
   .rrc-filter-bar__selects {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -198,10 +216,20 @@
     padding: var(--rrc-space-4);
   }
   .rrc-filter-bar__selects {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .rrc-filter-bar__meta {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .rrc-filter-bar {
+    padding: 1rem;
+  }
+  .rrc-filter-bar__search-input {
+    font-size: 0.875rem;
+    padding: 0 2rem 0 2.25rem;
   }
 }

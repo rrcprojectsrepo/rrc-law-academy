@@ -1,38 +1,80 @@
 .rrc-college-card {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
   background-color: var(--rrc-white);
   border: 1px solid var(--rrc-border);
   border-radius: var(--rrc-radius-lg);
-  padding: var(--rrc-space-6);
-  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
 }
 
 .rrc-college-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--rrc-shadow-card-hover);
+  box-shadow: 0 12px 32px rgba(14, 28, 47, 0.1);
+  border-color: rgba(119, 90, 25, 0.35);
 }
 
 .rrc-college-card__header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--rrc-space-2);
+  gap: 0.65rem;
   margin-bottom: var(--rrc-space-4);
   padding-bottom: var(--rrc-space-3);
   border-bottom: 1px solid var(--rrc-surface-light);
+  min-width: 0;
 }
 
-.rrc-college-card__badges {
+.rrc-college-card__identity {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--rrc-space-2);
+  gap: 0.75rem;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.rrc-college-card__emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--rrc-radius-md);
+  background: linear-gradient(135deg, var(--rrc-navy), #1c3557);
+  border: 1px solid rgba(254, 212, 136, 0.35);
+  box-shadow: 0 4px 10px rgba(14, 28, 47, 0.15);
+  flex-shrink: 0;
+}
+
+.rrc-college-card__emblem-code {
+  color: var(--rrc-gold-bright);
+  font-family: var(--rrc-font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 0.2rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.rrc-college-card__meta-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.rrc-college-card__meta-tags .rrc-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
 }
 
 .rrc-college-card__year {
-  font-size: var(--rrc-caption);
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--rrc-text-secondary);
 }
@@ -41,22 +83,30 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: var(--rrc-caption);
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--rrc-gold);
-  white-space: nowrap;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.rrc-college-card__location svg {
+  flex-shrink: 0;
+  color: var(--rrc-gold);
 }
 
 .rrc-college-card__body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-width: 0;
 }
 
 .rrc-college-card__title {
   margin: 0 0 0.35rem;
-  font-size: 1.35rem;
-  line-height: 1.25;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-card__title-link {
@@ -70,23 +120,28 @@
 }
 
 .rrc-college-card__fullname {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--rrc-text-secondary);
   margin: 0 0 var(--rrc-space-3);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-card__tagline {
-  margin-bottom: var(--rrc-space-4);
+  margin: 0 0 var(--rrc-space-4);
   line-height: 1.55;
+  font-size: var(--rrc-body-sm);
+  color: var(--rrc-text-secondary);
 }
 
 .rrc-college-card__section {
   margin-top: var(--rrc-space-3);
+  min-width: 0;
 }
 
 .rrc-college-card__section-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -97,7 +152,13 @@
 .rrc-college-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--rrc-space-2);
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.rrc-college-card__tags .rrc-badge {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
 }
 
 .rrc-college-card__courses {
@@ -113,8 +174,10 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.88rem;
+  font-size: 0.825rem;
   color: var(--rrc-text);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-card__course-item svg {
@@ -123,7 +186,7 @@
 }
 
 .rrc-college-card__footer {
-  margin-top: var(--rrc-space-5);
+  margin-top: auto;
   padding-top: var(--rrc-space-4);
   border-top: 1px solid var(--rrc-surface-light);
 }
@@ -131,4 +194,14 @@
 .rrc-college-card__cta {
   width: 100%;
   justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .rrc-college-card {
+    padding: var(--rrc-space-4);
+  }
+  .rrc-college-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

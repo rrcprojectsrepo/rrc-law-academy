@@ -1,12 +1,24 @@
 import FacultyCard from '../FacultyCard';
-import { ProgramCards, ProgramSection } from './ProgramSection';
+import SectionHeader from '../SectionHeader';
 
 export default function ProgramFaculty({ program }) {
+  if (!program.faculty?.length) return null;
+
   return (
-    <ProgramSection id="faculty" className="rrc-section--light" eyebrow="Faculty / Academic Guidance" title={`Faculty for ${program.title}`}>
-      <ProgramCards items={program.faculty} className="rrc-grid-2">
-        {(member) => <FacultyCard key={member.id} faculty={member} />}
-      </ProgramCards>
-    </ProgramSection>
+    <section id="rrc-program-faculty" className="rrc-section" aria-labelledby="rrc-program-faculty-title">
+      <div className="rrc-container">
+        <SectionHeader
+          eyebrow="Academic Mentorship"
+          title={`Faculty & Mentors for ${program.title}`}
+          description="Our experienced legal educators and subject mentors provide individual diagnostic reviews, concept clarification, and ongoing preparation support."
+          align="left"
+        />
+        <div className="rrc-grid-2 rrc-stagger">
+          {program.faculty.map((member) => (
+            <FacultyCard key={member.id} faculty={member} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

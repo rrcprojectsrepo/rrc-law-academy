@@ -11,12 +11,17 @@ export default function CollegeCard({ college }) {
   return (
     <article className="rrc-card rrc-college-card" aria-labelledby={`college-title-${college.slug}`}>
       <div className="rrc-college-card__header">
-        <div className="rrc-college-card__badges">
-          <span className="rrc-badge rrc-badge--navy">{college.type}</span>
-          <span className="rrc-college-card__year">Est. {college.establishedYear}</span>
+        <div className="rrc-college-card__identity">
+          <div className="rrc-college-card__emblem" aria-hidden="true">
+            <span className="rrc-college-card__emblem-code">{college.shortCode || 'LAW'}</span>
+          </div>
+          <div className="rrc-college-card__meta-tags">
+            <span className="rrc-badge rrc-badge--navy">{college.type}</span>
+            <span className="rrc-college-card__year">Est. {college.establishedYear}</span>
+          </div>
         </div>
         <div className="rrc-college-card__location">
-          <RrcIcon name="public" size={15} />
+          <RrcIcon name="location_on" size={15} />
           <span>
             {college.city}, {college.state}
           </span>
@@ -33,7 +38,7 @@ export default function CollegeCard({ college }) {
         <p className="rrc-card__text rrc-college-card__tagline">{college.tagline}</p>
 
         <div className="rrc-college-card__section">
-          <p className="rrc-college-card__section-label">Accepted Entrance Exams:</p>
+          <p className="rrc-college-card__section-label">Accepted Entrance Exams</p>
           <div className="rrc-college-card__tags">
             {college.entranceExams.map((exam) => (
               <span key={exam} className="rrc-badge rrc-badge--gold">
@@ -44,7 +49,7 @@ export default function CollegeCard({ college }) {
         </div>
 
         <div className="rrc-college-card__section">
-          <p className="rrc-college-card__section-label">Key Programmes:</p>
+          <p className="rrc-college-card__section-label">Key Programmes Offered</p>
           <ul className="rrc-college-card__courses">
             {college.coursesOffered.map((course) => (
               <li key={course} className="rrc-college-card__course-item">

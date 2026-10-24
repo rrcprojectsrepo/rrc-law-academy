@@ -3,93 +3,325 @@
 .rrc-program-missing { max-width: 56rem; text-align: center; }
 .rrc-program-missing .rrc-lead { margin: 1rem auto 0; }
 
-.rrc-program-hero { padding-block: clamp(4rem, 7vw, 7rem); }
+/* 01 — Program Hero */
+.rrc-program-hero { padding-block: clamp(3.5rem, 6vw, 5.5rem); }
 .rrc-program-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
   align-items: center;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(2rem, 5vw, 4.5rem);
 }
 .rrc-program-hero__copy { min-width: 0; }
-.rrc-program-hero__copy > * { animation: rrc-fade-up 480ms var(--rrc-ease) both; }
-.rrc-program-hero__copy > :nth-child(2) { animation-delay: 60ms; }
-.rrc-program-hero__copy > :nth-child(3) { animation-delay: 120ms; }
-.rrc-program-hero__copy > :nth-child(4) { animation-delay: 180ms; }
-.rrc-program-hero__visual { animation: rrc-hero-image-in 620ms var(--rrc-ease) both; animation-delay: 180ms; }
-.rrc-program-hero__title { max-width: 14ch; margin-bottom: 1.25rem; overflow-wrap: anywhere; }
-.rrc-program-hero__copy .rrc-lead { max-width: 58ch; }
+.rrc-program-hero__title {
+  max-width: 14ch;
+  margin-bottom: 1.25rem;
+  overflow-wrap: anywhere;
+}
+.rrc-program-hero__copy .rrc-lead {
+  max-width: 58ch;
+  color: var(--rrc-text-muted-on-navy);
+}
 .rrc-program-hero__actions { margin-top: 2rem; }
+
 .rrc-program-hero__visual { min-width: 0; }
 .rrc-program-hero__frame {
-  min-height: clamp(18rem, 35vw, 31rem);
-  overflow: hidden;
   position: relative;
-  display: grid;
-  place-content: center;
-  gap: 1rem;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,.2);
+  overflow: hidden;
   border-radius: var(--rrc-radius-lg);
-  background: radial-gradient(ellipse at 75% 15%, rgba(254,212,136,.2), transparent 48%), linear-gradient(145deg, #172b46, #0a1423);
-  box-shadow: 0 24px 60px rgba(0,0,0,.22);
-}
-.rrc-program-hero__frame::before,
-.rrc-program-hero__frame::after { content: ''; position: absolute; border: 1px solid rgba(254,212,136,.18); border-radius: 50%; width: 19rem; aspect-ratio: 1; }
-.rrc-program-hero__frame::before { left: -8rem; bottom: -12rem; }
-.rrc-program-hero__frame::after { right: -11rem; top: -13rem; width: 26rem; }
-.rrc-program-hero__mark { position: relative; z-index: 1; color: var(--rrc-gold-bright); font: 700 clamp(2.75rem, 7vw, 5rem)/1 var(--rrc-font-display); letter-spacing: .08em; }
-.rrc-program-hero__placeholder { position: relative; z-index: 1; color: var(--rrc-text-muted-on-navy); font-size: var(--rrc-caption); letter-spacing: .1em; text-transform: uppercase; }
-
-.rrc-program-prose { max-width: 78ch; display: grid; gap: 1rem; }
-.rrc-program-prose p { margin: 0; color: var(--rrc-text-secondary); }
-.rrc-program-modules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rrc-space-6); }
-.rrc-program-module { min-width: 0; }
-.rrc-program-panel { max-width: 60rem; padding: clamp(1.25rem, 3vw, 2rem); }
-.rrc-program-panel__intro { margin: 0 0 1.25rem; color: var(--rrc-text-secondary); }
-.rrc-program-bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
-.rrc-program-bullets li { display: flex; align-items: flex-start; gap: .7rem; min-width: 0; color: var(--rrc-text-secondary); font-size: var(--rrc-body-sm); font-weight: 600; overflow-wrap: anywhere; }
-.rrc-program-bullets li svg { flex: none; color: var(--rrc-gold); margin-top: .18rem; }
-.rrc-program-bullets--columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; }
-.rrc-program-step-title { margin-top: 1rem; }
-.rrc-program-batch { margin: 0; padding: 0; overflow: hidden; }
-.rrc-program-batch__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.rrc-program-batch__item { min-width: 0; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--rrc-border); }
-.rrc-program-batch__item dt { margin-bottom: .35rem; color: var(--rrc-text-secondary); font-size: var(--rrc-caption); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.rrc-program-batch__item dd { margin: 0; color: var(--rrc-navy); font-weight: 700; overflow-wrap: anywhere; }
-.rrc-program-cta__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; }
-.rrc-program-cta .rrc-h2 { margin-bottom: .8rem; }
-.rrc-program-cta .rrc-btn-row { justify-content: flex-end; }
-.rrc-program-cta .rrc-eyebrow { margin-bottom: .65rem; }
-
-@media (max-width: 767px) {
-  .rrc-program-hero__grid { grid-template-columns: minmax(0, 1fr); }
-  .rrc-program-hero__title { max-width: 18ch; }
-  .rrc-program-hero__frame { min-height: 17rem; }
-  .rrc-program-modules { grid-template-columns: minmax(0, 1fr); }
-  .rrc-program-cta__inner { grid-template-columns: minmax(0, 1fr); }
-  .rrc-program-cta .rrc-btn-row { justify-content: flex-start; }
-}
-@media (max-width: 479px) {
-  .rrc-program-bullets--columns,
-  .rrc-program-batch__grid { grid-template-columns: minmax(0, 1fr); }
-  .rrc-program-batch__item { padding-inline: 1.25rem; }
-  .rrc-program-hero__actions .rrc-btn { white-space: normal; text-align: center; line-height: 1.25; padding-block: .75rem; }
-}
-
-.rrc-program-hero__frame--image {
-  min-height: 0;
-  padding: 0;
-  display: block;
+  border: 1px solid rgba(254, 212, 136, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: var(--rrc-navy-light);
   aspect-ratio: 1 / 1;
+  max-width: 28rem;
+  margin-inline: auto;
 }
-.rrc-program-hero__frame--image::before,
-.rrc-program-hero__frame--image::after { display: none; }
 .rrc-program-hero__image {
-  position: absolute;
-  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/* 02 — Program Overview (2-column split with admissions aside) */
+.rrc-program-overview { min-width: 0; }
+.rrc-program-overview--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.rrc-program-overview__body { min-width: 0; }
+.rrc-program-prose { display: grid; gap: 1rem; }
+.rrc-program-prose p {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body);
+  line-height: 1.65;
+}
+.rrc-program-overview__aside {
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid rgba(119, 90, 25, 0.25);
+  background: var(--rrc-surface-light);
+  box-shadow: 0 8px 24px rgba(14, 28, 47, 0.06);
+}
+.rrc-program-overview__aside-icon { margin-bottom: 0.75rem; }
+.rrc-program-overview__aside .rrc-card__text {
+  margin-bottom: 1rem;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+.rrc-program-overview__aside-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+.rrc-program-overview__aside-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--rrc-navy);
+  font-weight: 600;
+}
+.rrc-program-overview__aside-list li svg {
+  flex: none;
+  color: var(--rrc-gold);
+  margin-top: 0.15rem;
+}
+.rrc-program-overview__aside-cta { margin-top: auto; }
+
+/* 03 — Program Target Audience */
+.rrc-program-audience__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+}
+.rrc-program-audience-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-program-audience-card__icon { margin-bottom: 0.75rem; }
+.rrc-program-audience-card .rrc-card__title { margin: 0 0 0.5rem; font-size: 1.125rem; }
+.rrc-program-audience-card .rrc-card__text {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+
+/* 04 — Curriculum & Modules */
+.rrc-program-modules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+}
+.rrc-program-module {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-program-module__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rrc-border);
+}
+.rrc-program-module__title { margin: 0; font-size: 1.15rem; }
+.rrc-program-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.rrc-program-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-width: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.rrc-program-bullets li svg {
+  flex: none;
+  color: var(--rrc-gold);
+  margin-top: 0.15rem;
+}
+
+/* 05 — Academic Inclusions (3-Card Grid) */
+.rrc-program-inclusions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+}
+.rrc-program-inclusions__card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-program-inclusions__card .rrc-icon-badge { margin-bottom: var(--rrc-space-4); }
+.rrc-program-inclusions__card .rrc-card__title { margin: 0 0 0.5rem; font-size: 1.2rem; }
+.rrc-program-inclusions__card .rrc-card__text {
+  margin: 0 0 1.25rem;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+
+/* 06 — Preparation Methodology (5-step cycle) */
+.rrc-program-method-flow {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+  margin: 0;
+  padding: 0;
+}
+.rrc-program-method-flow__step { min-width: 0; position: relative; }
+.rrc-program-method-flow__step .rrc-card__title { margin-top: 0.75rem; font-size: 1.125rem; }
+.rrc-program-method-flow__step .rrc-card__text {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+.rrc-program-method-flow__step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -0.95rem;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 1;
+  color: var(--rrc-gold);
+  font-weight: 700;
+}
+
+/* 07 — Batch Information & Learning Environment */
+.rrc-program-batch-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+  align-items: start;
+}
+.rrc-program-batch-card,
+.rrc-program-environment-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-program-batch-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rrc-border);
+}
+.rrc-program-batch-card__head .rrc-card__title { margin: 0; font-size: 1.2rem; }
+.rrc-program-batch__dl {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.rrc-program-batch__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rrc-border);
+  gap: 1rem;
+}
+.rrc-program-batch__item:last-child { border-bottom: none; }
+.rrc-program-batch__item dt {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-caption);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.rrc-program-batch__item dd {
+  margin: 0;
+  color: var(--rrc-navy);
+  font-weight: 700;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.rrc-program-environment-card .rrc-card__text {
+  margin: 0 0 1.25rem;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+
+/* 08 — Student Journey Roadmap */
+.rrc-program-journey__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--rrc-space-6);
+}
+.rrc-program-journey-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rrc-program-journey-card .rrc-card__title { margin-top: 0.75rem; font-size: 1.125rem; }
+.rrc-program-journey-card .rrc-card__text {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.5;
+}
+
+/* 09 — Program CTA */
+.rrc-program-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+}
+.rrc-program-cta .rrc-h2 { margin-bottom: 0.8rem; }
+.rrc-program-cta .rrc-btn-row { justify-content: flex-end; }
+.rrc-program-cta .rrc-eyebrow { margin-bottom: 0.65rem; }
+
+/* Responsive rules */
+@media (max-width: 1199px) {
+  .rrc-program-audience__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rrc-program-journey__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rrc-program-method-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rrc-program-method-flow__step:not(:last-child)::after { display: none; }
+}
+@media (max-width: 991px) {
+  .rrc-program-overview--split { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-inclusions__grid { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-batch-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .rrc-program-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-hero__title { max-width: 18ch; }
+  .rrc-program-hero__frame { max-height: 22rem; }
+  .rrc-program-modules { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-audience__grid { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-method-flow { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-journey__grid { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-cta__inner { grid-template-columns: minmax(0, 1fr); }
+  .rrc-program-cta .rrc-btn-row { justify-content: flex-start; }
+}
+@media (max-width: 479px) {
+  .rrc-program-batch__item { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .rrc-program-batch__item dd { text-align: left; }
+  .rrc-program-hero__actions .rrc-btn,
+  .rrc-program-cta .rrc-btn-row .rrc-btn { flex: 1 1 100%; white-space: normal; text-align: center; }
 }

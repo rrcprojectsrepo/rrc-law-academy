@@ -2,16 +2,11 @@ import { getProgramPage } from '../../data/programPages';
 import ProgramHero from './ProgramHero';
 import ProgramOverview from './ProgramOverview';
 import ProgramAudience from './ProgramAudience';
-import ProgramObjectives from './ProgramObjectives';
-import ProgramFeatures from './ProgramFeatures';
-import ProgramMethodology from './ProgramMethodology';
 import ProgramStructure from './ProgramStructure';
-import ProgramPractice from './ProgramPractice';
-import ProgramCurrentAffairs from './ProgramCurrentAffairs';
-import ProgramStudyMaterial from './ProgramStudyMaterial';
+import ProgramInclusions from './ProgramInclusions';
+import ProgramMethodology from './ProgramMethodology';
 import ProgramFaculty from './ProgramFaculty';
 import ProgramBatchInformation from './ProgramBatchInformation';
-import ProgramLearningEnvironment from './ProgramLearningEnvironment';
 import ProgramStudentJourney from './ProgramStudentJourney';
 import ProgramFAQ from './ProgramFAQ';
 import ProgramCTA from './ProgramCTA';
@@ -36,16 +31,11 @@ export default function ProgramTemplate({ slug }) {
       <ProgramHero program={program} />
       <ProgramOverview program={program} />
       <ProgramAudience program={program} />
-      <ProgramObjectives program={program} />
-      <ProgramFeatures program={program} />
-      <ProgramMethodology program={program} />
       <ProgramStructure program={program} />
-      <ProgramPractice program={program} />
-      <ProgramCurrentAffairs program={program} />
-      <ProgramStudyMaterial program={program} />
+      <ProgramInclusions program={program} />
+      <ProgramMethodology program={program} />
       <ProgramFaculty program={program} />
       <ProgramBatchInformation program={program} />
-      <ProgramLearningEnvironment program={program} />
       <ProgramStudentJourney program={program} />
       <ProgramFAQ program={program} />
       <ProgramCTA program={program} />

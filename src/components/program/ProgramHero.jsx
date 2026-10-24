@@ -10,7 +10,7 @@ const PROGRAM_HERO_ALT = {
 
 export default function ProgramHero({ program }) {
   const [primary, secondary] = [program.cta?.primaryCta, program.cta?.secondaryCta];
-  const hasHeroImage = program.heroImage && !String(program.heroImage).includes('ASSET TO CONFIRM');
+  const hasHeroImage = Boolean(program.heroImage);
 
   return (
     <section className="rrc-program-hero rrc-section--navy" aria-labelledby="rrc-program-title">
@@ -31,11 +31,15 @@ export default function ProgramHero({ program }) {
                 className="rrc-program-hero__image"
                 src={program.heroImage}
                 alt={PROGRAM_HERO_ALT[program.slug] || `${program.title} students preparing for law entrance examinations`}
+                width="800"
+                height="800"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
               />
             ) : (
-              <div role="img" aria-label={`${program.title} visual: [ASSET TO CONFIRM]`}>
+              <div role="img" aria-label={`${program.title} — RRC Law Academy`}>
                 <span className="rrc-program-hero__mark" aria-hidden="true">RRC</span>
-                <span className="rrc-program-hero__placeholder">[ASSET TO CONFIRM]</span>
               </div>
             )}
           </div>

@@ -1,0 +1,32 @@
+/* ==========================================================================
+   RRC Law Academy — Top Viewport Scroll Progress Indicator
+   ========================================================================== */
+
+.rrc-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 70;
+  pointer-events: none;
+  background: transparent;
+  overflow: hidden;
+  transition: opacity 160ms var(--rrc-ease, ease);
+}
+
+.rrc-scroll-progress__bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #775a19 0%, #fed488 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrc-scroll-progress,
+  .rrc-scroll-progress__bar {
+    transition: none !important;
+  }
+}

@@ -1,12 +1,28 @@
+.rrc-college-profile-page {
+  min-width: 0;
+  overflow: clip;
+}
+
+.rrc-college-profile-page section {
+  scroll-margin-top: 5rem;
+}
+
+/* 01 — College Profile Hero (2-Column Split) */
 .rrc-college-profile-hero {
   background-color: var(--rrc-surface-light);
   border-bottom: 1px solid var(--rrc-border);
-  padding-block: clamp(2.5rem, 1.8rem + 2.5vw, 4rem);
+  padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
-.rrc-college-profile-hero__inner {
-  display: flex;
-  flex-direction: column;
+.rrc-college-profile-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.rrc-college-profile-hero__copy {
+  min-width: 0;
 }
 
 .rrc-college-profile-hero__badges {
@@ -15,6 +31,7 @@
   align-items: center;
   gap: var(--rrc-space-2);
   margin-bottom: var(--rrc-space-3);
+  min-width: 0;
 }
 
 .rrc-college-profile-hero__location {
@@ -29,6 +46,9 @@
 .rrc-college-profile-hero__title {
   margin: 0 0 0.5rem;
   color: var(--rrc-navy);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-profile-hero__fullname {
@@ -36,18 +56,144 @@
   font-weight: 600;
   color: var(--rrc-text-secondary);
   margin: 0 0 var(--rrc-space-3);
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-profile-hero__tagline {
   margin-bottom: var(--rrc-space-5);
   max-width: 65ch;
+  line-height: 1.6;
 }
 
 .rrc-college-profile-hero__actions {
   margin-top: var(--rrc-space-2);
 }
 
-/* Quick Facts Strip */
+/* Institutional Snapshot Card (Hero Right Column) */
+.rrc-college-profile-hero__snapshot {
+  min-width: 0;
+}
+
+.rrc-college-snapshot-card {
+  background-color: var(--rrc-white);
+  border: 1px solid rgba(119, 90, 25, 0.25);
+  box-shadow: 0 10px 30px rgba(14, 28, 47, 0.08);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-radius: var(--rrc-radius-lg);
+}
+
+.rrc-college-snapshot-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rrc-border);
+  margin-bottom: 1rem;
+}
+
+.rrc-college-snapshot-card__emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--rrc-radius-md);
+  background: linear-gradient(135deg, var(--rrc-navy), #1c3557);
+  border: 1px solid rgba(254, 212, 136, 0.35);
+  color: var(--rrc-gold-bright);
+  font-family: var(--rrc-font-display);
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.rrc-college-snapshot-card__title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--rrc-navy);
+}
+
+.rrc-college-snapshot-card__subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--rrc-text-secondary);
+  font-weight: 600;
+}
+
+.rrc-college-snapshot-card__dl {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.rrc-college-snapshot-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--rrc-surface-light);
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.rrc-college-snapshot-card__row:last-child {
+  border-bottom: none;
+}
+
+.rrc-college-snapshot-card__row dt {
+  color: var(--rrc-text-secondary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.rrc-college-snapshot-card__row dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--rrc-navy);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.rrc-college-snapshot-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.rrc-college-snapshot-card__tags .rrc-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+}
+
+.rrc-college-snapshot-card__foot {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rrc-border);
+}
+
+.rrc-college-snapshot-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rrc-gold);
+  text-decoration: none;
+}
+
+.rrc-college-snapshot-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 02 — Quick Facts Strip */
 .rrc-college-facts-strip {
   background-color: var(--rrc-white);
   border-bottom: 1px solid var(--rrc-border);
@@ -56,11 +202,12 @@
 
 .rrc-college-facts-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--rrc-space-4);
 }
 
 .rrc-college-fact-card {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   padding: var(--rrc-space-3) var(--rrc-space-4);
@@ -70,7 +217,7 @@
 }
 
 .rrc-college-fact-card__label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -83,14 +230,19 @@
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--rrc-navy);
+  overflow-wrap: anywhere;
 }
 
-/* About & Highlights */
+/* 03 — About & Highlights */
 .rrc-college-about-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
   gap: var(--rrc-space-8);
   align-items: start;
+}
+
+.rrc-college-about-copy {
+  min-width: 0;
 }
 
 .rrc-college-about-text {
@@ -101,12 +253,15 @@
 }
 
 .rrc-college-highlights-card {
+  min-width: 0;
   background-color: var(--rrc-surface-light);
   border: 1px solid var(--rrc-border);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 .rrc-college-highlights-title {
   margin-bottom: var(--rrc-space-4);
+  font-size: 1.2rem;
 }
 
 .rrc-college-highlights-list {
@@ -122,7 +277,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1.5;
   color: var(--rrc-text);
 }
@@ -133,7 +288,7 @@
   margin-top: 0.15rem;
 }
 
-/* Programmes list */
+/* 04 — Programmes list */
 .rrc-college-programmes-list {
   display: flex;
   flex-direction: column;
@@ -141,6 +296,7 @@
 }
 
 .rrc-college-programme-card {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--rrc-space-4);
@@ -153,34 +309,39 @@
   gap: var(--rrc-space-4);
   padding-bottom: var(--rrc-space-3);
   border-bottom: 1px solid var(--rrc-surface-light);
+  min-width: 0;
 }
 
 .rrc-college-programme-card__title {
   margin: var(--rrc-space-2) 0 0;
   font-size: 1.35rem;
+  overflow-wrap: anywhere;
 }
 
 .rrc-college-programme-card__route {
   display: flex;
   align-items: center;
-  gap: var(--rrc-space-2);
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .rrc-college-programme-card__route-label {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--rrc-text-secondary);
 }
 
 .rrc-college-programme-card__details {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: var(--rrc-space-4);
+  min-width: 0;
 }
 
 .rrc-college-programme-card__meta-item {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1.6;
+  min-width: 0;
 }
 
 .rrc-college-programme-card__meta-item strong {
@@ -195,15 +356,17 @@
   justify-content: space-between;
   gap: var(--rrc-space-4);
   padding: var(--rrc-space-4) var(--rrc-space-5);
-  background-color: var(--rrc-card-bg);
-  border: 1px solid var(--rrc-border);
+  background-color: var(--rrc-surface-light);
+  border: 1px solid rgba(119, 90, 25, 0.25);
   border-radius: var(--rrc-radius-md);
+  min-width: 0;
 }
 
 .rrc-college-programme-card__rrc-bridge-text {
   display: flex;
   align-items: center;
   gap: var(--rrc-space-3);
+  min-width: 0;
 }
 
 .rrc-college-programme-card__rrc-bridge-text svg {
@@ -220,16 +383,18 @@
 
 .rrc-college-programme-card__rrc-bridge-desc {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.825rem;
   color: var(--rrc-text-secondary);
+  line-height: 1.45;
 }
 
 .rrc-college-programme-card__rrc-bridge-btn {
   flex-shrink: 0;
 }
 
-/* Official Verification Notice Card */
+/* 05 — Official Verification Notice Card */
 .rrc-college-verification-card {
+  min-width: 0;
   background-color: var(--rrc-surface-light);
   border: 1px solid var(--rrc-border);
   padding: var(--rrc-space-6);
@@ -240,10 +405,12 @@
   align-items: center;
   gap: var(--rrc-space-4);
   margin-bottom: var(--rrc-space-4);
+  min-width: 0;
 }
 
 .rrc-college-verification-card__title {
   margin: 0 0 0.25rem;
+  font-size: 1.25rem;
 }
 
 .rrc-college-verification-card__timestamp {
@@ -253,9 +420,10 @@
 }
 
 .rrc-college-verification-card__text {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.65;
   margin-bottom: var(--rrc-space-4);
+  color: var(--rrc-text-secondary);
 }
 
 .rrc-college-verification-card__links {
@@ -278,7 +446,7 @@
   color: var(--rrc-gold);
 }
 
-/* Missing State */
+/* 06 — Missing State */
 .rrc-college-missing {
   text-align: center;
   padding: clamp(3rem, 2rem + 3vw, 5rem) var(--rrc-space-6);
@@ -292,31 +460,40 @@
   margin-bottom: var(--rrc-space-5);
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 1023px) {
+  .rrc-college-profile-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .rrc-college-facts-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .rrc-college-about-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .rrc-college-programme-card__rrc-bridge {
     flex-direction: column;
     align-items: flex-start;
   }
+  .rrc-college-programme-card__rrc-bridge-btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 639px) {
   .rrc-college-facts-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .rrc-college-programme-card__header {
     flex-direction: column;
+    align-items: flex-start;
   }
   .rrc-college-programme-card__details {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
-  .rrc-college-programme-card__rrc-bridge-btn {
-    width: 100%;
+  .rrc-college-profile-hero__actions .rrc-btn {
+    flex: 1 1 100%;
+    white-space: normal;
+    text-align: center;
   }
 }

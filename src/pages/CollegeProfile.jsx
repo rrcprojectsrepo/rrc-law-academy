@@ -17,7 +17,7 @@ export default function CollegeProfile() {
         <CollegeBreadcrumb items={[{ label: 'College Not Found' }]} />
         <section className="rrc-section" aria-labelledby="rrc-college-not-found-title">
           <div className="rrc-container rrc-college-missing">
-            <span className="rrc-icon-badge rrc-icon-badge--gold" aria-hidden="true">
+            <span className="rrc-icon-badge rrc-badge--gold" aria-hidden="true">
               <RrcIcon name="manage_search" size={28} />
             </span>
             <h1 id="rrc-college-not-found-title" className="rrc-h2">
@@ -40,70 +40,125 @@ export default function CollegeProfile() {
 
   return (
     <div className="rrc-college-profile-page">
-      {/* Breadcrumb Navigation */}
+      {/* 01 — Breadcrumb Navigation */}
       <CollegeBreadcrumb items={[{ label: college.name }]} />
 
-      {/* College Profile Hero */}
+      {/* 02 — College Profile Hero (Balanced 2-Column Institutional Header) */}
       <section className="rrc-college-profile-hero" aria-labelledby="rrc-college-name">
-        <div className="rrc-container rrc-college-profile-hero__inner">
-          <div className="rrc-college-profile-hero__badges">
-            <span className="rrc-badge rrc-badge--navy">{college.type}</span>
-            <span className="rrc-badge rrc-badge--gold">Est. {college.establishedYear}</span>
-            <span className="rrc-college-profile-hero__location">
-              <RrcIcon name="public" size={16} />
-              {college.city}, {college.state}
-            </span>
+        <div className="rrc-container rrc-college-profile-hero__grid">
+          <div className="rrc-college-profile-hero__copy">
+            <div className="rrc-college-profile-hero__badges">
+              <span className="rrc-badge rrc-badge--navy">{college.type}</span>
+              <span className="rrc-badge rrc-badge--gold">Est. {college.establishedYear}</span>
+              <span className="rrc-college-profile-hero__location">
+                <RrcIcon name="location_on" size={15} />
+                {college.city}, {college.state}
+              </span>
+            </div>
+
+            <h1 id="rrc-college-name" className="rrc-display rrc-college-profile-hero__title">
+              {college.name}
+            </h1>
+            <p className="rrc-college-profile-hero__fullname">{college.fullName}</p>
+            <p className="rrc-lead rrc-college-profile-hero__tagline">{college.tagline}</p>
+
+            <div className="rrc-btn-row rrc-college-profile-hero__actions">
+              <Button to={`/registration?college=${college.slug}`} variant="primary">
+                Enquire for Entrance Coaching
+              </Button>
+              <Button
+                href={college.officialWebsite}
+                external
+                variant="secondary"
+                aria-label={`Visit official website of ${college.name} (opens in new tab)`}
+              >
+                Visit Official Website ↗
+              </Button>
+            </div>
           </div>
 
-          <h1 id="rrc-college-name" className="rrc-display rrc-college-profile-hero__title">
-            {college.name}
-          </h1>
-          <p className="rrc-college-profile-hero__fullname">{college.fullName}</p>
-          <p className="rrc-lead rrc-college-profile-hero__tagline">{college.tagline}</p>
+          <aside className="rrc-college-profile-hero__snapshot" aria-label="Institutional snapshot">
+            <div className="rrc-card rrc-college-snapshot-card">
+              <div className="rrc-college-snapshot-card__head">
+                <div className="rrc-college-snapshot-card__emblem" aria-hidden="true">
+                  <span>{college.shortCode || 'LAW'}</span>
+                </div>
+                <div>
+                  <h3 className="rrc-card__title rrc-college-snapshot-card__title">
+                    {college.shortCode} Overview
+                  </h3>
+                  <p className="rrc-college-snapshot-card__subtitle">{college.city}, {college.state}</p>
+                </div>
+              </div>
 
-          <div className="rrc-btn-row rrc-college-profile-hero__actions">
-            <Button to="/registration" variant="primary">
-              Enquire for Entrance Coaching
-            </Button>
-            <Button
-              href={college.officialWebsite}
-              external
-              variant="secondary"
-              aria-label={`Visit official website of ${college.name} (opens in new tab)`}
-            >
-              Visit Official Website ↗
-            </Button>
-          </div>
+              <dl className="rrc-college-snapshot-card__dl">
+                <div className="rrc-college-snapshot-card__row">
+                  <dt>Institution Type</dt>
+                  <dd>{college.type}</dd>
+                </div>
+                <div className="rrc-college-snapshot-card__row">
+                  <dt>Established Year</dt>
+                  <dd>{college.establishedYear}</dd>
+                </div>
+                <div className="rrc-college-snapshot-card__row">
+                  <dt>Entrance Gateways</dt>
+                  <dd className="rrc-college-snapshot-card__tags">
+                    {college.entranceExams.map((exam) => (
+                      <span key={exam} className="rrc-badge rrc-badge--gold">
+                        {exam}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+                <div className="rrc-college-snapshot-card__row">
+                  <dt>Programmes Count</dt>
+                  <dd>{college.programmes?.length} Verified Degrees</dd>
+                </div>
+              </dl>
+
+              <div className="rrc-college-snapshot-card__foot">
+                <a
+                  href={college.officialWebsite}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rrc-college-snapshot-card__link"
+                >
+                  <RrcIcon name="verified" size={16} />
+                  <span>Verified Official Portal ↗</span>
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      {/* Quick Facts Strip */}
+      {/* 03 — Quick Facts Strip */}
       <section className="rrc-college-facts-strip" aria-label="College Quick Facts">
         <div className="rrc-container">
           <div className="rrc-college-facts-grid">
             <div className="rrc-college-fact-card">
-              <span className="rrc-college-fact-card__label">Location</span>
+              <span className="rrc-college-fact-card__label">Campus Location</span>
               <p className="rrc-college-fact-card__value">
                 {college.city}, {college.state}
               </p>
             </div>
             <div className="rrc-college-fact-card">
-              <span className="rrc-college-fact-card__label">Institution Type</span>
+              <span className="rrc-college-fact-card__label">Governance Model</span>
               <p className="rrc-college-fact-card__value">{college.type}</p>
             </div>
             <div className="rrc-college-fact-card">
-              <span className="rrc-college-fact-card__label">Established Year</span>
-              <p className="rrc-college-fact-card__value">{college.establishedYear}</p>
+              <span className="rrc-college-fact-card__label">Establishment</span>
+              <p className="rrc-college-fact-card__value">Year {college.establishedYear}</p>
             </div>
             <div className="rrc-college-fact-card">
-              <span className="rrc-college-fact-card__label">Accepted Entrance Exams</span>
+              <span className="rrc-college-fact-card__label">Primary Entrance Route</span>
               <p className="rrc-college-fact-card__value">{college.entranceExams.join(', ')}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About & Institutional Highlights */}
+      {/* 04 — About & Institutional Highlights */}
       <section className="rrc-section" aria-labelledby="rrc-college-about-heading">
         <div className="rrc-container">
           <div className="rrc-college-about-grid">
@@ -117,7 +172,7 @@ export default function CollegeProfile() {
             </div>
 
             <div className="rrc-card rrc-college-highlights-card">
-              <h3 className="rrc-card__title rrc-college-highlights-title">Key Highlights</h3>
+              <h3 className="rrc-card__title rrc-college-highlights-title">Key Institutional Highlights</h3>
               <ul className="rrc-college-highlights-list">
                 {college.highlights.map((highlight) => (
                   <li key={highlight} className="rrc-college-highlights-item">
@@ -131,13 +186,14 @@ export default function CollegeProfile() {
         </div>
       </section>
 
-      {/* Programmes & Admission Routes */}
+      {/* 05 — Programmes & Admission Pathways */}
       <section className="rrc-section rrc-section--light" aria-labelledby="rrc-college-programmes-heading">
         <div className="rrc-container">
           <SectionHeader
             eyebrow="Academics & Admissions"
             title="Verified Programmes & Admission Pathways"
             description="Review verified degrees offered, specific entrance exam routes, and basic eligibility criteria for this institution."
+            align="left"
           />
 
           <div className="rrc-college-programmes-list rrc-stagger">
@@ -177,7 +233,7 @@ export default function CollegeProfile() {
                         </p>
                         <p className="rrc-college-programme-card__rrc-bridge-desc">
                           RRC Law Academy offers dedicated classroom coaching and test series
-                          tailored for this examination.
+                          tailored for this examination in Thanjavur and hybrid formats.
                         </p>
                       </div>
                     </div>
@@ -196,7 +252,7 @@ export default function CollegeProfile() {
         </div>
       </section>
 
-      {/* Official Data Source & Verification Notice */}
+      {/* 06 — Official Data Source & Verification Notice */}
       <section className="rrc-section" aria-labelledby="rrc-verification-heading">
         <div className="rrc-container">
           <div className="rrc-card rrc-college-verification-card">
@@ -245,7 +301,7 @@ export default function CollegeProfile() {
         </div>
       </section>
 
-      {/* Cross-Promotion Call to Action */}
+      {/* 07 — Cross-Promotion Call to Action */}
       <CTASection
         eyebrow="Targeting Law Admissions?"
         title={`Plan Your Law Entrance Journey with RRC`}

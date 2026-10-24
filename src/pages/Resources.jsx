@@ -1,310 +1,484 @@
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import CTASection from '../components/CTASection';
 import FAQAccordion from '../components/FAQAccordion';
 import FeatureCard from '../components/FeatureCard';
 import RrcIcon from '../components/RrcIcon';
-import ResourceCard from '../components/ResourceCard';
 import SectionHeader from '../components/SectionHeader';
 import { coursePageList } from '../data/coursePages';
 import { programPageList } from '../data/programPages';
 import { prospectusDownload, studyResourceDownloads } from '../data/resourcesData';
-import resourcesHeroImage from '../assets/resourses_hero.jpg';
+import resourcesHeroImage from '../assets/resourses_hero.webp';
 import './Resources.css';
 
+// Quick anchor chips in Hero
+const HERO_HIGHLIGHTS = [
+  { icon: 'fact_check', text: 'Model Question Papers (PDF)' },
+  { icon: 'school', text: 'Academy Prospectus 2026–27' },
+  { icon: 'menu_book', text: '5-Step Legal Reading Guide' },
+  { icon: 'newspaper', text: 'Current Affairs Compendiums' },
+];
+
+// All verified downloadable items
+const ALL_DOWNLOADS = [
+  ...studyResourceDownloads,
+  prospectusDownload,
+];
+
+// Download filter categories
+const DOWNLOAD_CATEGORIES = [
+  { id: 'all', label: 'All Materials' },
+  { id: 'CLAT UG', label: 'CLAT UG' },
+  { id: 'CLAT PG', label: 'CLAT PG' },
+  { id: 'AILET UG', label: 'AILET UG' },
+  { id: 'Prospectus', label: 'Prospectus' },
+];
+
+// 6 Core Learning Areas
 const RESOURCE_CATEGORIES = [
-  { icon: 'newspaper', title: 'Legal Current Affairs', description: 'Explore developments, events, institutions, legal developments, and issues that can contribute to current-affairs awareness.' },
-  { icon: 'gavel', title: 'Case Law Awareness', description: 'Develop familiarity with important judicial decisions and understand how legal reasoning can be studied through cases.' },
-  { icon: 'fact_check', title: 'Law Entrance Practice', description: 'Strengthen preparation through question practice, reasoning exercises, reading, and revision.' },
-  { icon: 'balance', title: 'Legal Knowledge', description: 'Explore foundational legal concepts, terminology, constitutional ideas, and areas of legal awareness.' },
-  { icon: 'menu_book', title: 'Reading & Comprehension', description: 'Develop the ability to read, understand, interpret, and analyse information carefully.' },
-  { icon: 'psychology', title: 'Reasoning & Analytical Skills', description: 'Practise structured thinking, logical reasoning, and analytical problem solving.' },
+  {
+    icon: 'newspaper',
+    title: 'Legal Current Affairs & GK',
+    description: 'Constitutional milestones, statutory amendments, international developments, and monthly structured digests.',
+  },
+  {
+    icon: 'gavel',
+    title: 'Case Law & Judicial Reasoning',
+    description: 'Landmark judicial decisions, ratio decidendi extraction, and analytical interpretation of legal precedents.',
+  },
+  {
+    icon: 'menu_book',
+    title: 'Passage Reading & Comprehension',
+    description: 'Critical inference, contextual vocabulary, editorial passage analysis, and authorial stance evaluation.',
+  },
+  {
+    icon: 'balance',
+    title: 'Legal Aptitude & Reasoning',
+    description: 'Application of statutory rules to factual dispute matrices across contracts, torts, and criminal jurisprudence.',
+  },
+  {
+    icon: 'psychology',
+    title: 'Logical & Critical Reasoning',
+    description: 'Statement-assumptions, syllogisms, argument deconstruction, paradoxes, and analytical reasoning sets.',
+  },
+  {
+    icon: 'analytics',
+    title: 'Quantitative Techniques',
+    description: 'Data interpretation, numerical passage sets, graphical tables, ratios, percentages, and practical commercial math.',
+  },
 ];
 
-const CURRENT_AFFAIRS_AREAS = [
-  'Legal developments',
-  'Important judgments',
-  'Constitutional developments',
-  'Government and public-policy developments',
-  'National and international events',
-  'Important institutions',
-  'Social and economic developments',
-];
-
+// 5-Step Analytical Reading Methodology
 const READING_APPROACH = [
-  'Identify the issue',
-  'Understand the context',
-  'Read the reasoning',
-  'Note important principles',
-  'Reflect on the outcome',
+  { step: '01', title: 'Identify the Core Controversy', description: 'Determine the central legal dispute or constitutional question under adjudication.' },
+  { step: '02', title: 'Contextualize Material Facts', description: 'Separate decisive facts from procedural background to clarify the dispute matrix.' },
+  { step: '03', title: 'Trace the Judicial Reasoning', description: 'Follow the court’s logical progression, statutory interpretations, and distinguishing of precedents.' },
+  { step: '04', title: 'Extract the Ratio Decidendi', description: 'Isolate the binding legal rule and authoritative principle established by the bench.' },
+  { step: '05', title: 'Synthesize & Apply', description: 'Evaluate how the extracted principle governs factual variations in passage-based exam questions.' },
 ];
 
-const PREPARATION_FOCUS = [
-  { icon: 'menu_book', title: 'Read', description: 'Build reading consistency and comprehension.' },
-  { icon: 'edit_document', title: 'Practise', description: 'Apply concepts through questions and exercises.' },
-  { icon: 'quiz', title: 'Test', description: 'Use assessments and mock practice to understand performance.' },
-  { icon: 'analytics', title: 'Analyse', description: 'Review mistakes and identify areas for improvement.' },
+// 6 Current Affairs Thematic Focus Areas
+const CURRENT_AFFAIRS_THEMES = [
+  { icon: 'gavel', title: 'Landmark Judicial Rulings', text: 'Supreme Court & High Court constitutional bench judgments and evolving legal doctrines.' },
+  { icon: 'balance', title: 'Constitutional Amendments & Bills', text: 'Key legislative enactments, parliamentary bills, and statutory changes.' },
+  { icon: 'public', title: 'International Treaties & Relations', text: 'Global agreements, bilateral treaties, and international law developments.' },
+  { icon: 'verified', title: 'Statutory Commissions & Panels', text: 'Recommendations of Law Commission, Election Commission, and national tribunals.' },
+  { icon: 'analytics', title: 'Regulatory & Economic Policy', text: 'Financial regulations, competition law updates, and economic governance policies.' },
+  { icon: 'newspaper', title: 'National Governance Milestones', text: 'Significant public policy initiatives, environmental mandates, and civic reforms.' },
 ];
 
-const SUGGESTED_HABITS = [
-  { icon: 'menu_book', title: 'Read', description: 'Regular reading and comprehension practice.' },
-  { icon: 'repeat', title: 'Review', description: 'Revise previously learned concepts.' },
-  { icon: 'edit_document', title: 'Practise', description: 'Work through relevant questions and exercises.' },
-  { icon: 'newspaper', title: 'Current Affairs', description: 'Follow relevant developments and verify information.' },
-  { icon: 'analytics', title: 'Reflect', description: 'Review mistakes and identify areas for improvement.' },
-];
-
-const LEARNER_STAGES = [
-  { icon: 'explore', title: 'Exploring Law', text: 'For students beginning to explore legal education and law entrance pathways.', link: '/career-in-law', action: 'Learn About Law' },
-  { icon: 'foundation', title: 'Building Foundations', text: 'For learners developing reading, reasoning, general awareness, and foundational preparation.', link: '/programs/foundation', action: 'Foundation Program' },
-  { icon: 'school', title: 'Focused Preparation', text: 'For learners working toward structured law entrance preparation.', link: '/courses', action: 'Explore Courses' },
-  { icon: 'refresh', title: 'Revision & Practice', text: 'For learners focusing on revision, testing, and performance review.', link: '/programs/intensive-revision', action: 'View Revision Program' },
-];
-
-const METHODOLOGY = coursePageList[0]?.methodology ?? [];
-
+// FAQ items addressing student and parent resource questions
 const FAQ_ITEMS = [
-  { id: 'resource-types', question: 'What types of resources can support law entrance preparation?', answer: 'Reading, current-affairs awareness, reasoning practice, legal awareness, revision, and structured testing can all contribute to preparation.' },
-  { id: 'legal-subjects', question: 'Should I focus only on legal subjects?', answer: 'Law entrance preparation can involve multiple areas depending on the examination and preparation pathway. Students should follow the relevant examination requirements and build broad reading and reasoning skills.' },
-  { id: 'reading-skills', question: 'How can I improve my reading skills?', answer: 'Regular reading, comprehension practice, summarising information, and reviewing unfamiliar terminology can help build reading confidence.' },
-  { id: 'current-affairs', question: 'Why is current affairs awareness important?', answer: 'Current affairs can contribute to general awareness and understanding of developments relevant to law and society. The exact relevance depends on the examination.' },
-  { id: 'downloads', question: 'Does RRC provide downloadable study materials?', answer: 'Resource availability depends on the materials currently offered by the academy. This page focuses on learning areas and preparation guidance rather than claiming access to unverified downloadable resources.' },
-  { id: 'programs', question: "Where can I learn more about RRC's preparation programs?", answer: 'Explore the Programs section to review the available preparation pathways.' },
+  {
+    id: 'downloads-available',
+    question: 'What downloadable study resources are available on this page?',
+    answer: 'Aspirants can download official model practice papers for CLAT UG, CLAT PG, and AILET UG, as well as the comprehensive RRC Academy School of Law Prospectus 2026–27. All PDFs can be viewed directly in your browser or downloaded for offline self-study.',
+  },
+  {
+    id: 'model-papers-usage',
+    question: 'How should students utilize the model question papers for CLAT and AILET?',
+    answer: 'We recommend attempting model question papers under strictly timed conditions (120 minutes) without interruptions. After completion, conduct a question-by-question error analysis to identify accuracy leaks, time sinks, and concepts needing revision.',
+  },
+  {
+    id: 'reading-skills',
+    question: 'How can aspirants improve their reading speed and comprehension for passage-based tests?',
+    answer: 'Daily reading of diverse, high-quality editorial articles, judicial summaries, and legal commentaries builds vocabulary in context and analytical reading stamina. Focus on isolating the author’s primary argument, identifying assumptions, and noting key legal principles.',
+  },
+  {
+    id: 'current-affairs-prep',
+    question: 'How are current affairs compilations structured at RRC Law Academy?',
+    answer: 'RRC curates monthly thematic digests focusing on constitutional developments, landmark Supreme Court rulings, statutory amendments, international treaties, and key governance milestones. Information is structured to aid retention and quick revision.',
+  },
+  {
+    id: 'physical-library',
+    question: 'Does RRC provide printed study materials and a physical reference library?',
+    answer: 'Yes. Students enrolled in our Thanjavur classroom and hybrid cohorts receive comprehensive printed study modules, sectional question banks, and daily access to our quiet reference library stocked with Bare Acts, commentaries, and legal dictionaries.',
+  },
+  {
+    id: 'structured-programs',
+    question: 'Where can students find structured classroom and hybrid coaching programs?',
+    answer: 'Explore the Courses and Programs sections of our website to view 1-Year, 2-Year, Foundation, Intensive Revision, and Mock Test cohorts. You can also visit our Thanjavur academy or book an academic diagnostic counselling session online.',
+  },
 ];
-
-function ResourceHeroVisual() {
-  return (
-    <img
-      className="rrc-resources-visual"
-      src={resourcesHeroImage}
-      alt="A law student studying legal documents beside a laptop in a bright library."
-    />
-  );
-}
-
-function LearningPathVisual() {
-  const steps = ['Read', 'Understand', 'Practise', 'Revise', 'Reflect'];
-  return (
-    <ol className="rrc-resources-learning-path" aria-label="Suggested learning process">
-      {steps.map((step, index) => (
-        <li key={step}>
-          <span className="rrc-resources-learning-path__number">0{index + 1}</span>
-          <span>{step}</span>
-        </li>
-      ))}
-    </ol>
-  );
-}
 
 export default function Resources() {
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Filter downloads by active tab and search text
+  const filteredDownloads = useMemo(() => {
+    return ALL_DOWNLOADS.filter((item) => {
+      const matchesCategory =
+        activeCategory === 'all' || item.category === activeCategory;
+      const query = searchQuery.trim().toLowerCase();
+      const matchesQuery =
+        !query ||
+        item.title.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query) ||
+        item.type.toLowerCase().includes(query);
+      return matchesCategory && matchesQuery;
+    });
+  }, [activeCategory, searchQuery]);
+
   return (
     <div className="rrc-resources-page">
-      <section className="rrc-resources-hero" aria-label="Study resources introduction">
+      {/* 1. HERO SECTION */}
+      <section className="rrc-resources-hero" aria-labelledby="rrc-resources-title">
         <div className="rrc-container rrc-resources-hero__grid">
           <div className="rrc-resources-hero__copy rrc-anim-fade-up">
             <p className="rrc-eyebrow">Study Resources</p>
-            <h1 className="rrc-display rrc-resources-hero__title">Resources to Support Your Law Entrance Preparation</h1>
-            <p className="rrc-lead">Build stronger preparation habits through purposeful reading, current affairs awareness, reasoning practice, legal knowledge, and structured revision.</p>
+            <h1 id="rrc-resources-title" className="rrc-display rrc-resources-hero__title">
+              Curated Study Materials &amp; Reference Resources for Law Entrance Preparation
+            </h1>
+            <p className="rrc-lead">
+              Access official model papers, academy prospectus, reading methodologies, current affairs compilations, and structured guidance to support your CLAT and AILET journey.
+            </p>
             <div className="rrc-btn-row rrc-resources-hero__actions">
               <Button to="/courses" variant="navy">Explore Courses</Button>
-              <Button to="/programs" variant="secondary">View Programs</Button>
+              <a className="rrc-btn rrc-btn--secondary" href="#downloadable-materials">
+                View Downloads
+              </a>
+            </div>
+            <div className="rrc-resources-hero__chips" aria-label="Key resource highlights">
+              {HERO_HIGHLIGHTS.map((item) => (
+                <span className="rrc-resources-chip" key={item.text}>
+                  <RrcIcon name={item.icon} size={16} />
+                  <span>{item.text}</span>
+                </span>
+              ))}
             </div>
           </div>
-          <div className="rrc-resources-hero__visual"><ResourceHeroVisual /></div>
-        </div>
-      </section>
-
-      <section className="rrc-section" aria-label="Available PDFs and prospectus">
-        <div className="rrc-container">
-          <SectionHeader eyebrow="Downloadable Resources" title="Available PDF Resources" description="Use the sample papers and prospectus below as reference material for law entrance preparation and academy information." />
-          <div className="rrc-resources-download-grid">
-            {studyResourceDownloads.map((resource) => (
-              <article className="rrc-card rrc-resources-download-card" key={resource.file}>
-                <div className="rrc-resources-download-card__meta">
-                  <span className="rrc-badge">{resource.category}</span>
-                  <span className="rrc-resources-download-card__type">{resource.type}</span>
-                </div>
-                <h3 className="rrc-card__title">{resource.title}</h3>
-                <p className="rrc-card__text">{resource.description}</p>
-                <div className="rrc-resources-download-card__actions">
-                  <a
-                    className="rrc-btn rrc-btn--primary rrc-resources-download-card__action"
-                    href={resource.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View ${resource.title}`}
-                  >
-                    View PDF
-                  </a>
-                  <a
-                    className="rrc-btn rrc-btn--secondary rrc-resources-download-card__action"
-                    href={resource.file}
-                    download={resource.downloadName}
-                    aria-label={`Download ${resource.title}`}
-                  >
-                    Download PDF
-                  </a>
-                </div>
-              </article>
-            ))}
-
-            <article className="rrc-card rrc-resources-download-card rrc-resources-download-card--prospectus" key={prospectusDownload.file}>
-              <div className="rrc-resources-download-card__meta">
-                <span className="rrc-badge">{prospectusDownload.category}</span>
-                <span className="rrc-resources-download-card__type">{prospectusDownload.type}</span>
+          <div className="rrc-resources-hero__visual">
+            <div className="rrc-resources-hero__visual-wrap">
+              <img
+                className="rrc-resources-visual"
+                src={resourcesHeroImage}
+                alt="Law student studying legal reference materials and preparation notes in a modern study room."
+                width="1024"
+                height="572"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
+              <div className="rrc-resources-hero__badge" aria-hidden="true">
+                <RrcIcon name="verified" size={18} />
+                <span>Verified Preparation Materials</span>
               </div>
-              <h3 className="rrc-card__title">{prospectusDownload.title}</h3>
-              <p className="rrc-card__text">{prospectusDownload.description}</p>
-              <div className="rrc-resources-download-card__actions">
-                <a
-                  className="rrc-btn rrc-btn--primary rrc-resources-download-card__action"
-                  href={prospectusDownload.file}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${prospectusDownload.title}`}
-                >
-                  View Prospectus
-                </a>
-                <a
-                  className="rrc-btn rrc-btn--secondary rrc-resources-download-card__action"
-                  href={prospectusDownload.file}
-                  download={prospectusDownload.downloadName}
-                  aria-label={`Download ${prospectusDownload.title}`}
-                >
-                  Download Prospectus
-                </a>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="rrc-section" aria-label="Learn with purpose">
-        <div className="rrc-container rrc-resources-intro">
-          <div className="rrc-resources-intro__copy">
-            <SectionHeader eyebrow="A Purposeful Approach" title="Learn With Purpose" align="left" />
-            <p>Effective preparation is not limited to completing a syllabus. Students can strengthen their learning through regular reading, practice, revision, analysis, and awareness of developments relevant to law and society.</p>
+      {/* 2. DOWNLOADABLE PDF MATERIALS & PROSPECTUS */}
+      <section className="rrc-section" id="downloadable-materials" aria-labelledby="rrc-downloads-title">
+        <div className="rrc-container">
+          <SectionHeader
+            eyebrow="Verified Downloads"
+            id="rrc-downloads-title"
+            title="Model Question Papers &amp; Academy Prospectus"
+            description="Download official sample question papers and institutional prospectus brochures prepared for law aspirants."
+          />
+
+          {/* Filter Bar & Search */}
+          <div className="rrc-resources-filter-bar">
+            <div className="rrc-resources-filter-tabs" role="tablist" aria-label="Filter resources by category">
+              {DOWNLOAD_CATEGORIES.map((cat) => (
+                <button
+                  type="button"
+                  role="tab"
+                  key={cat.id}
+                  className={`rrc-resources-filter-tab${activeCategory === cat.id ? ' is-active' : ''}`}
+                  aria-selected={activeCategory === cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="rrc-resources-search">
+              <RrcIcon name="manage_search" size={18} />
+              <input
+                type="search"
+                className="rrc-resources-search__input"
+                placeholder="Search sample papers, prospectus..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Search downloadable resources"
+              />
+              {searchQuery ? (
+                <button
+                  type="button"
+                  className="rrc-resources-search__clear"
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Clear search"
+                >
+                  ✕
+                </button>
+              ) : null}
+            </div>
           </div>
-          <div className="rrc-resources-intro__visual"><LearningPathVisual /></div>
+
+          {/* Download Grid / Empty state */}
+          {filteredDownloads.length > 0 ? (
+            <div className="rrc-resources-download-grid rrc-stagger">
+              {filteredDownloads.map((resource) => (
+                <article
+                  className={`rrc-card rrc-resources-download-card${
+                    resource.category === 'Prospectus' ? ' rrc-resources-download-card--prospectus' : ''
+                  }`}
+                  key={resource.file}
+                >
+                  <div className="rrc-resources-download-card__meta">
+                    <span className="rrc-badge rrc-badge--gold">{resource.category}</span>
+                    <span className="rrc-resources-download-card__type">
+                      <RrcIcon name="description" size={14} />
+                      {resource.type} · PDF
+                    </span>
+                  </div>
+                  <h3 className="rrc-card__title">{resource.title}</h3>
+                  <p className="rrc-card__text">{resource.description}</p>
+                  <div className="rrc-resources-download-card__actions">
+                    <a
+                      className="rrc-btn rrc-btn--primary rrc-resources-download-card__action"
+                      href={resource.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${resource.title} in new tab`}
+                    >
+                      <RrcIcon name="open_in_new" size={16} />
+                      <span>View PDF</span>
+                    </a>
+                    <a
+                      className="rrc-btn rrc-btn--secondary rrc-resources-download-card__action"
+                      href={resource.file}
+                      download={resource.downloadName}
+                      aria-label={`Download ${resource.title} file`}
+                    >
+                      <RrcIcon name="update" size={16} />
+                      <span>Download PDF</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="rrc-card rrc-resources-empty-state">
+              <RrcIcon name="manage_search" size={32} />
+              <h3>No resources found</h3>
+              <p>No materials matched your filter or search query. Try selecting another category or clearing your search.</p>
+              <button
+                type="button"
+                className="rrc-btn rrc-btn--secondary"
+                onClick={() => {
+                  setActiveCategory('all');
+                  setSearchQuery('');
+                }}
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="rrc-section rrc-section--light" aria-label="Resource categories">
+      {/* 3. CORE LEARNING AREAS */}
+      <section className="rrc-section rrc-section--light" aria-labelledby="rrc-domains-title">
         <div className="rrc-container">
-          <SectionHeader eyebrow="Preparation Focus" title="Explore Key Learning Areas" description="These categories describe areas to explore as part of law entrance preparation; they are not downloadable resource listings." />
+          <SectionHeader
+            eyebrow="Curriculum Scope"
+            id="rrc-domains-title"
+            title="Explore Key Subject-Wise Resource Areas"
+            description="Targeted resource areas and practice methodologies across the essential sections evaluated in law entrance tests."
+          />
           <div className="rrc-resources-category-grid rrc-stagger">
-            {RESOURCE_CATEGORIES.map((resource) => <ResourceCard key={resource.title} resource={resource} />)}
-          </div>
-        </div>
-      </section>
-
-      <section className="rrc-section" aria-label="Current affairs awareness">
-        <div className="rrc-container rrc-resources-current">
-          <div className="rrc-resources-current__copy">
-            <SectionHeader eyebrow="Awareness & Context" title="Stay Connected With Legal and Current Affairs" align="left" />
-            <p>Current-affairs preparation can involve following developments in law, public life, and society. The relevance of particular topics varies by examination, so verify important information through reliable and current sources.</p>
-            <Button to="/programs/current-affairs" variant="text">Explore Current Affairs Program <span aria-hidden="true">→</span></Button>
-          </div>
-          <ul className="rrc-card rrc-resources-current__list">
-            {CURRENT_AFFAIRS_AREAS.map((item) => <li key={item}><RrcIcon name="check_circle" size={18} /><span>{item}</span></li>)}
-          </ul>
-          <p className="rrc-resources-current__note"><RrcIcon name="verified" size={18} /><span>Always verify important information through reliable and current sources.</span></p>
-        </div>
-      </section>
-
-      <section className="rrc-section rrc-section--light" aria-label="Case law and legal reading">
-        <div className="rrc-container">
-          <SectionHeader eyebrow="Read With Context" title="Develop a Habit of Legal Reading" />
-          <div className="rrc-resources-reading-grid">
-            <article className="rrc-card rrc-resources-reading-card">
-              <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name="gavel" size={20} /></span>
-              <h3 className="rrc-card__title">Case Law</h3>
-              <p className="rrc-card__text">Reading judicial decisions can help learners understand legal reasoning, interpretation, arguments, and the application of legal principles.</p>
-            </article>
-            <article className="rrc-card rrc-resources-reading-card">
-              <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name="menu_book" size={20} /></span>
-              <h3 className="rrc-card__title">Legal Reading</h3>
-              <p className="rrc-card__text">Regular reading can help build familiarity with legal terminology, structured arguments, constitutional ideas, and developments in law.</p>
-            </article>
-            <div className="rrc-resources-reading-approach">
-              <h3>Reading Approach</h3>
-              <ol>{READING_APPROACH.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}</ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="rrc-section" aria-label="Law entrance preparation">
-        <div className="rrc-container">
-          <SectionHeader eyebrow="Structured Preparation" title="Use Resources as Part of a Structured Preparation Plan" description="Reading and practice can work alongside a preparation process that includes the existing RRC methodology." />
-          <div className="rrc-resources-preparation-grid rrc-stagger">
-            {PREPARATION_FOCUS.map((item) => <FeatureCard key={item.title} icon={item.icon} title={item.title} description={item.description} />)}
-          </div>
-          <ol className="rrc-resources-methodology" aria-label="RRC preparation methodology">
-            {METHODOLOGY.map((step) => <li key={step.id}><span>{step.step}</span><strong>{step.title}</strong></li>)}
-          </ol>
-          <div className="rrc-resources-section-action"><Button to="/programs" variant="secondary">Explore Preparation Programs</Button></div>
-        </div>
-      </section>
-
-      <section className="rrc-section rrc-section--navy rrc-resources-routine" aria-label="Suggested learning habit">
-        <div className="rrc-container">
-          <SectionHeader eyebrow="Suggested Learning Habit" title="Build Your Own Study Routine" description="A flexible set of habits to adapt to your preparation stage. This is a learning suggestion, not an official RRC schedule." />
-          <ol className="rrc-resources-habits rrc-stagger">
-            {SUGGESTED_HABITS.map((habit, index) => (
-              <li key={habit.title}>
-                <span className="rrc-resources-habits__number">0{index + 1}</span>
-                <span className="rrc-icon-badge rrc-icon-badge--gold" aria-hidden="true"><RrcIcon name={habit.icon} size={20} /></span>
-                <h3>{habit.title}</h3>
-                <p>{habit.description}</p>
-              </li>
+            {RESOURCE_CATEGORIES.map((item) => (
+              <FeatureCard
+                key={item.title}
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+              />
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
-      <section className="rrc-section" aria-label="Resources for different preparation stages">
+      {/* 4. LEGAL READING FRAMEWORK & METHODOLOGY */}
+      <section className="rrc-section" aria-labelledby="rrc-reading-title">
         <div className="rrc-container">
-          <SectionHeader eyebrow="Find a Starting Point" title="Choose Resources Based on Your Preparation Stage" description="Explore the options that best fit what you are learning now; these are not formal eligibility categories." />
-          <div className="rrc-resources-learner-grid rrc-stagger">
-            {LEARNER_STAGES.map((item) => (
-              <article className="rrc-card rrc-resources-learner-card" key={item.title}>
-                <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name={item.icon} size={20} /></span>
-                <h3 className="rrc-card__title">{item.title}</h3>
-                <p className="rrc-card__text">{item.text}</p>
-                <Link className="rrc-resources-card-link" to={item.link}>{item.action}<span aria-hidden="true">→</span></Link>
+          <SectionHeader
+            eyebrow="Reading Methodology"
+            id="rrc-reading-title"
+            title="How to Read Legal Texts &amp; Judicial Opinions"
+            description="Modern comprehension-based entrance exams evaluate how you analyze legal passages. Follow our structured 5-step analytical reading approach."
+          />
+          <div className="rrc-resources-reading-split">
+            {/* Left Column: Conceptual Pillars */}
+            <div className="rrc-resources-reading-cards">
+              <article className="rrc-card rrc-resources-reading-card">
+                <span className="rrc-icon-badge" aria-hidden="true">
+                  <RrcIcon name="gavel" size={20} />
+                </span>
+                <h3 className="rrc-card__title">Reading Judicial Decisions</h3>
+                <p className="rrc-card__text">
+                  Judicial opinions teach ratio decidendi extraction, the structure of legal arguments, and the delicate application of constitutional doctrine to disputed facts.
+                </p>
               </article>
+              <article className="rrc-card rrc-resources-reading-card">
+                <span className="rrc-icon-badge" aria-hidden="true">
+                  <RrcIcon name="menu_book" size={20} />
+                </span>
+                <h3 className="rrc-card__title">Interpreting Bare Acts &amp; Statutes</h3>
+                <p className="rrc-card__text">
+                  Statutory reading builds familiarity with legal terminology, definitions, legislative provisos, exceptions, and the precise textual language evaluated in law entrances.
+                </p>
+              </article>
+            </div>
+
+            {/* Right Column: 5-Step Stepper */}
+            <div className="rrc-card rrc-resources-stepper">
+              <h3 className="rrc-resources-stepper__heading">5-Step Analytical Reading Approach</h3>
+              <ol className="rrc-resources-stepper__list">
+                {READING_APPROACH.map((step) => (
+                  <li className="rrc-resources-stepper__item" key={step.step}>
+                    <span className="rrc-resources-stepper__num">{step.step}</span>
+                    <div className="rrc-resources-stepper__body">
+                      <h4>{step.title}</h4>
+                      <p>{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CURRENT AFFAIRS & GENERAL AWARENESS FRAMEWORK */}
+      <section className="rrc-section rrc-section--light" aria-labelledby="rrc-current-title">
+        <div className="rrc-container rrc-resources-current-grid">
+          <div className="rrc-resources-current__copy">
+            <SectionHeader
+              eyebrow="Context &amp; Awareness"
+              id="rrc-current-title"
+              title="Staying Connected with Current Affairs &amp; Legal GK"
+              align="left"
+            />
+            <p className="rrc-resources-current__lead">
+              Current affairs preparation requires balancing daily reading with structured thematic review. Focus on constitutional events, landmark judgments, and major national/international institutional policies.
+            </p>
+            <div className="rrc-resources-current__note">
+              <RrcIcon name="verified" size={18} />
+              <span>Always verify legal news through authoritative official gazettes, PIB releases, and court judgments.</span>
+            </div>
+            <div className="rrc-resources-current__action">
+              <Button to="/programs/current-affairs" variant="navy">
+                Explore Current Affairs &amp; GK Program <span aria-hidden="true">→</span>
+              </Button>
+            </div>
+          </div>
+
+          <div className="rrc-resources-current__themes">
+            {CURRENT_AFFAIRS_THEMES.map((theme) => (
+              <div className="rrc-card rrc-resources-theme-card" key={theme.title}>
+                <span className="rrc-icon-badge rrc-resources-theme-card__icon" aria-hidden="true">
+                  <RrcIcon name={theme.icon} size={18} />
+                </span>
+                <div>
+                  <h4 className="rrc-resources-theme-card__title">{theme.title}</h4>
+                  <p className="rrc-resources-theme-card__text">{theme.text}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="rrc-section rrc-section--light" aria-label="Courses and programs">
+      {/* 6. ACADEMIC PREPARATION PATHWAYS AT RRC */}
+      <section className="rrc-section" aria-labelledby="rrc-pathways-title">
         <div className="rrc-container">
-          <SectionHeader eyebrow="Structured Pathways" title="Connect Resources With Structured Preparation" description="Independent reading and practice can become more effective when combined with a structured preparation pathway." />
-          <div className="rrc-resources-pathways">
-            <div>
-              <h3 className="rrc-resources-pathways__heading">Courses</h3>
-              <div className="rrc-resources-pathways__grid">
+          <SectionHeader
+            eyebrow="Structured Pathways"
+            id="rrc-pathways-title"
+            title="Connect Self-Study Resources With Structured Coaching"
+            description="Self-study materials are most effective when supported by faculty mentorship, timed diagnostic mock tests, and regular review."
+          />
+          <div className="rrc-resources-offerings-grid">
+            {/* Courses column */}
+            <div className="rrc-resources-offerings-col">
+              <h3 className="rrc-resources-offerings-col__title">
+                <RrcIcon name="school" size={20} />
+                <span>Entrance Coaching Courses</span>
+              </h3>
+              <div className="rrc-resources-offerings-list">
                 {coursePageList.map((course) => (
-                  <Link className="rrc-card rrc-resources-pathway-card" key={course.slug} to={`/courses/${course.slug}`}>
-                    <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name="school" size={20} /></span>
-                    <h4>{course.shortTitle}</h4>
-                    <p>{course.description}</p>
-                    <span className="rrc-resources-card-link">Explore course <span aria-hidden="true">→</span></span>
+                  <Link
+                    className="rrc-card rrc-resources-offerings-card"
+                    key={course.slug}
+                    to={`/courses/${course.slug}`}
+                  >
+                    <div className="rrc-resources-offerings-card__header">
+                      <span className="rrc-icon-badge" aria-hidden="true">
+                        <RrcIcon name="school" size={18} />
+                      </span>
+                      <span className="rrc-badge rrc-badge--gold">{course.shortTitle}</span>
+                    </div>
+                    <h4 className="rrc-resources-offerings-card__title">{course.title}</h4>
+                    <p className="rrc-resources-offerings-card__desc">{course.description}</p>
+                    <span className="rrc-resources-card-link">
+                      Explore course <span aria-hidden="true">→</span>
+                    </span>
                   </Link>
                 ))}
               </div>
             </div>
-            <div>
-              <h3 className="rrc-resources-pathways__heading">Programs</h3>
-              <div className="rrc-resources-pathways__grid">
+
+            {/* Programs column */}
+            <div className="rrc-resources-offerings-col">
+              <h3 className="rrc-resources-offerings-col__title">
+                <RrcIcon name="layers" size={20} />
+                <span>Specialized Prep Programs</span>
+              </h3>
+              <div className="rrc-resources-offerings-list">
                 {programPageList.map((program) => (
-                  <Link className="rrc-card rrc-resources-pathway-card" key={program.slug} to={`/programs/${program.slug}`}>
-                    <span className="rrc-icon-badge" aria-hidden="true"><RrcIcon name="layers" size={20} /></span>
-                    <h4>{program.shortTitle}</h4>
-                    <p>{program.description}</p>
-                    <span className="rrc-resources-card-link">Explore program <span aria-hidden="true">→</span></span>
+                  <Link
+                    className="rrc-card rrc-resources-offerings-card"
+                    key={program.slug}
+                    to={`/programs/${program.slug}`}
+                  >
+                    <div className="rrc-resources-offerings-card__header">
+                      <span className="rrc-icon-badge" aria-hidden="true">
+                        <RrcIcon name="layers" size={18} />
+                      </span>
+                      <span className="rrc-badge rrc-badge--gold">{program.shortTitle}</span>
+                    </div>
+                    <h4 className="rrc-resources-offerings-card__title">{program.title}</h4>
+                    <p className="rrc-resources-offerings-card__desc">{program.description}</p>
+                    <span className="rrc-resources-card-link">
+                      Explore program <span aria-hidden="true">→</span>
+                    </span>
                   </Link>
                 ))}
               </div>
@@ -313,32 +487,41 @@ export default function Resources() {
         </div>
       </section>
 
-      <section className="rrc-section" aria-label="Resource ecosystem">
-        <div className="rrc-container rrc-resources-availability">
-          <span className="rrc-badge rrc-badge--gold">Resource Ecosystem</span>
-          <div>
-            <SectionHeader eyebrow="Learning Can Grow Over Time" title="More Learning Resources Can Be Added Over Time" align="left" />
-            <p>RRC Law Academy can continue expanding its learning ecosystem with additional preparation resources, reading materials, practice content, and student-focused learning tools.</p>
+      {/* 7. FREQUENTLY ASKED QUESTIONS */}
+      <section className="rrc-section rrc-section--light rrc-resources-faq-section" aria-labelledby="rrc-faq-title">
+        <div className="rrc-container">
+          <SectionHeader
+            eyebrow="Decision Guide"
+            id="rrc-faq-title"
+            title="Frequently Asked Questions About Study Resources"
+            description="Clear guidance on accessing model papers, developing reading habits, and utilizing preparation materials."
+          />
+          <div className="rrc-resources-faq-wrapper">
+            <FAQAccordion items={FAQ_ITEMS} />
           </div>
-          <span className="rrc-resources-availability__mark" aria-hidden="true"><RrcIcon name="layers" size={34} /></span>
         </div>
       </section>
 
-      <section className="rrc-section rrc-section--light" aria-label="Study resources frequently asked questions">
-        <div className="rrc-container rrc-resources-faq">
-          <SectionHeader eyebrow="Study Resources" title="Study Resources — Common Questions" />
-          <FAQAccordion items={FAQ_ITEMS} />
-          <p className="rrc-resources-faq__link">To review the preparation pathways, <Link to="/programs">explore the Programs section</Link>.</p>
+      {/* 8. HIGH-IMPACT CONVERSION CTA */}
+      <section className="rrc-section rrc-section--navy rrc-resources-cta" aria-labelledby="rrc-cta-title">
+        <div className="rrc-container rrc-resources-cta__inner">
+          <SectionHeader
+            eyebrow="Your Next Step"
+            id="rrc-cta-title"
+            title="Build Stronger Habits With Structured Guidance"
+            description="Explore RRC Law Academy's classroom and hybrid cohorts. Connect with our academic desk in Thanjavur for prospectus details, cohort schedules, and diagnostic mock evaluations."
+          />
+          <div className="rrc-btn-row rrc-resources-cta__actions">
+            <Button to="/courses" variant="primary">Explore All Courses</Button>
+            <Button to="/registration" variant="secondary">Book Academic Counselling</Button>
+          </div>
+          <div className="rrc-resources-cta__reassurance" aria-label="Admissions reassurance">
+            <span>✓ Dedicated Thanjavur Classroom &amp; Library</span>
+            <span>✓ Transparent Academic Mentorship</span>
+            <span>✓ Verified Practice Papers &amp; Diagnostic Feedback</span>
+          </div>
         </div>
       </section>
-
-      <CTASection
-        eyebrow="Your Next Step"
-        title="Build Better Preparation Habits"
-        description="Explore RRC Law Academy's courses and programs and develop a structured approach to your law entrance preparation."
-        primaryCta={{ label: 'Explore Courses', link: '/courses' }}
-        secondaryCta={{ label: 'Enquire Now', link: '/registration' }}
-      />
     </div>
   );
 }

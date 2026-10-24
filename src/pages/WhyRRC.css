@@ -3,155 +3,633 @@
   background: var(--rrc-bg);
 }
 
+/* 1. HERO SECTION */
 .rrc-why-hero {
-  padding-block: clamp(3rem, 6vw, 6rem);
-  background: linear-gradient(115deg, var(--rrc-surface-light) 0%, var(--rrc-bg) 64%);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+  background: linear-gradient(135deg, var(--rrc-surface-light) 0%, #FFFFFF 50%, var(--rrc-surface-light) 100%);
+  border-bottom: 1px solid var(--rrc-border);
 }
 
-.rrc-why-hero__grid,
-.rrc-why-intro {
+.rrc-why-hero__grid {
   display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 4.5rem);
 }
 
-.rrc-why-hero__grid { grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr); }
-.rrc-why-hero__copy { max-width: 39rem; }
-.rrc-why-hero__title { max-width: 13ch; margin-bottom: 1.25rem; color: var(--rrc-navy); }
-.rrc-why-hero__copy .rrc-lead { margin-bottom: 1.75rem; }
-.rrc-why-hero__visual { min-width: 0; }
-.rrc-why-visual { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 32px rgba(14, 28, 47, 0.16)); }
+.rrc-why-hero__copy {
+  max-width: 42rem;
+}
 
-.rrc-why-intro { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); }
-.rrc-why-intro__visual { min-width: 0; }
-.rrc-why-notes-visual { display: block; width: min(100%, 34rem); height: auto; margin-inline: auto; }
-.rrc-why-intro__copy { max-width: 36rem; }
-.rrc-why-intro__copy > p { max-width: 62ch; margin: 0; color: var(--rrc-text-secondary); font-size: var(--rrc-body-lg); line-height: 1.8; }
-.rrc-why-intro .rrc-section-head { margin-bottom: 1rem; }
+.rrc-why-hero__title {
+  max-width: 20ch;
+  margin-bottom: 1.25rem;
+  color: var(--rrc-navy);
+  font-size: clamp(2.35rem, 4.2vw, 3.5rem);
+  line-height: 1.15;
+}
 
-.rrc-why-strengths,
-.rrc-why-guidance,
-.rrc-why-environment,
-.rrc-why-audience { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.rrc-why-strengths .rrc-feature-card,
-.rrc-why-guidance .rrc-feature-card,
-.rrc-why-environment .rrc-feature-card,
-.rrc-why-audience .rrc-feature-card { min-width: 0; height: 100%; }
-.rrc-why-page .rrc-feature-card__icon { margin-bottom: 1.25rem; }
+.rrc-why-hero__copy .rrc-lead {
+  margin-bottom: 1.75rem;
+  color: var(--rrc-text-secondary);
+  line-height: 1.75;
+}
 
-.rrc-why-cycle {
+.rrc-why-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.rrc-why-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(14, 28, 47, 0.05);
+  border: 1px solid rgba(14, 28, 47, 0.12);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-chip svg {
+  color: var(--rrc-gold);
+  flex-shrink: 0;
+}
+
+.rrc-why-hero__visual {
+  min-width: 0;
+}
+
+.rrc-why-hero__visual-wrap {
+  position: relative;
+  border-radius: var(--rrc-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(14, 28, 47, 0.16);
+}
+
+.rrc-why-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.rrc-why-hero__badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(14, 28, 47, 0.92);
+  color: var(--rrc-white);
+  padding: 0.65rem 1rem;
+  border-radius: var(--rrc-radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(254, 212, 136, 0.35);
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(14, 28, 47, 0.3);
+}
+
+.rrc-why-hero__badge svg {
+  color: var(--rrc-gold-bright);
+  flex-shrink: 0;
+}
+
+/* 2. THE RRC ADVANTAGE / DIFFERENTIATORS */
+.rrc-why-advantages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.rrc-why-advantages .rrc-feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rrc-why-advantages .rrc-feature-card__text {
+  flex: 1;
+}
+
+/* 3. THE 5-STEP ACADEMIC LEARNING LOOP */
+.rrc-why-loop-section {
+  background: var(--rrc-bg);
+}
+
+.rrc-why-loop {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.rrc-why-cycle__step { min-width: 0; padding: 1.25rem; }
-.rrc-why-cycle__step .rrc-badge { margin-bottom: 1rem; }
-.rrc-why-cycle__icon { display: flex; margin-bottom: 1rem; }
-.rrc-why-cycle__step .rrc-card__title { overflow-wrap: anywhere; }
-.rrc-why-cycle__step .rrc-card__text { line-height: 1.6; }
 
-.rrc-why-learning-areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.rrc-why-learning-area { min-width: 0; display: flex; align-items: center; gap: 1rem; padding: 1.25rem; }
-.rrc-why-learning-area__icon { flex: 0 0 auto; margin: 0; }
-.rrc-why-learning-area .rrc-card__title { margin: 0; overflow-wrap: anywhere; }
+.rrc-why-loop__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.5rem 1.25rem;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  transition: transform var(--rrc-duration) var(--rrc-ease), box-shadow var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
 
-.rrc-why-application .rrc-section-head { max-width: 48rem; }
-.rrc-section--navy .rrc-section-head__title { color: var(--rrc-white); }
-.rrc-section--navy .rrc-section-head__desc { color: var(--rrc-text-muted-on-navy); }
-.rrc-section--navy .rrc-section-head__eyebrow { color: var(--rrc-gold-bright); }
-.rrc-why-progression {
+.rrc-why-loop__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+  box-shadow: var(--rrc-shadow-card-hover);
+}
+
+.rrc-why-loop__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.rrc-why-loop__icon {
+  margin: 0;
+}
+
+.rrc-why-loop__card .rrc-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--rrc-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-loop__card .rrc-card__text {
+  flex: 1;
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+}
+
+/* 4. COMPREHENSIVE CURRICULUM & LEARNING AREAS */
+.rrc-why-curriculum {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.rrc-why-curriculum__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-why-curriculum__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+}
+
+.rrc-why-curriculum__icon {
+  margin-bottom: 1.25rem;
+}
+
+.rrc-why-curriculum__card .rrc-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--rrc-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-curriculum__card .rrc-card__text {
+  flex: 1;
   margin: 0;
-  padding: 0;
-  list-style: none;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.65;
 }
-.rrc-why-progression__step { min-width: 0; padding: 1.25rem 1rem; border-top: 1px solid rgba(216, 227, 251, 0.35); }
-.rrc-why-progression__number { display: block; margin-bottom: 0.75rem; color: var(--rrc-gold-bright); font-size: var(--rrc-caption); font-weight: 700; letter-spacing: 0.12em; }
-.rrc-why-progression__step h3 { margin: 0 0 0.5rem; color: var(--rrc-white); font-family: var(--rrc-font-display); font-size: 1.2rem; }
-.rrc-why-progression__step p { margin: 0; color: var(--rrc-text-muted-on-navy); font-size: var(--rrc-body-sm); line-height: 1.6; }
 
-.rrc-why-awareness { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); }
-.rrc-why-awareness__copy { max-width: 40rem; }
-.rrc-why-awareness__copy > p { margin: 0 0 1rem; color: var(--rrc-text-secondary); }
-.rrc-why-awareness__copy .rrc-section-head { margin-bottom: 1rem; }
-.rrc-why-awareness__list { display: grid; gap: 0.85rem; margin: 0; padding: 1.5rem; list-style: none; background: var(--rrc-surface-light); }
-.rrc-why-awareness__list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--rrc-text); }
-.rrc-why-awareness__list svg { flex: 0 0 auto; margin-top: 0.2rem; color: var(--rrc-gold); }
+/* 5. THANJAVUR CAMPUS & LEARNING ENVIRONMENT */
+.rrc-why-campus-section {
+  background: var(--rrc-bg);
+}
 
-.rrc-why-programs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-.rrc-why-program-card { display: flex; flex-direction: column; min-width: 0; height: 100%; }
-.rrc-why-program-card__icon { flex: 0 0 auto; }
-.rrc-why-program-card .rrc-card__title { overflow-wrap: anywhere; }
-.rrc-why-program-card .rrc-card__text { flex: 1; }
-.rrc-why-program-card__link { display: inline-flex; align-items: center; gap: 0.5rem; align-self: flex-start; min-height: 44px; margin-top: 1rem; color: var(--rrc-gold); font-weight: 700; text-underline-offset: 4px; }
-.rrc-why-program-card__link:hover { color: var(--rrc-navy); }
-.rrc-why-program-card__link:focus-visible { outline: 3px solid var(--rrc-gold-bright); outline-offset: 3px; border-radius: 4px; }
+.rrc-why-campus__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
 
-.rrc-why-cta__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.rrc-why-cta .rrc-section-head { margin-bottom: 1.75rem; }
-.rrc-why-cta .rrc-section-head__desc { max-width: 66ch; }
-.rrc-why-cta__actions { justify-content: center; }
+.rrc-why-campus__visual-col {
+  min-width: 0;
+}
 
+.rrc-why-campus__visual-wrap {
+  position: relative;
+  border-radius: var(--rrc-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(14, 28, 47, 0.12);
+}
+
+.rrc-why-notes-visual {
+  display: block;
+  width: min(100%, 34rem);
+  height: auto;
+  margin-inline: auto;
+}
+
+.rrc-why-campus__visual-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(14, 28, 47, 0.92);
+  color: var(--rrc-white);
+  padding: 0.6rem 1rem;
+  border-radius: var(--rrc-radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(254, 212, 136, 0.35);
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(14, 28, 47, 0.25);
+}
+
+.rrc-why-campus__visual-badge svg {
+  color: var(--rrc-gold-bright);
+  flex-shrink: 0;
+}
+
+.rrc-why-campus__copy-col {
+  max-width: 38rem;
+}
+
+.rrc-why-campus__lead {
+  margin: 0 0 1.5rem;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-md);
+  line-height: 1.7;
+}
+
+.rrc-why-campus__features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.rrc-why-campus__facility {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.15rem;
+  background: var(--rrc-surface-light);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-md);
+}
+
+.rrc-why-campus__icon {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.rrc-why-campus__facility-title {
+  margin: 0 0 0.25rem;
+  font-family: var(--rrc-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-campus__facility-text {
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-caption);
+  line-height: 1.5;
+}
+
+/* 6. LEARNER PATHWAYS */
+.rrc-why-audiences {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.rrc-why-audience-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-why-audience-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+}
+
+.rrc-why-audience-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.rrc-why-audience-card__icon {
+  margin: 0;
+}
+
+.rrc-why-audience-card .rrc-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--rrc-font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-audience-card .rrc-card__text {
+  flex: 1;
+  margin: 0;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+}
+
+/* 7. PREPARATION PROGRAMS */
+.rrc-why-programs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.rrc-why-program-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--rrc-white);
+  border: 1px solid var(--rrc-border);
+  border-radius: var(--rrc-radius-lg);
+  box-shadow: var(--rrc-shadow-card);
+  transition: transform var(--rrc-duration) var(--rrc-ease), border-color var(--rrc-duration) var(--rrc-ease);
+}
+
+.rrc-why-program-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rrc-gold);
+}
+
+.rrc-why-program-card__icon {
+  flex: 0 0 auto;
+  margin-bottom: 1.25rem;
+}
+
+.rrc-why-program-card .rrc-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--rrc-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rrc-navy);
+}
+
+.rrc-why-program-card .rrc-card__text {
+  flex: 1;
+  margin: 0 0 1rem;
+  color: var(--rrc-text-secondary);
+  font-size: var(--rrc-body-sm);
+  line-height: 1.6;
+}
+
+.rrc-why-program-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  min-height: 44px;
+  color: var(--rrc-gold);
+  font-size: var(--rrc-body-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rrc-why-program-card__link:hover {
+  color: var(--rrc-navy);
+  text-decoration: underline;
+}
+
+.rrc-why-program-card__link:focus-visible {
+  outline: 3px solid var(--rrc-gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 8. FAQ SECTION */
+.rrc-why-faq-section {
+  background: var(--rrc-surface-light);
+}
+
+.rrc-why-faq-wrapper {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+/* 9. HIGH-IMPACT CALL TO ACTION */
+.rrc-why-cta {
+  background: var(--rrc-navy);
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.rrc-why-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.rrc-why-cta .rrc-section-head {
+  margin-bottom: 1.5rem;
+}
+
+.rrc-why-cta .rrc-section-head__title {
+  color: var(--rrc-white);
+}
+
+.rrc-why-cta .rrc-section-head__desc {
+  max-width: 62ch;
+  color: var(--rrc-text-muted-on-navy);
+}
+
+.rrc-why-cta .rrc-section-head__eyebrow {
+  color: var(--rrc-gold-bright);
+}
+
+.rrc-why-cta__actions {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.rrc-why-cta__reassurance {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  color: var(--rrc-gold-bright);
+  font-size: var(--rrc-body-sm);
+  font-weight: 500;
+}
+
+/* RESPONSIVE BREAKPOINTS */
 @media (max-width: 1100px) {
-  .rrc-why-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(260px, 0.85fr); }
-  .rrc-why-cycle { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rrc-why-cycle__step:last-child:nth-child(3n + 1) { grid-column: 2; }
-  .rrc-why-progression { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rrc-why-programs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rrc-why-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  }
+  .rrc-why-advantages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-why-loop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rrc-why-loop__card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+  .rrc-why-curriculum {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-why-audiences {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-why-programs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (max-width: 760px) {
-  .rrc-why-hero { padding-block: 3rem; }
+@media (max-width: 768px) {
+  .rrc-why-hero {
+    padding-block: 3rem;
+  }
   .rrc-why-hero__grid,
-  .rrc-why-intro,
-  .rrc-why-awareness { grid-template-columns: minmax(0, 1fr); }
-  .rrc-why-hero__copy { max-width: none; }
-  .rrc-why-hero__title { max-width: 16ch; font-size: clamp(2.25rem, 9vw, 3.25rem); }
-  .rrc-why-hero__visual { width: min(100%, 35rem); margin-inline: auto; }
-  .rrc-why-intro__visual { order: 2; }
-  .rrc-why-intro__copy { order: 1; }
-  .rrc-why-strengths,
-  .rrc-why-guidance,
-  .rrc-why-environment,
-  .rrc-why-audience { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rrc-why-cycle { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
-  .rrc-why-cycle__step:last-child:nth-child(3n + 1) { grid-column: auto; }
-  .rrc-why-cycle__step { display: grid; grid-template-columns: auto 1fr; column-gap: 1rem; align-items: start; }
-  .rrc-why-cycle__step .rrc-badge { grid-column: 1 / -1; justify-self: start; }
-  .rrc-why-cycle__icon { grid-row: 2 / span 2; margin-bottom: 0; }
-  .rrc-why-cycle__step .rrc-card__title { align-self: center; margin-bottom: 0.25rem; }
-  .rrc-why-cycle__step .rrc-card__text { grid-column: 2; }
-  .rrc-why-learning-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rrc-why-progression { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rrc-why-awareness__list { width: 100%; }
-  .rrc-why-cta__actions { width: 100%; }
+  .rrc-why-campus__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+  .rrc-why-hero__copy {
+    max-width: none;
+  }
+  .rrc-why-hero__title {
+    max-width: 18ch;
+    font-size: clamp(2rem, 7vw, 2.75rem);
+  }
+  .rrc-why-hero__visual-wrap {
+    width: min(100%, 32rem);
+    margin-inline: auto;
+  }
+  .rrc-why-campus__visual-col {
+    order: 2;
+  }
+  .rrc-why-campus__copy-col {
+    order: 1;
+    max-width: none;
+  }
+  .rrc-why-campus__features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rrc-why-advantages {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rrc-why-loop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rrc-why-loop__card:last-child:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+  .rrc-why-curriculum {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rrc-why-audiences {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rrc-why-programs {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-  .rrc-why-page .rrc-container { padding-inline: 1.125rem; }
-  .rrc-why-hero__grid { gap: 1.75rem; }
-  .rrc-why-hero__title { font-size: clamp(2rem, 10vw, 2.65rem); }
-  .rrc-why-hero__actions { align-items: stretch; }
+  .rrc-why-page .rrc-container {
+    padding-inline: 1rem;
+  }
+  .rrc-why-hero__title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+  .rrc-why-hero__chips {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rrc-why-chip {
+    width: 100%;
+    justify-content: center;
+  }
+  .rrc-why-hero__actions,
+  .rrc-why-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
   .rrc-why-hero__actions .rrc-btn,
-  .rrc-why-cta__actions .rrc-btn { width: 100%; white-space: normal; text-align: center; }
-  .rrc-why-strengths,
-  .rrc-why-guidance,
-  .rrc-why-environment,
-  .rrc-why-audience,
-  .rrc-why-learning-areas,
-  .rrc-why-programs,
-  .rrc-why-progression { grid-template-columns: minmax(0, 1fr); }
-  .rrc-why-learning-area { align-items: center; }
-  .rrc-why-cta__actions { flex-direction: column; align-items: stretch; }
+  .rrc-why-cta__actions .rrc-btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .rrc-why-hero__badge,
+  .rrc-why-campus__visual-badge {
+    position: static;
+    border-radius: 0;
+    margin-top: 0.5rem;
+  }
+  .rrc-why-loop {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rrc-why-cta__reassurance {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .rrc-why-page *,
   .rrc-why-page *::before,
-  .rrc-why-page *::after { scroll-behavior: auto; }
+  .rrc-why-page *::after {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
 }
