@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AIChatWidget from '../components/ai/AIChatWidget';
 import WhatsAppFloatingButton from '../components/whatsapp/WhatsAppFloatingButton';
+import BackToTop from '../components/BackToTop';
 import PageProgress from '../components/PageProgress';
 import ScrollProgress from '../components/ScrollProgress';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -72,6 +73,7 @@ export default function MainLayout() {
       <main key={location.pathname} ref={mainRef} id="rrc-main-content" className="rrc-main">
         <Outlet />
       </main>
+      <BackToTop />
       <WhatsAppFloatingButton />
       <AIChatWidget />
       <Footer />
